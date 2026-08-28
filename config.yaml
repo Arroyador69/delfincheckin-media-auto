@@ -1,0 +1,24 @@
+brand: Delfín Check-in
+cta_url: delfincheckin.com
+cta_spoken: delfin check in punto com
+width: 1080
+height: 1920
+fps: 30
+subtitle_fontsize: 68
+subtitle_margin_v: 380
+voice_female: es-ES-ElviraNeural
+voice_female_rate: "-8%"
+voice_female_pitch: "-6Hz"
+voice_male: es-ES-AlvaroNeural
+voice_male_rate: "-6%"
+voice_male_pitch: "-2Hz"
+image_provider: pollinations
+pollinations_model: flux
+visual_mode: brand
+min_words: 32
+max_words: 78
+endcard_seconds: 2.4
+output_dir: output
+cache_dir: assets/cache
+font_bold: /System/Library/Fonts/Supplemental/Arial Bold.ttf
+font_regular: /System/Library/Fonts/Supplemental/Arial.ttf

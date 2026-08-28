@@ -1,0 +1,71 @@
+personas:
+  - id: lucia
+    name: Lucía
+    gender: female
+    age: 42
+    city: Málaga
+    role: Dos apartamentos turísticos, ella sola.
+    voice: female
+    seed: 1107
+    image_prompt: >
+      42-year-old Spanish woman born in Málaga, Andalusia, Iberian Southern
+      European, olive-tan skin, brown eyes with double eyelids, dark brown
+      wavy hair in a messy low bun, slightly aquiline nose, grey hoodie,
+      small Costa del Sol apartment kitchen, wooden table, laptop, papers,
+      Sunday morning, iPhone photo. Same woman in every frame.
+    poses:
+      - "MUST SHOW: both hands on top of her head, elbows out, stressed Sunday"
+      - "MUST SHOW: leaning over laptop typing, looking at the screen worried"
+      - "MUST SHOW: looking straight at camera talking, one open hand raised"
+
+  - id: carlos
+    name: Carlos
+    gender: male
+    age: 51
+    city: Valencia
+    role: Pequeño hostal familiar.
+    voice: male
+    seed: 2208
+    image_prompt: >
+      51-year-old Spanish man from Valencia, Iberian Southern European,
+      olive skin, brown eyes double eyelids, short greying hair, navy polo,
+      small hostel reception, laptop, Sunday, iPhone photo. Same man in every frame.
+    poses:
+      - "MUST SHOW: both hands on top of his head, stressed, looking at camera"
+      - "MUST SHOW: looking down at the laptop, rubbing his forehead"
+      - "MUST SHOW: looking at camera explaining, one hand gesture"
+
+  - id: marta
+    name: Marta
+    gender: female
+    age: 38
+    city: Madrid
+    role: Un piso turístico y un trabajo de lunes a viernes.
+    voice: female
+    seed: 3309
+    image_prompt: >
+      38-year-old Spanish woman from Madrid, Iberian Southern European,
+      olive-tan skin, brown eyes double eyelids, brown hair down, grey hoodie,
+      evening sofa, phone and keys, iPhone photo. Same woman in every frame.
+    poses:
+      - "MUST SHOW: both hands on top of her head, exhausted after work"
+      - "MUST SHOW: looking at the phone worried, keys on the table"
+      - "MUST SHOW: looking at camera talking, small hand gesture"
+
+  - id: pablo
+    name: Pablo
+    gender: male
+    age: 45
+    city: Canarias
+    role: Varios estudios, quiere dejar de perder comisiones.
+    voice: male
+    seed: 4410
+    image_prompt: >
+      45-year-old Spanish man from Tenerife, Canary Islands, Iberian Southern
+      European, olive-tan skin, brown eyes double eyelids, short dark hair,
+      light stubble, linen shirt, bright apartment, laptop, iPhone photo.
+      Same man in every frame.
+    poses:
+      - "MUST SHOW: both hands on top of his head, stressed at laptop payouts"
+      - "MUST SHOW: leaning into the laptop, serious, one hand on his jaw"
+      - "MUST SHOW: looking straight at camera explaining, open-hand gesture"

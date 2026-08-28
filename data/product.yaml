@@ -1,0 +1,54 @@
+name: Delfín Check-in
+url: https://delfincheckin.com
+instagram: https://www.instagram.com/delfincheckin/
+admin: https://admin.delfincheckin.com/admin-login
+contact: contacto@delfincheckin.com
+audience: Propietarios y gestores de alojamientos turísticos en España (pisos, hostales, pequeñas casas).
+
+what_it_is: >
+  Software web para reservas, habitaciones, check-in digital y envío del
+  parte de viajeros al Ministerio del Interior (MIR), según el RD 933/2021.
+
+plans:
+  basico:
+    price: 0 €/mes
+    includes: 1 propiedad, panel de reservas y habitaciones, exportación de datos, sin tarjeta
+    extras: Cada propiedad extra son 2 €/mes
+  checkin:
+    price: 2 €/mes + 2 € por propiedad
+    includes: Envío automático al MIR, check-in digital, registro de viajeros, reservas directas
+  standard:
+    price: 9,99 €/mes
+    includes: Todo lo de Check-in, sin anuncios, 1 propiedad incluida
+  pro:
+    price: 29,99 €/mes
+    includes: Microsite, reseñas Google, más reservas directas, soporte prioritario
+
+money_facts:
+  - El huésped repetidor que vuelve por Airbnb o Booking te vuelve a pagar comisión. Con el enlace directo, ese dinero entra en tu cuenta.
+  - El Plan Pro incluye microsite propio y recordatorio de reseñas en Google para que te encuentren en Maps antes que en la plataforma.
+  - Pagos directos con Stripe: el viajero te paga a ti, sin esperar a la OTA.
+  - Enlaces de pago con fechas e importe, por WhatsApp o email.
+  - iCal para bloquear fechas y no solapar una reserva directa con Airbnb o Booking.
+  - Liberar el domingo y el check-in te deja tiempo para publicar más, contestar mejor y coger más reservas.
+  - Un gestor cobrando por cada parte sale más caro que 2 € al mes de envío automático.
+
+legal_facts:
+  - En España el registro de viajeros (PV y RH) al Ministerio del Interior es obligatorio en alojamiento de corta estancia, RD 933/2021.
+  - Airbnb y Booking no envían el parte por ti.
+  - El huésped rellena el formulario en su idioma antes de llegar. Tú confirmas. El envío al MIR puede ir automático en el plan Check-in.
+  - El plan gratis no incluye el envío automático al Ministerio. Eso está en Check-in (2 €/mes).
+
+must_not_say:
+  - Importes de multa inventados
+  - Que Airbnb o Booking envían el parte al Ministerio
+  - Que Delfín sincroniza reservas solas con Airbnb (las reservas se meten a mano; el iCal es para bloquear fechas del microsite)
+  - Nombres de clientes reales o testimonios falsos
+  - Garantías legales de cero sanciones
+  - Precios que no estén en este archivo
+  - Temas que no sean Delfín Check-in, alojamiento en España, MIR, check-in o reservas directas
+
+cta:
+  - Empieza gratis en delfincheckin.com
+  - Una propiedad gratis, sin tarjeta, en delfincheckin.com
+  - Enlace en delfincheckin.com

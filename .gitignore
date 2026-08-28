@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+.env
+.env.local
+output/work/
+output/ready/*.mp4
+output/ready/*.json
+output/ready/*_ig/
+output/logs/
+assets/cache/
+.idea/
+.vscode/
