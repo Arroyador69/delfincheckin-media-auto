@@ -5,6 +5,7 @@ import subprocess
 from pathlib import Path
 
 from delfin_media.config import Config
+from delfin_media.paths import ROOT
 
 
 class RenderError(RuntimeError):
@@ -99,31 +100,43 @@ def render_reel(
 
     body = work / "body.mp4"
     ass_esc = str(ass.resolve()).replace("\\", "/").replace(":", "\\:")
-    _run(
-        [
-            "ffmpeg",
-            "-y",
-            "-i",
-            str(body_v),
-            "-i",
-            str(audio),
-            "-filter_complex",
-            (
-                f"[0:v]ass='{ass_esc}',setsar=1,format=yuv420p[v];"
-                f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a]"
-            ),
-            "-map",
-            "[v]",
-            "-map",
-            "[a]",
-            "-shortest",
-            *common_v,
-            *common_a,
-            "-movflags",
-            "+faststart",
-            str(body),
-        ]
-    )
+    logo = ROOT / "assets" / "brand" / "logo-512.png"
+    mux = [
+        "ffmpeg",
+        "-y",
+        "-i",
+        str(body_v),
+        "-i",
+        str(audio),
+    ]
+    if logo.exists():
+        mux += ["-i", str(logo)]
+        vf = (
+            f"[0:v]ass='{ass_esc}'[sub];"
+            f"[2:v]scale=110:110[logo];"
+            f"[sub][logo]overlay=40:40,setsar=1,format=yuv420p[v];"
+            f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a]"
+        )
+    else:
+        vf = (
+            f"[0:v]ass='{ass_esc}',setsar=1,format=yuv420p[v];"
+            f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a]"
+        )
+    mux += [
+        "-filter_complex",
+        vf,
+        "-map",
+        "[v]",
+        "-map",
+        "[a]",
+        "-shortest",
+        *common_v,
+        *common_a,
+        "-movflags",
+        "+faststart",
+        str(body),
+    ]
+    _run(mux)
 
     card = work / "card.mp4"
     _run(

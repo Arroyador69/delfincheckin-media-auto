@@ -72,7 +72,18 @@ def run_doctor(cfg: Config, ci: bool = False) -> int:
         if ram is not None:
             print(f"  RAM: {ram:.1f} GB")
             if ram < 12:
-                print("  aviso: 8 GB. Movimiento con 3 tomas IA + cámara, no LTX local.")
+                print("  aviso: 8 GB. Banco Pexels + Ken Burns. No Flux ni vídeo IA local.")
+
+    bank_yaml = ROOT / "data" / "bank.yaml"
+    print(f"  banco yaml: {'ok' if bank_yaml.exists() else 'NO'}")
+    if not bank_yaml.exists():
+        ok = False
+    if not ci:
+        rooms = list((ROOT / "assets" / "bank" / "rooms").glob("*.jpg"))
+        people = list((ROOT / "assets" / "bank" / "people").glob("*.jpg"))
+        print(f"  banco fotos: {len(rooms)} habitaciones, {len(people)} personas")
+        if len(rooms) < 3:
+            print("  aviso: python -m delfin_media bank")
 
     script_errors = check_scripts(cfg)
     print(f"  guiones: {'ok' if script_errors == 0 else script_errors}")

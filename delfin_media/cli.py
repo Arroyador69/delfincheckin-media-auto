@@ -32,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     sub.add_parser("list", help="Lista dolores y personas")
+    sub.add_parser("bank", help="Baja el banco de fotos (habitaciones + personas)")
     sub.add_parser("open", help="Abre la carpeta output/ready en Finder")
 
     args = parser.parse_args(argv)
@@ -48,6 +49,13 @@ def main(argv: list[str] | None = None) -> int:
         print("Personas")
         for persona in load_personas():
             print(f"  {persona.id:24} {persona.name}, {persona.city}")
+        return 0
+
+    if args.cmd == "bank":
+        from delfin_media.bank import BANK_DIR, sync_bank
+
+        paths = sync_bank()
+        print(f"{len(paths)} fotos en {BANK_DIR}")
         return 0
 
     if args.cmd == "open":
@@ -67,7 +75,7 @@ def main(argv: list[str] | None = None) -> int:
                 use_llm=args.llm,
             )
         print(f"\nVídeos en {cfg.ready_dir}")
-        subprocess.run(["open", str(cfg.ready_dir)], check=False)
+        print("Para abrirlos: python -m delfin_media open")
         return 0
 
     return 1

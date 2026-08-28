@@ -1,12 +1,13 @@
-name: Push
+name: Al hacer push
 
 on:
   push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  check:
-    name: Check
+  doctor:
+    name: Doctor Delfín Check-in
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,5 +16,16 @@ jobs:
           python-version: "3.11"
       - name: Instalar dependencias
         run: pip install -r requirements.txt
-      - name: Validar guiones y personas
+      - name: Validar guiones y código
         run: python -m delfin_media doctor --ci
+      - name: Resumen visible
+        run: |
+          {
+            echo "## Push recibido"
+            echo
+            echo "- Commit: \`$GITHUB_SHA\`"
+            echo "- Rama: \`$GITHUB_REF_NAME\`"
+            echo "- Autor: $GITHUB_ACTOR"
+            echo
+            echo "Si ves este resumen, el push llegó a GitHub y Actions corrió."
+          } >> "$GITHUB_STEP_SUMMARY"

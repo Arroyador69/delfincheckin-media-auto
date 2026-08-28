@@ -1,0 +1,53 @@
+# Banco local CC0 (Pexels). Uso comercial OK, 0 €, sin atribución obligatoria.
+# Habitaciones y resorts que no son de España. Personas de aspecto europeo/mediterráneo
+# (revisadas a mano; se descartaron caras asiáticas u otras que no encajan).
+
+rooms:
+  - id: 271624
+    file: rooms/hotel-cama.jpg
+    note: Habitación de hotel con cama
+  - id: 164595
+    file: rooms/hotel-blanco.jpg
+    note: Suite clara
+  - id: 261102
+    file: rooms/hotel-lujo.jpg
+    note: Resort urbano con piscina
+  - id: 258154
+    file: rooms/resort-piscina.jpg
+    note: Resort tropical (no España)
+  - id: 1457842
+    file: rooms/apto-moderno.jpg
+    note: Apartamento con vistas (no España)
+  - id: 1571460
+    file: rooms/salon-sofa.jpg
+    note: Salón de apartamento
+  - id: 1743229
+    file: rooms/dormitorio.jpg
+    note: Dormitorio boutique
+  - id: 2029722
+    file: rooms/apto-mesa.jpg
+    note: Dormitorio con cabezales teal
+
+people_female:
+  - id: 774909
+    file: people/mujer-01.jpg
+  - id: 733872
+    file: people/mujer-02.jpg
+  - id: 1130626
+    file: people/mujer-04.jpg
+  - id: 1239291
+    file: people/mujer-05.jpg
+  - id: 3769021
+    file: people/mujer-06.jpg
+
+people_male:
+  - id: 2379004
+    file: people/hombre-01.jpg
+  - id: 220453
+    file: people/hombre-06.jpg
+  - id: 1043471
+    file: people/hombre-07.jpg
+  - id: 3785079
+    file: people/hombre-09.jpg
+  - id: 834863
+    file: people/hombre-12.jpg

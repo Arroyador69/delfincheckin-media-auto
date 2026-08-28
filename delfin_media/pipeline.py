@@ -5,11 +5,12 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+from delfin_media.bank import pick_reel_stills, sync_bank
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
 from delfin_media.images import persona_shots
-from delfin_media.posts import make_reel_slides, write_instagram_pack
+from delfin_media.posts import write_instagram_pack
 from delfin_media.render import render_reel
 from delfin_media.script import Pain, Persona, Script, build_script
 from delfin_media.tts import speak
@@ -53,10 +54,12 @@ def generate_one(
     print(f"  voz: {voice.duration:.1f}s · {len(voice.words)} palabras")
 
     if cfg.visual_mode == "faces":
+        print("  visual: Flux (no usar: caras que no son españolas)")
         photos = persona_shots(persona, pain, cfg)
     else:
-        print("  visual: gráficos de marca (teal / amarillo / logo)")
-        photos = make_reel_slides(cfg, work / "slides", pain, persona)
+        print("  visual: banco (persona europea + habitaciones, Ken Burns)")
+        sync_bank()
+        photos = pick_reel_stills(persona, cfg)
     ass = write_ass(voice.words, work / "subs.ass", cfg)
     endcard = make_endcard(cfg, work / "endcard.png", pain.hook)
     dest = cfg.ready_dir / f"{slug}.mp4"

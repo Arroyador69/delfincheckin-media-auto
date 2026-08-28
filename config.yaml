@@ -14,7 +14,7 @@ voice_male_rate: "-6%"
 voice_male_pitch: "-2Hz"
 image_provider: pollinations
 pollinations_model: flux
-visual_mode: brand
+visual_mode: bank
 min_words: 32
 max_words: 78
 endcard_seconds: 2.4
