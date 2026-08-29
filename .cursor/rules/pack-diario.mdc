@@ -21,7 +21,7 @@ Pablo nunca va en foto fija: clip `hombre-estres-*.mp4` en `assets/bank/hooks/`.
 
 ## Voces
 
-Gratis: Edge TTS `es-ES-XimenaNeural` / `es-ES-AlvaroNeural`, ritmo casi natural, pausa entre frases. Nada de pago (ElevenLabs, etc.).
+**Azure Dragon HD** (acento España): Lucía = Ximena HD, Pablo = Tristan HD. Clave en `.env` (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION=westeurope`). Recurso Speech **S0**, no F0. Si no hay clave, Edge TTS de reserva.
 
 ## Hechos (no inventar)
 

@@ -52,6 +52,7 @@ def generate_one(
     print(f"  hook 3s: {script.spoken_hook}")
     print(f"  persona: {persona.name} ({persona.city})")
     print(f"  cuerpo ({script.source}): {script.text}")
+    print(f"  motor voz: {cfg.voice_engine}")
 
     hook_vo = speak(script.spoken_hook, persona, work / "hook.mp3", cfg)
     body_vo = speak(script.text, persona, work / "body.mp3", cfg)

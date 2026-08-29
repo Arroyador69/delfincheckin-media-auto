@@ -1,0 +1,4 @@
+# Voces. No va en CI (Torch / SDK nativo).
+# pip install -r requirements-voice.txt
+pocket-tts>=1.0.0
+azure-cognitiveservices-speech>=1.42.0

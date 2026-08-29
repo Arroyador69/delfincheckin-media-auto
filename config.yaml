@@ -6,6 +6,12 @@ height: 1920
 fps: 30
 subtitle_fontsize: 68
 subtitle_margin_v: 380
+voice_engine: azure
+voice_language: spanish
+voice_pocket_female: lola
+voice_pocket_male: jean
+voice_azure_female: es-ES-Ximena:DragonHDLatestNeural
+voice_azure_male: es-ES-Tristan:DragonHDLatestNeural
 voice_female: es-ES-XimenaNeural
 voice_female_rate: "-3%"
 voice_female_pitch: "+0Hz"

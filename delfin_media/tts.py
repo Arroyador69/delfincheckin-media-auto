@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import html
 import re
 import subprocess
 from dataclasses import dataclass
@@ -10,6 +11,10 @@ import edge_tts
 
 from delfin_media.config import Config
 from delfin_media.script import Persona
+
+_POCKET_MODEL = None
+_POCKET_LANG = None
+_POCKET_STATES: dict[str, object] = {}
 
 _SENTENCE = re.compile(r"(?<=[.!?])\s+")
 _SWEETEN = (
@@ -196,6 +201,95 @@ def concat_voiceovers(parts: list[Voiceover], dest: Path) -> Voiceover:
     return _concat_audio(parts, dest, pause=0.08)
 
 
+def _pocket_voice_name(persona: Persona, cfg: Config) -> str:
+    if persona.voice == "female":
+        return cfg.voice_pocket_female
+    return cfg.voice_pocket_male
+
+
+def _load_pocket(cfg: Config):
+    global _POCKET_MODEL, _POCKET_LANG
+    from pocket_tts import TTSModel
+
+    lang = cfg.voice_language
+    if _POCKET_MODEL is not None and _POCKET_LANG == lang:
+        return _POCKET_MODEL
+    print(f"  cargando Pocket TTS ({lang}, CPU)…")
+    try:
+        _POCKET_MODEL = TTSModel.load_model(language=lang, quantize=True)
+    except TypeError:
+        _POCKET_MODEL = TTSModel.load_model(language=lang)
+    _POCKET_LANG = lang
+    return _POCKET_MODEL
+
+
+def _pocket_state(model, name: str):
+    if name not in _POCKET_STATES:
+        print(f"  voz Pocket: {name}")
+        _POCKET_STATES[name] = model.get_state_for_audio_prompt(name)
+    return _POCKET_STATES[name]
+
+
+def _write_wav(audio, sample_rate: int, dest: Path) -> None:
+    import numpy as np
+    from scipy.io import wavfile
+
+    pcm = audio.detach().cpu().float().numpy().reshape(-1)
+    pcm = np.clip(pcm, -1.0, 1.0)
+    wavfile.write(str(dest), int(sample_rate), (pcm * 32767.0).astype(np.int16))
+
+
+def _wav_to_mp3(wav: Path, mp3: Path) -> None:
+    proc = subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(wav),
+            "-c:a",
+            "libmp3lame",
+            "-q:a",
+            "4",
+            str(mp3),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(proc.stderr[-800:] or proc.stdout[-800:])
+
+
+def _synthesize_pocket(text: str, dest: Path, persona: Persona, cfg: Config) -> list[Word]:
+    model = _load_pocket(cfg)
+    name = _pocket_voice_name(persona, cfg)
+    state = _pocket_state(model, name)
+    try:
+        audio = model.generate_audio(state, text, copy_state=True)
+    except TypeError:
+        audio = model.generate_audio(state, text)
+    wav = dest.with_suffix(".wav")
+    _write_wav(audio, model.sample_rate, wav)
+    _wav_to_mp3(wav, dest)
+    duration = _probe_duration(dest)
+    return _fallback_words(text, duration)
+
+
+def speak_pocket(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    sentences = split_sentences(text)
+    pieces: list[Voiceover] = []
+    for i, sent in enumerate(sentences):
+        piece = dest.parent / f"{dest.stem}_s{i}.mp3"
+        words = _synthesize_pocket(sent, piece, persona, cfg)
+        duration = _probe_duration(piece)
+        pieces.append(Voiceover(path=piece, duration=duration, words=words))
+    raw = dest.with_name(dest.stem + "_raw.mp3")
+    combined = _concat_audio(pieces, raw, pause=0.18 if len(pieces) > 1 else 0.0)
+    _sweeten(combined.path, dest)
+    duration = _probe_duration(dest)
+    return Voiceover(path=dest, duration=duration + 0.12, words=combined.words)
+
+
 def _sweeten(src: Path, dest: Path) -> None:
     cmd = [
         "ffmpeg",
@@ -215,7 +309,7 @@ def _sweeten(src: Path, dest: Path) -> None:
         dest.write_bytes(src.read_bytes())
 
 
-def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+def speak_edge(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
     dest.parent.mkdir(parents=True, exist_ok=True)
     sentences = split_sentences(text)
 
@@ -239,3 +333,75 @@ def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
     _sweeten(combined.path, dest)
     duration = _probe_duration(dest)
     return Voiceover(path=dest, duration=duration + 0.12, words=combined.words)
+
+
+def speak_azure(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if not cfg.azure_speech_key:
+        raise RuntimeError(
+            "Falta AZURE_SPEECH_KEY. Copia .env.example a .env y pega la clave 1."
+        )
+    import azure.cognitiveservices.speech as speechsdk
+
+    voice = (
+        cfg.voice_azure_female if persona.voice == "female" else cfg.voice_azure_male
+    )
+    speech_config = speechsdk.SpeechConfig(
+        subscription=cfg.azure_speech_key, region=cfg.azure_speech_region
+    )
+    speech_config.speech_synthesis_voice_name = voice
+    speech_config.set_speech_synthesis_output_format(
+        speechsdk.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3
+    )
+    synthesizer = speechsdk.SpeechSynthesizer(
+        speech_config=speech_config, audio_config=None
+    )
+    collected: list[tuple[str, float]] = []
+
+    def on_boundary(evt) -> None:
+        token = (evt.text or "").strip()
+        if not token or token in {".", ",", ";", ":", "?", "!", "¿", "¡"}:
+            return
+        start = evt.audio_offset / 10_000_000
+        collected.append((token, start))
+
+    synthesizer.synthesis_word_boundary.connect(on_boundary)
+    ssml = (
+        "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' "
+        "xml:lang='es-ES'>"
+        f"<voice name='{html.escape(voice, quote=True)}'>"
+        f"{html.escape(text)}"
+        "</voice></speak>"
+    )
+    result = synthesizer.speak_ssml_async(ssml).get()
+    if result.reason != speechsdk.ResultReason.SynthesizingAudioCompleted:
+        detail = ""
+        if result.reason == speechsdk.ResultReason.Canceled:
+            detail = result.cancellation_details.error_details
+        raise RuntimeError(detail or str(result.reason))
+    raw = dest.with_name(dest.stem + "_azure.mp3")
+    raw.write_bytes(bytes(result.audio_data))
+    _sweeten(raw, dest)
+    duration = _probe_duration(dest)
+    words: list[Word] = []
+    for i, (token, start) in enumerate(collected):
+        end = collected[i + 1][1] if i + 1 < len(collected) else min(start + 0.4, duration)
+        words.append(Word(text=token, start=start, end=max(end, start + 0.12)))
+    if not words:
+        words = _fallback_words(text, duration)
+    print(f"  voz Azure HD: {voice}")
+    return Voiceover(path=dest, duration=duration + 0.12, words=words)
+
+
+def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+    if cfg.voice_engine == "azure":
+        try:
+            return speak_azure(text, persona, dest, cfg)
+        except Exception as exc:
+            print(f"  aviso Azure: {exc}. Uso Edge.")
+    if cfg.voice_engine == "pocket":
+        try:
+            return speak_pocket(text, persona, dest, cfg)
+        except Exception as exc:
+            print(f"  aviso Pocket TTS: {exc}. Uso Edge.")
+    return speak_edge(text, persona, dest, cfg)

@@ -68,6 +68,21 @@ def run_doctor(cfg: Config, ci: bool = False) -> int:
             ok = False
 
     if not ci:
+        key = cfg.azure_speech_key
+        print(
+            f"  azure: {'clave en .env' if key else 'sin AZURE_SPEECH_KEY'} "
+            f"({cfg.azure_speech_region})"
+        )
+        if cfg.voice_engine == "azure" and not key:
+            print("  aviso: voice_engine=azure pero falta la clave. Se usará Edge.")
+        try:
+            import azure.cognitiveservices.speech  # noqa: F401
+
+            print("  azure-speech sdk: ok")
+        except ImportError:
+            print("  aviso: pip install -r requirements-voice.txt (SDK Azure)")
+
+    if not ci:
         for font in (cfg.font_bold, cfg.font_regular):
             exists = Path(font).exists()
             print(f"  fuente {font.name}: {'ok' if exists else 'NO'}")

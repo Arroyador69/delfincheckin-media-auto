@@ -49,7 +49,7 @@ Los commits **no** aparecen en la pestaña Actions vacía. Aparecen aquí:
 | Reel | Hook en movimiento + app + cierre fijo |
 | Carrusel | Un pack por vídeo, con el nombre de Lucía o Pablo |
 | Stories | 2 al día, frase + CTA a la web |
-| Voz | Edge TTS Ximena / Álvaro, frases con pausa, 0 € |
+| Voz | Azure Dragon HD (Ximena/Tristan, España). Clave en `.env`. |
 | Guion | `spoken_hook` + cuerpo en `data/pains.yaml` |
 
 Copia tus MP4 de la app a `assets/bank/app/`. Si faltan, el cuerpo usa una habitación.
@@ -60,6 +60,8 @@ Copia tus MP4 de la app a `assets/bank/app/`. Si faltan, el cuerpo usa una habit
 python3.11 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+pip install -r requirements-voice.txt
+# Copia .env.example a .env y pega AZURE_SPEECH_KEY + AZURE_SPEECH_REGION
 python -m delfin_media doctor
 python -m delfin_media bank
 ```
