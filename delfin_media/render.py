@@ -4,6 +4,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from delfin_media.bank import is_video
 from delfin_media.config import Config
 from delfin_media.paths import ROOT
 
@@ -18,40 +19,8 @@ def _run(cmd: list[str]) -> None:
         raise RenderError(proc.stderr[-2000:] or proc.stdout[-2000:])
 
 
-def _ken_burns(cfg: Config, duration: float, shot_idx: int) -> str:
-    d = max(duration, 0.5)
-    w, h = cfg.width, cfg.height
-    sw, sh = w + 280, h + 496
-    if shot_idx % 3 == 0:
-        crop = f"crop={w}:{h}:(in_w-{w})/2:(in_h-{h})*t/{d:.3f}"
-    elif shot_idx % 3 == 1:
-        crop = f"crop={w}:{h}:(in_w-{w})*t/{d:.3f}:(in_h-{h})*0.4"
-    else:
-        crop = f"crop={w}:{h}:(in_w-{w})*(1-t/{d:.3f}):(in_h-{h})*0.22"
-    return (
-        f"scale={sw}:{sh}:flags=lanczos,{crop},"
-        f"eq=saturation=1.07:contrast=1.06,fps={cfg.fps},setsar=1,format=yuv420p"
-    )
-
-
-def render_reel(
-    photos: list[Path],
-    audio: Path,
-    ass: Path,
-    endcard: Path,
-    dest: Path,
-    work: Path,
-    voice_seconds: float,
-    cfg: Config,
-) -> Path:
-    if not shutil.which("ffmpeg"):
-        raise RenderError("ffmpeg no está en PATH. brew install ffmpeg")
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    work.mkdir(parents=True, exist_ok=True)
-    photos = [p for p in photos if p.exists()] or photos
-    n = max(len(photos), 1)
-    piece = max(voice_seconds, 8.0) / n
-    common_v = [
+def _common_v(cfg: Config) -> list[str]:
+    return [
         "-c:v",
         "libx264",
         "-pix_fmt",
@@ -63,52 +32,136 @@ def render_reel(
         "-preset",
         "veryfast",
     ]
-    common_a = ["-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2"]
-    shots: list[Path] = []
-    for i, photo in enumerate(photos):
-        shot = work / f"shot_{i}.mp4"
-        _run(
-            [
-                "ffmpeg",
-                "-y",
-                "-loop",
-                "1",
-                "-t",
-                f"{piece:.3f}",
-                "-i",
-                str(photo),
-                "-vf",
-                _ken_burns(cfg, piece, i),
-                "-an",
-                *common_v,
-                str(shot),
-            ]
-        )
-        shots.append(shot)
 
-    body_v = work / "body_v.mp4"
-    if len(shots) == 1:
-        body_v = shots[0]
+
+def _common_a() -> list[str]:
+    return ["-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2"]
+
+
+def cover_9x16(cfg: Config) -> str:
+    """Llena 9:16 recortando, sin estirar."""
+    w, h = cfg.width, cfg.height
+    return (
+        f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
+        f"crop={w}:{h},"
+        f"eq=saturation=1.05:contrast=1.04,fps={cfg.fps},setsar=1,format=yuv420p"
+    )
+
+
+def kenburns_9x16(cfg: Config, duration: float) -> str:
+    """Foto en movimiento: paneo lento a 9:16, sin estirar."""
+    w, h = cfg.width, cfg.height
+    dur = max(duration, 0.5)
+    src_w, src_h = int(w * 1.22), int(h * 1.22)
+    return (
+        f"scale={src_w}:{src_h}:force_original_aspect_ratio=increase:flags=lanczos,"
+        f"crop={src_w}:{src_h},"
+        f"crop={w}:{h}:(in_w-{w})*t/{dur:.3f}:(in_h-{h})*t/{dur:.3f}*0.45,"
+        f"eq=saturation=1.05:contrast=1.04,fps={cfg.fps},setsar=1,format=yuv420p"
+    )
+
+
+def letterbox_9x16(cfg: Config) -> str:
+    """Cabe entero en 9:16 con bandas navy. No deforma la app."""
+    w, h = cfg.width, cfg.height
+    return (
+        f"scale={w}:{h}:force_original_aspect_ratio=decrease:flags=lanczos,"
+        f"pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:color=0x0B1220,"
+        f"fps={cfg.fps},setsar=1,format=yuv420p"
+    )
+
+
+def _to_clip(src: Path, dest: Path, duration: float, vf: str, cfg: Config) -> Path:
+    duration = max(duration, 0.5)
+    cmd = ["ffmpeg", "-y"]
+    if is_video(src):
+        cmd += ["-stream_loop", "-1", "-i", str(src), "-t", f"{duration:.3f}"]
+        use_vf = vf
     else:
-        fc = "".join(f"[{i}:v]" for i in range(len(shots)))
-        fc += f"concat=n={len(shots)}:v=1:a=0[v]"
-        cmd = ["ffmpeg", "-y"]
-        for shot in shots:
-            cmd += ["-i", str(shot)]
-        cmd += ["-filter_complex", fc, "-map", "[v]", *common_v, str(body_v)]
-        _run(cmd)
+        cmd += ["-loop", "1", "-t", f"{duration:.3f}", "-i", str(src)]
+        use_vf = kenburns_9x16(cfg, duration)
+    cmd += ["-vf", use_vf, "-an", *_common_v(cfg), str(dest)]
+    _run(cmd)
+    return dest
 
-    body = work / "body.mp4"
+
+def render_still_video(image: Path, dest: Path, duration: float, cfg: Config) -> Path:
+    """Story o cierre en movimiento a partir de un JPG 9:16."""
+    duration = max(duration, 0.5)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    _run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loop",
+            "1",
+            "-t",
+            f"{duration:.3f}",
+            "-i",
+            str(image),
+            "-f",
+            "lavfi",
+            "-t",
+            f"{duration:.3f}",
+            "-i",
+            "anullsrc=channel_layout=stereo:sample_rate=44100",
+            "-vf",
+            kenburns_9x16(cfg, duration),
+            *_common_v(cfg),
+            *_common_a(),
+            "-shortest",
+            "-movflags",
+            "+faststart",
+            str(dest),
+        ]
+    )
+    return dest
+
+
+def render_reel(
+    hook_src: Path,
+    body_src: Path,
+    audio: Path,
+    ass: Path,
+    endcard: Path,
+    dest: Path,
+    work: Path,
+    hook_seconds: float,
+    body_seconds: float,
+    cfg: Config,
+) -> Path:
+    if not shutil.which("ffmpeg"):
+        raise RenderError("ffmpeg no está en PATH. brew install ffmpeg")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    work.mkdir(parents=True, exist_ok=True)
+
+    hook_clip = _to_clip(hook_src, work / "hook.mp4", hook_seconds, cover_9x16(cfg), cfg)
+    # App: letterbox (no deformar la UI). Foto de reserva: cover 9:16, sin estirar.
+    body_vf = letterbox_9x16(cfg) if is_video(body_src) else cover_9x16(cfg)
+    body_clip = _to_clip(body_src, work / "body_v.mp4", body_seconds, body_vf, cfg)
+
+    joined_v = work / "acts.mp4"
+    _run(
+        [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(hook_clip),
+            "-i",
+            str(body_clip),
+            "-filter_complex",
+            "[0:v][1:v]concat=n=2:v=1:a=0[v]",
+            "-map",
+            "[v]",
+            *_common_v(cfg),
+            str(joined_v),
+        ]
+    )
+
+    body = work / "voiced.mp4"
     ass_esc = str(ass.resolve()).replace("\\", "/").replace(":", "\\:")
     logo = ROOT / "assets" / "brand" / "logo-512.png"
-    mux = [
-        "ffmpeg",
-        "-y",
-        "-i",
-        str(body_v),
-        "-i",
-        str(audio),
-    ]
+    mux = ["ffmpeg", "-y", "-i", str(joined_v), "-i", str(audio)]
     if logo.exists():
         mux += ["-i", str(logo)]
         vf = (
@@ -130,8 +183,8 @@ def render_reel(
         "-map",
         "[a]",
         "-shortest",
-        *common_v,
-        *common_a,
+        *_common_v(cfg),
+        *_common_a(),
         "-movflags",
         "+faststart",
         str(body),
@@ -157,8 +210,8 @@ def render_reel(
             "anullsrc=channel_layout=stereo:sample_rate=44100",
             "-vf",
             f"scale={cfg.width}:{cfg.height},fps={cfg.fps},setsar=1,format=yuv420p",
-            *common_v,
-            *common_a,
+            *_common_v(cfg),
+            *_common_a(),
             "-shortest",
             str(card),
         ]
@@ -178,8 +231,8 @@ def render_reel(
             "[v]",
             "-map",
             "[a]",
-            *common_v,
-            *common_a,
+            *_common_v(cfg),
+            *_common_a(),
             "-movflags",
             "+faststart",
             str(dest),

@@ -9,7 +9,14 @@ output/work/
 output/ready/*.mp4
 output/ready/*.json
 output/ready/*_ig/
+output/ready/*_dia/
+output/ready/*_stories/
 output/logs/
 assets/cache/
+assets/bank/app/*.mp4
+assets/bank/app/*.MP4
+assets/bank/app/*.mov
+assets/bank/app/*.MOV
+assets/bank/hooks/*.mp4
 .idea/
 .vscode/

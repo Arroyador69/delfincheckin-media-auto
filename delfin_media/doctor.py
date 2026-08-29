@@ -22,7 +22,7 @@ def check_scripts(cfg: Config) -> int:
     bad = 0
     for pain in load_pains():
         for script in pain.scripts:
-            errors = validate_script(script, cfg)
+            errors = validate_script(script, cfg, spoken_hook=pain.spoken_hook)
             if errors:
                 bad += 1
                 print(f"  ERROR guion {pain.id}: {errors}")
@@ -34,6 +34,11 @@ def check_scripts(cfg: Config) -> int:
         if len(persona.poses) < 3:
             print(f"  ERROR {persona.id}: mínimo 3 poses para movimiento")
             bad += 1
+    from delfin_media.stories import load_stories
+
+    if len(load_stories()) < 2:
+        print("  ERROR: hacen falta al menos 2 stories en data/stories.yaml")
+        bad += 1
     return bad
 
 
@@ -72,17 +77,28 @@ def run_doctor(cfg: Config, ci: bool = False) -> int:
         if ram is not None:
             print(f"  RAM: {ram:.1f} GB")
             if ram < 12:
-                print("  aviso: 8 GB. Banco Pexels + Ken Burns. No Flux ni vídeo IA local.")
+                print("  aviso: 8 GB. Hook 3s + app + cierre. No Flux ni vídeo IA local.")
 
     bank_yaml = ROOT / "data" / "bank.yaml"
+    stories_yaml = ROOT / "data" / "stories.yaml"
     print(f"  banco yaml: {'ok' if bank_yaml.exists() else 'NO'}")
-    if not bank_yaml.exists():
+    print(f"  stories yaml: {'ok' if stories_yaml.exists() else 'NO'}")
+    if not bank_yaml.exists() or not stories_yaml.exists():
         ok = False
     if not ci:
         rooms = list((ROOT / "assets" / "bank" / "rooms").glob("*.jpg"))
         people = list((ROOT / "assets" / "bank" / "people").glob("*.jpg"))
-        print(f"  banco fotos: {len(rooms)} habitaciones, {len(people)} personas")
-        if len(rooms) < 3:
+        hooks = list((ROOT / "assets" / "bank" / "hooks").glob("*.jpg"))
+        hook_vids = list((ROOT / "assets" / "bank" / "hooks").glob("*.mp4"))
+        apps = [
+            p
+            for p in (ROOT / "assets" / "bank" / "app").iterdir()
+            if p.is_file() and p.suffix.lower() in {".mp4", ".mov", ".m4v"}
+        ]
+        print(f"  banco fotos: {len(rooms)} habitaciones, {len(people)} personas, {len(hooks)} hooks")
+        print(f"  hook vídeos: {len(hook_vids)}")
+        print(f"  app MP4: {len(apps)} (pega clips en assets/bank/app/)")
+        if len(rooms) < 3 or len(hooks) < 2:
             print("  aviso: python -m delfin_media bank")
 
     script_errors = check_scripts(cfg)

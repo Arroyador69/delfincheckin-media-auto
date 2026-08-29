@@ -14,6 +14,7 @@ class Pain:
     theme: str
     money_angle: bool
     hook: str
+    spoken_hook: str
     scene: str
     image_extra: str
     scripts: list[str]
@@ -38,6 +39,7 @@ class Script:
     pain_id: str
     persona_id: str
     hook: str
+    spoken_hook: str
     text: str
     source: str
 
@@ -54,6 +56,7 @@ def load_pains() -> list[Pain]:
             theme=item["theme"],
             money_angle=bool(item["money_angle"]),
             hook=item["hook"],
+            spoken_hook=_clean(item.get("spoken_hook") or item["hook"]),
             scene=item["scene"],
             image_extra=item["image_extra"],
             scripts=[_clean(s) for s in item["scripts"]],
@@ -85,20 +88,24 @@ def word_count(text: str) -> int:
     return len(re.findall(r"\S+", text))
 
 
-def validate_script(text: str, cfg: Config) -> list[str]:
+def validate_script(text: str, cfg: Config, spoken_hook: str = "") -> list[str]:
     errors: list[str] = []
-    n = word_count(text)
+    full = _clean(f"{spoken_hook} {text}")
+    n = word_count(full)
     if n < cfg.min_words:
         errors.append(f"corto ({n} palabras)")
     if n > cfg.max_words:
         errors.append(f"largo ({n} palabras)")
-    low = text.lower()
+    low = full.lower()
     if "delfín check-in" not in low and "delfincheckin.com" not in low:
         errors.append("no menciona Delfín Check-in ni la URL")
     product = load_yaml("product.yaml")
     for banned in product["must_not_say"]:
         if banned.lower() in low:
             errors.append(f"frase prohibida: {banned}")
+    hook_n = word_count(spoken_hook) if spoken_hook else 0
+    if spoken_hook and (hook_n < 5 or hook_n > 16):
+        errors.append(f"hook de 3s ({hook_n} palabras, debe 5-16)")
     return errors
 
 
@@ -128,13 +135,14 @@ def pick_persona(persona_id: str | None = None) -> Persona:
 
 def template_script(pain: Pain, persona: Persona, cfg: Config) -> Script:
     text = random.choice(pain.scripts)
-    errors = validate_script(text, cfg)
+    errors = validate_script(text, cfg, spoken_hook=pain.spoken_hook)
     if errors:
         raise RuntimeError(f"Plantilla inválida {pain.id}: {errors}")
     return Script(
         pain_id=pain.id,
         persona_id=persona.id,
         hook=pain.hook,
+        spoken_hook=pain.spoken_hook,
         text=text,
         source="template",
     )
@@ -176,12 +184,13 @@ def llm_script(pain: Pain, persona: Persona, cfg: Config) -> Script | None:
         text = _clean(payload.get("message", {}).get("content", ""))
         if not text:
             return None
-        if validate_script(text, cfg):
+        if validate_script(text, cfg, spoken_hook=pain.spoken_hook):
             return None
         return Script(
             pain_id=pain.id,
             persona_id=persona.id,
             hook=pain.hook,
+            spoken_hook=pain.spoken_hook,
             text=text,
             source="ollama",
         )

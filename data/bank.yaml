@@ -40,6 +40,53 @@ people_female:
   - id: 3769021
     file: people/mujer-06.jpg
 
+# Hook 3 s: persona preocupada (manos en la cabeza / estrés). Recorte cover 9:16.
+hooks_female:
+  - id: 3812745
+    file: hooks/mujer-estres-01.jpg
+  - id: 4474035
+    file: hooks/mujer-estres-02.jpg
+  - id: 4098354
+    file: hooks/mujer-estres-03.jpg
+  - id: 4458554
+    file: hooks/mujer-estres-04.jpg
+
+hooks_male:
+  - id: 3778607
+    file: hooks/hombre-estres-01.jpg
+
+hook_videos:
+  - url: https://assets.mixkit.co/videos/25592/25592-720.mp4
+    file: hooks/mujer-estres-a.mp4
+  - url: https://assets.mixkit.co/videos/25575/25575-720.mp4
+    file: hooks/mujer-estres-b.mp4
+  - url: https://assets.mixkit.co/videos/51404/51404-720.mp4
+    file: hooks/mujer-estres-c.mp4
+  - url: https://videos.pexels.com/video-files/7660481/7660481-hd_1920_1080_25fps.mp4
+    file: hooks/hombre-estres-a.mp4
+  - url: https://assets.mixkit.co/videos/9237/9237-720.mp4
+    file: hooks/hombre-estres-b.mp4
+  - url: https://assets.mixkit.co/videos/9055/9055-720.mp4
+    file: hooks/hombre-estres-c.mp4
+
+# Pega aquí tus MP4 de la app. Nombres: checkin.mp4, mir.mp4, panel.mp4, pagos.mp4, microsite.mp4, ical.mp4
+app:
+  folder: app
+  default: panel.mp4
+  by_pain:
+    domingo_dnis: checkin.mp4
+    todos_los_dias: checkin.mp4
+    no_entienden_mir: mir.mp4
+    huesped_noche: checkin.mp4
+    dinero_comision: pagos.mp4
+    no_saben_que_pueden_mas: panel.mp4
+    gestor_caro: checkin.mp4
+    caos_varios_pisos: panel.mp4
+    huesped_repite: pagos.mp4
+    google_reseñas: microsite.mp4
+    ical_doble: ical.mp4
+    tiempo_es_dinero: checkin.mp4
+
 people_male:
   - id: 2379004
     file: people/hombre-01.jpg

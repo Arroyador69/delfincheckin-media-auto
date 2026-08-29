@@ -24,6 +24,8 @@ class Config:
     voice_male: str
     voice_male_rate: str
     voice_male_pitch: str
+    voice_volume: str
+    story_seconds: float
     image_provider: str
     pollinations_model: str
     visual_mode: str
@@ -54,11 +56,13 @@ def load_config(path: Path | None = None) -> Config:
         subtitle_fontsize=int(raw["subtitle_fontsize"]),
         subtitle_margin_v=int(raw["subtitle_margin_v"]),
         voice_female=raw["voice_female"],
-        voice_female_rate=str(raw.get("voice_female_rate", "-8%")),
-        voice_female_pitch=str(raw.get("voice_female_pitch", "-6Hz")),
+        voice_female_rate=str(raw.get("voice_female_rate", "-3%")),
+        voice_female_pitch=str(raw.get("voice_female_pitch", "+0Hz")),
         voice_male=raw["voice_male"],
-        voice_male_rate=str(raw.get("voice_male_rate", "-6%")),
-        voice_male_pitch=str(raw.get("voice_male_pitch", "-2Hz")),
+        voice_male_rate=str(raw.get("voice_male_rate", "-2%")),
+        voice_male_pitch=str(raw.get("voice_male_pitch", "+0Hz")),
+        voice_volume=str(raw.get("voice_volume", "+0%")),
+        story_seconds=float(raw.get("story_seconds", 5.5)),
         image_provider=raw["image_provider"],
         pollinations_model=raw["pollinations_model"],
         visual_mode=str(raw.get("visual_mode", "brand")),

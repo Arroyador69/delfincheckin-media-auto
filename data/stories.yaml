@@ -1,0 +1,40 @@
+# Stories: una frase + registro en la web. No explican el Reel.
+# 9:16 para Instagram, Facebook, TikTok y YouTube.
+# Cada día: 1 recuerda + 1 registro.
+
+stories:
+  - id: parte_solo
+    kind: recuerda
+    kicker: Recuerda
+    phrase: El parte no se rellena solo.
+    cta: Empieza gratis · sin tarjeta
+  - id: airbnb_no
+    kind: recuerda
+    kicker: Recuerda
+    phrase: Airbnb no envía el parte por ti.
+    cta: El Ministerio te lo pide a ti
+  - id: domingo
+    kind: recuerda
+    kicker: Recuerda
+    phrase: El domingo no es para copiar DNIs.
+    cta: El huésped lo rellena antes
+  - id: comision
+    kind: recuerda
+    kicker: Recuerda
+    phrase: El repetidor no tiene que pagarte comisión.
+    cta: Enlace directo · tú cobras
+  - id: una_gratis
+    kind: registro
+    kicker: Hoy
+    phrase: Una propiedad. Cero euros. Sin tarjeta.
+    cta: Regístrate en delfincheckin.com
+  - id: entra
+    kind: registro
+    kicker: Empieza
+    phrase: El check-in y el parte, en una web.
+    cta: Entra en delfincheckin.com
+  - id: sin_tarjeta
+    kind: registro
+    kicker: Ahora
+    phrase: Prueba Delfín Check-in. Sin tarjeta.
+    cta: Empieza gratis · sin tarjeta

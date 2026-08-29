@@ -1,0 +1,32 @@
+---
+description: Pack diario de contenido Delfín Check-in (Reels, carruseles, stories)
+alwaysApply: true
+---
+
+# Pack diario (no improvisar otro formato)
+
+Cuando pida ejemplos, un día de contenido o “vamos con todo”, generar **siempre** el mismo pack con `python -m delfin_media day` (venv `.venv`):
+
+1. Reel **Lucía** (dolor tiempo/legal) + su carrusel
+2. Reel **Pablo** (dolor dinero) + su carrusel
+3. **2 stories** (frase + CTA a delfincheckin.com, no explican el Reel)
+
+Plataformas: Instagram, Facebook, TikTok, YouTube. Formato **solo 9:16**.
+
+## Reel (igual en Lucía y Pablo)
+
+Hook en **movimiento** (persona preocupada) + subtítulos **amarillos** grandes → cuerpo con **vídeo de la app** (letterbox) → cierre idéntico (logo, delfincheckin.com, Empieza gratis · sin tarjeta).
+
+Pablo nunca va en foto fija: clip `hombre-estres-*.mp4` en `assets/bank/hooks/`.
+
+## Voces
+
+Gratis: Edge TTS `es-ES-XimenaNeural` / `es-ES-AlvaroNeural`, ritmo casi natural, pausa entre frases. Nada de pago (ElevenLabs, etc.).
+
+## Hechos (no inventar)
+
+Básico 0 €, 1 propiedad, sin tarjeta. Check-in 2 €/mes. Airbnb/Booking no envían el parte. No multas ni testimonios con nombre.
+
+## Git
+
+No commitear MP4 de `output/ready/`, `assets/cache/` ni vídeos de app/hooks. Código, `data/` y reglas sí. Push solo si lo pide.
