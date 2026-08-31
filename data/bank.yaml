@@ -69,23 +69,24 @@ hook_videos:
   - url: https://assets.mixkit.co/videos/9055/9055-720.mp4
     file: hooks/hombre-estres-c.mp4
 
-# Pega aquí tus MP4 de la app. Nombres: checkin.mp4, mir.mp4, panel.mp4, pagos.mp4, microsite.mp4, ical.mp4
+# Clips de la app (MP4/MOV). El título del archivo dice qué muestra.
+# El emparejado busca esas palabras en el nombre (acentos, espacios y erratas no importan).
 app:
   folder: app
-  default: panel.mp4
+  default: formulario
   by_pain:
-    domingo_dnis: checkin.mp4
-    todos_los_dias: checkin.mp4
-    no_entienden_mir: mir.mp4
-    huesped_noche: checkin.mp4
-    dinero_comision: pagos.mp4
-    no_saben_que_pueden_mas: panel.mp4
-    gestor_caro: checkin.mp4
-    caos_varios_pisos: panel.mp4
-    huesped_repite: pagos.mp4
-    google_reseñas: microsite.mp4
-    ical_doble: ical.mp4
-    tiempo_es_dinero: checkin.mp4
+    domingo_dnis: formulario
+    todos_los_dias: calendario de limpieza
+    no_entienden_mir: credenciales mir
+    huesped_noche: formulario
+    dinero_comision: microsite
+    no_saben_que_pueden_mas: confirmar reserva
+    gestor_caro: formulario
+    caos_varios_pisos: propiedades booking
+    huesped_repite: pagina de reservas
+    google_reseñas: microsite
+    ical_doble: calendario y reservas
+    tiempo_es_dinero: confirmar reserva
 
 people_male:
   - id: 2379004

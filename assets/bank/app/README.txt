@@ -1,1 +1,14 @@
-Pega aquí los MP4 de Delfín Check-in (checkin.mp4, mir.mp4, panel.mp4, pagos.mp4, microsite.mp4, ical.mp4).
+Pega aquí los MP4 o MOV recortados de la app de Delfín Check-in.
+
+El título del archivo dice qué se ve (formulario, credenciales MIR, microsite, calendario…).
+No hace falta renombrarlos a checkin.mp4: el pack los empareja por esas palabras.
+
+Ejemplos que ya encajan:
+  formulario .mov
+  credenciales mir.mov
+  configuracion microsite.mov
+  calendario y reservas.mov
+  calendario de limpieza.mov
+  pagina de reservas.mov
+  propiedades booking .mov
+  confirmar reserva.mov

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import random
+import re
+import unicodedata
 from pathlib import Path
 
 import httpx
@@ -147,8 +149,59 @@ def _app_videos(folder: Path) -> list[Path]:
     return out
 
 
+_FILENAME_TYPOS = (
+    ("resrvas", "reservas"),
+    ("resrva", "reserva"),
+)
+
+
+def _norm_name(value: str) -> str:
+    """Quita acentos, espacios raros y erratas típicas del título del clip."""
+    text = unicodedata.normalize("NFKD", value)
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    text = text.lower()
+    for bad, good in _FILENAME_TYPOS:
+        text = text.replace(bad, good)
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    return " ".join(text.split())
+
+
+def _wanted_key(wanted: str) -> str:
+    raw = str(wanted).strip()
+    stem = Path(raw).stem if Path(raw).suffix.lower() in VIDEO_EXT else raw
+    return _norm_name(stem)
+
+
+def match_app_clip(videos: list[Path], wanted: str) -> Path | None:
+    """Elige el clip cuyo título encaja con las palabras pedidas (formulario, microsite…)."""
+    needle = _wanted_key(wanted)
+    if not needle:
+        return None
+    ranked: list[tuple[int, Path]] = []
+    for path in videos:
+        hay = _norm_name(path.stem)
+        score = 0
+        if hay == needle:
+            score = 100
+        elif needle in hay:
+            score = 80 + min(len(needle), 15)
+        else:
+            tokens = needle.split()
+            hay_tokens = set(hay.split())
+            if tokens and all(t in hay_tokens for t in tokens):
+                score = 50 + len(tokens)
+            elif tokens and all(t in hay for t in tokens):
+                score = 40 + len(tokens)
+        if score:
+            ranked.append((score, path))
+    if not ranked:
+        return None
+    ranked.sort(key=lambda item: (-item[0], item[1].name.lower()))
+    return ranked[0][1]
+
+
 def pick_app_clip(pain_id: str) -> Path | None:
-    """MP4/MOV de la app (cualquier nombre). Si no hay, None."""
+    """MP4/MOV de la app. Empareja por palabras del título, no hace falta un nombre fijo."""
     bank = load_bank()
     spec = bank.get("app") or {}
     folder = BANK_DIR / spec.get("folder", "app")
@@ -156,15 +209,10 @@ def pick_app_clip(pain_id: str) -> Path | None:
     videos = _app_videos(folder)
     if not videos:
         return None
-    wanted = [
-        spec.get("by_pain", {}).get(pain_id),
-        spec.get("default"),
-    ]
-    lower = {p.name.lower(): p for p in videos}
-    for name in wanted:
-        if not name:
+    for wanted in (spec.get("by_pain", {}).get(pain_id), spec.get("default")):
+        if not wanted:
             continue
-        hit = lower.get(str(name).lower())
+        hit = match_app_clip(videos, str(wanted))
         if hit:
             return hit
     return videos[0]

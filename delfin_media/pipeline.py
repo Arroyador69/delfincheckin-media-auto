@@ -6,7 +6,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
-from delfin_media.bank import pick_app_clip, pick_hook, pick_rooms, sync_bank
+from delfin_media.bank import is_video, pick_app_clip, pick_hook, pick_rooms, sync_bank
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
@@ -70,7 +70,7 @@ def generate_one(
         app_src = rooms[0] if rooms else hook_src
         print("  aviso: no hay MP4 de la app en assets/bank/app/. Cuerpo con habitación.")
     else:
-        print(f"  app: {app_src.name}")
+        print(f"  app: {app_src.name} ({app_src})")
     print(f"  hook visual: {hook_src.name}")
 
     ass = write_ass(voice.words, work / "subs.ass", cfg, hook_until=hook_vo.duration)
@@ -108,7 +108,8 @@ def generate_one(
     )
     print(f"  listo: {dest}")
     ig_dir = out_dir / f"{slug}_ig"
-    write_instagram_pack(cfg, ig_dir, pain, persona, script)
+    clip = app_src if is_video(app_src) else None
+    write_instagram_pack(cfg, ig_dir, pain, persona, script, app_clip=clip)
     print(f"  carrusel {persona.name}: {ig_dir}")
     return dest
 

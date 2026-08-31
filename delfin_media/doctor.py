@@ -112,7 +112,11 @@ def run_doctor(cfg: Config, ci: bool = False) -> int:
         ]
         print(f"  banco fotos: {len(rooms)} habitaciones, {len(people)} personas, {len(hooks)} hooks")
         print(f"  hook vídeos: {len(hook_vids)}")
-        print(f"  app MP4: {len(apps)} (pega clips en assets/bank/app/)")
+        print(f"  app: {len(apps)} clips en assets/bank/app/")
+        for clip in sorted(apps, key=lambda p: p.name.lower()):
+            print(f"      · {clip.name}")
+        if not apps:
+            print("  aviso: pega aquí los MOV/MP4 recortados de la app (el título dice qué muestra)")
         if len(rooms) < 3 or len(hooks) < 2:
             print("  aviso: python -m delfin_media bank")
 

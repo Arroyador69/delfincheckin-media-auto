@@ -71,7 +71,10 @@ def main(argv: list[str] | None = None) -> int:
             for p in app_dir.iterdir()
             if p.is_file() and p.suffix.lower() in {".mp4", ".mov", ".m4v"}
         )
-        print(f"App: {n_app} vídeos en {app_dir} (copia aquí checkin.mp4, mir.mp4, panel.mp4…)")
+        print(f"App: {n_app} vídeos en {app_dir}")
+        for clip in sorted(app_dir.iterdir(), key=lambda p: p.name.lower()):
+            if clip.is_file() and clip.suffix.lower() in {".mp4", ".mov", ".m4v"}:
+                print(f"  · {clip.name}")
         return 0
 
     if args.cmd == "clean":

@@ -5,9 +5,10 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from delfin_media.bank import pick_rooms
+from delfin_media.bank import is_video, pick_rooms
 from delfin_media.config import Config, load_yaml
 from delfin_media.paths import ROOT
+from delfin_media.render import grab_video_frame
 from delfin_media.script import Pain, Persona, Script
 
 SIZES = {
@@ -54,6 +55,19 @@ def _cover_crop(photo: Path, size: tuple[int, int]) -> Image.Image:
     return base.crop((left, top, left + w, top + h))
 
 
+def _fit_pad(photo: Path, size: tuple[int, int], bg: tuple[int, int, int]) -> Image.Image:
+    """La UI de la app cabe entera, sin recortar el móvil."""
+    w, h = size
+    base = Image.open(photo).convert("RGB")
+    bw, bh = base.size
+    scale = min(w / bw, h / bh)
+    nw, nh = max(1, int(bw * scale)), max(1, int(bh * scale))
+    base = base.resize((nw, nh), Image.Resampling.LANCZOS)
+    canvas = Image.new("RGB", (w, h), bg)
+    canvas.paste(base, ((w - nw) // 2, (h - nh) // 2))
+    return canvas
+
+
 def _rounded(im: Image.Image, radius: int) -> Image.Image:
     mask = Image.new("L", im.size, 0)
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, *im.size), radius=radius, fill=255)
@@ -68,8 +82,8 @@ def solution_line(script: Script) -> str:
     text = re.sub(r"delfincheckin\.com", "", text, flags=re.I)
     text = re.sub(r"\s+", " ", text).strip(" .")
     words = text.split()
-    if len(words) > 22:
-        text = " ".join(words[:22]).rstrip(",;")
+    if len(words) > 28:
+        text = " ".join(words[:28]).rstrip(",;")
     if text and not text.endswith("."):
         text += "."
     return text or "El huésped rellena el parte. Delfín lo envía al Ministerio."
@@ -82,60 +96,95 @@ def make_carousel_card(
     title: str,
     footer: str,
     size: tuple[int, int] = (1080, 1350),
+    fit: str = "cover",
 ) -> Image.Image:
-    """Lienzo navy + foto inset + tarjeta de texto. Letras siempre legibles."""
+    """Carrusel de marca: navy, teal, amarillo, logo y foto (habitación o app)."""
     brand = _brand()
     navy = _hex(brand["navy"])
     teal = _hex(brand["teal"])
     yellow = _hex(brand["yellow"])
     white = _hex(brand["white"])
-    card_bg = (16, 28, 48)
+    cyan = _hex(brand.get("cyan", "#44C0FF"))
+    card_bg = (14, 26, 46)
     w, h = size
     img = Image.new("RGB", (w, h), navy)
     draw = ImageDraw.Draw(img)
     draw.rectangle((0, 0, w, 16), fill=teal)
+    draw.rectangle((0, 16, w, 26), fill=yellow)
 
     logo_path = ROOT / brand["logo"]
+    logo_s = 108
     if logo_path.exists():
-        logo = Image.open(logo_path).convert("RGBA").resize((88, 88), Image.Resampling.LANCZOS)
-        img.paste(logo, (48, 40), logo)
+        logo = Image.open(logo_path).convert("RGBA").resize((logo_s, logo_s), Image.Resampling.LANCZOS)
+        img.paste(logo, (40, 40), logo)
 
-    inset_h = 820 if h >= 1800 else 560
+    inset_h = 900 if h >= 1800 else 560
     inset_w = w - 96
-    photo_im = _rounded(_cover_crop(photo, (inset_w, inset_h)), 28)
+    photo_y = 168
+    draw.rounded_rectangle(
+        (44, photo_y - 6, 44 + inset_w + 8, photo_y + inset_h + 6),
+        radius=34,
+        fill=teal,
+    )
+    if fit == "contain":
+        photo_im = _rounded(_fit_pad(photo, (inset_w, inset_h), navy), 28)
+    else:
+        photo_im = _rounded(_cover_crop(photo, (inset_w, inset_h)), 28)
     canvas = img.convert("RGBA")
-    canvas.paste(photo_im, (48, 148), photo_im)
+    canvas.paste(photo_im, (48, photo_y), photo_im)
     img = canvas.convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    card_top = 148 + inset_h + 28
-    card_bot = h - 88
+    footer_h = 78
+    card_top = photo_y + inset_h + 28
+    card_bot = h - footer_h - 20
     draw.rounded_rectangle((48, card_top, w - 48, card_bot), radius=28, fill=card_bg)
-    draw.rectangle((48, card_top, 64, card_bot), fill=teal)
+    draw.rectangle((48, card_top, 62, card_bot), fill=yellow)
+    draw.rectangle((62, card_top, 70, card_bot), fill=teal)
 
     font_k = ImageFont.truetype(str(cfg.font_bold), 28)
-    font_t = ImageFont.truetype(str(cfg.font_bold), 44 if h < 1800 else 48)
+    font_t = ImageFont.truetype(str(cfg.font_bold), 44 if h < 1800 else 50)
     font_f = ImageFont.truetype(str(cfg.font_regular), 26)
-    font_url = ImageFont.truetype(str(cfg.font_bold), 26)
-    x = 88
+    font_url = ImageFont.truetype(str(cfg.font_bold), 32)
+    x = 92
     y = card_top + 28
     draw.text((x, y), kicker.upper(), font=font_k, fill=yellow)
-    y += 42
+    y += 44
     max_lines = 4 if h >= 1800 else 3
-    for line in _wrap(draw, title, font_t, w - 176)[:max_lines]:
+    for line in _wrap(draw, title, font_t, w - 188)[:max_lines]:
         draw.text((x, y), line, font=font_t, fill=white)
-        y += 52
-    draw.text((x, card_bot - 48), footer, font=font_f, fill=teal)
-    draw.text((48, h - 56), "delfincheckin.com", font=font_url, fill=yellow)
+        y += 54
+    draw.text((x, card_bot - 48), footer, font=font_f, fill=cyan)
+
+    draw.rectangle((0, h - footer_h, w, h), fill=yellow)
+    url_box = draw.textbbox((0, 0), "delfincheckin.com", font=font_url)
+    url_w = url_box[2] - url_box[0]
+    draw.text(((w - url_w) / 2, h - 54), "delfincheckin.com", font=font_url, fill=navy)
     return img
 
 
 def carousel_slides(pain: Pain, persona: Persona, script: Script, cfg: Config) -> list[tuple[str, str, str]]:
     return [
-        (f"{persona.name} · {persona.city}", pain.spoken_hook, "El dolor de este Reel"),
-        ("En este vídeo", solution_line(script), "Delfín Check-in"),
+        ("Delfín Check-in", pain.spoken_hook, "El dolor de este Reel"),
+        ("En este vídeo", solution_line(script), "Así se ve Delfín Check-in"),
         ("Empieza", "Una propiedad gratis. Sin tarjeta.", cfg.cta_url),
     ]
+
+
+def _carousel_photos(dest_dir: Path, app_clip: Path | None) -> tuple[list[Path], bool]:
+    rooms = pick_rooms(3)
+    photos = list(rooms)
+    used_app = False
+    if app_clip is None or not is_video(app_clip):
+        return photos, used_app
+    frame = dest_dir.parent / f".{dest_dir.name}_app.jpg"
+    try:
+        grab_video_frame(app_clip, frame, at=2.0)
+        photos[1] = frame
+        used_app = True
+    except Exception as exc:
+        print(f"  aviso: no se pudo sacar fotograma de la app: {exc}")
+    return photos, used_app
 
 
 def write_instagram_pack(
@@ -144,15 +193,20 @@ def write_instagram_pack(
     pain: Pain,
     persona: Persona,
     script: Script,
+    app_clip: Path | None = None,
 ) -> Path:
     dest_dir.mkdir(parents=True, exist_ok=True)
-    rooms = pick_rooms(3)
+    photos, used_app = _carousel_photos(dest_dir, app_clip)
     slides = carousel_slides(pain, persona, script, cfg)
-    for i, ((kicker, title, footer), photo) in enumerate(zip(slides, rooms), start=1):
-        ig = make_carousel_card(cfg, photo, kicker, title, footer, SIZES["ig"])
-        ig.save(dest_dir / f"0{i}-carousel.jpg", "JPEG", quality=90)
-        tt = make_carousel_card(cfg, photo, kicker, title, footer, SIZES["tt"])
-        tt.save(dest_dir / f"0{i}-tiktok.jpg", "JPEG", quality=90)
+    for i, ((kicker, title, footer), photo) in enumerate(zip(slides, photos), start=1):
+        fit = "contain" if i == 2 and used_app else "cover"
+        ig = make_carousel_card(cfg, photo, kicker, title, footer, SIZES["ig"], fit=fit)
+        ig.save(dest_dir / f"0{i}-carousel.jpg", "JPEG", quality=92)
+        tt = make_carousel_card(cfg, photo, kicker, title, footer, SIZES["tt"], fit=fit)
+        tt.save(dest_dir / f"0{i}-tiktok.jpg", "JPEG", quality=92)
+    preview = dest_dir.parent / f".{dest_dir.name}_app.jpg"
+    if preview.exists():
+        preview.unlink()
     (dest_dir / "CAPTION_INSTAGRAM_FACEBOOK.txt").write_text(
         _caption(pain, persona, script, "ig"), encoding="utf-8"
     )
@@ -181,7 +235,7 @@ def _caption(pain: Pain, persona: Persona, script: Script, platform: str) -> str
             "#DelfinCheckin #ParteDeViajeros #AlquilerVacacional "
             "#RD933 #CheckInDigital #AlojamientoTuristico"
         )
-    return f"{persona.name} · {persona.city}\n\n{body}\n{tags}\n"
+    return f"{body}\n{tags}\n"
 
 
 def write_publish_guide(
@@ -193,15 +247,16 @@ def write_publish_guide(
 Instagram · Facebook · TikTok · YouTube Shorts / Stories
 
 1) REELS / SHORTS / TIKTOK (9:16)
-   - {lucia_slug}.mp4  → Lucía
-   - {pablo_slug}.mp4  → Pablo
+   - {lucia_slug}.mp4  → Reel 1 (tiempo / legal)
+   - {pablo_slug}.mp4  → Reel 2 (dinero)
    Misma pieza en Instagram Reels, Facebook Reels, TikTok y YouTube Shorts.
 
 2) CARRUSEL (uno por vídeo, explica ESE Reel)
    - {lucia_slug}_ig/  01-03-carousel.jpg = Instagram y Facebook (1080×1350)
                          01-03-tiktok.jpg  = TikTok y YouTube (1080×1920)
-   - {pablo_slug}_ig/  igual, de Pablo
+   - {pablo_slug}_ig/  igual, del Reel 2
    Sube las 3 fotos en orden. Caption en CAPTION_*.txt
+   La foto 02 es un fotograma de la app de ese Reel.
 
 3) STORIES (2, solo recuerdan + registro)
    - stories/01-*.jpg o .mp4

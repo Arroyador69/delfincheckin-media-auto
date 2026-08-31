@@ -15,7 +15,9 @@ Plataformas: Instagram, Facebook, TikTok, YouTube. Formato **solo 9:16**.
 
 ## Reel (igual en Lucía y Pablo)
 
-Hook en **movimiento** (persona preocupada) + subtítulos **amarillos** grandes → cuerpo con **vídeo de la app** (letterbox) → cierre idéntico (logo, delfincheckin.com, Empieza gratis · sin tarjeta).
+Hook en **movimiento** (persona preocupada) + subtítulos **amarillos** grandes → cuerpo con **vídeo de la app** a pantalla 9:16 (los MOV de `assets/bank/app/`, emparejados por el título) → cierre idéntico (logo, delfincheckin.com, Empieza gratis · sin tarjeta).
+
+En carruseles, stories y captions **no** aparecen Lucía ni Pablo: todo es Delfín Check-in.
 
 Pablo nunca va en foto fija: clip `hombre-estres-*.mp4` en `assets/bank/hooks/`.
 

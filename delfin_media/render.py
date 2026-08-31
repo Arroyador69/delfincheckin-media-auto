@@ -71,6 +71,27 @@ def letterbox_9x16(cfg: Config) -> str:
     )
 
 
+def grab_video_frame(src: Path, dest: Path, at: float = 2.0) -> Path:
+    """Fotograma de la app para el carrusel (misma UI que el Reel)."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    _run(
+        [
+            "ffmpeg",
+            "-y",
+            "-ss",
+            f"{max(at, 0.2):.2f}",
+            "-i",
+            str(src),
+            "-frames:v",
+            "1",
+            "-q:v",
+            "2",
+            str(dest),
+        ]
+    )
+    return dest
+
+
 def _to_clip(src: Path, dest: Path, duration: float, vf: str, cfg: Config) -> Path:
     duration = max(duration, 0.5)
     cmd = ["ffmpeg", "-y"]
@@ -106,7 +127,7 @@ def render_still_video(image: Path, dest: Path, duration: float, cfg: Config) ->
             "-i",
             "anullsrc=channel_layout=stereo:sample_rate=44100",
             "-vf",
-            kenburns_9x16(cfg, duration),
+            f"scale={cfg.width}:{cfg.height},fps={cfg.fps},setsar=1,format=yuv420p",
             *_common_v(cfg),
             *_common_a(),
             "-shortest",
@@ -136,9 +157,8 @@ def render_reel(
     work.mkdir(parents=True, exist_ok=True)
 
     hook_clip = _to_clip(hook_src, work / "hook.mp4", hook_seconds, cover_9x16(cfg), cfg)
-    # App: letterbox (no deformar la UI). Foto de reserva: cover 9:16, sin estirar.
-    body_vf = letterbox_9x16(cfg) if is_video(body_src) else cover_9x16(cfg)
-    body_clip = _to_clip(body_src, work / "body_v.mp4", body_seconds, body_vf, cfg)
+    # App: cover 9:16 (grabaciones de móvil ya recortadas). No se estira la UI.
+    body_clip = _to_clip(body_src, work / "body_v.mp4", body_seconds, cover_9x16(cfg), cfg)
 
     joined_v = work / "acts.mp4"
     _run(
