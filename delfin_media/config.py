@@ -56,6 +56,7 @@ class Config:
     min_words: int
     max_words: int
     endcard_seconds: float
+    music_volume: float
     output_dir: Path
     cache_dir: Path
     font_bold: Path
@@ -106,6 +107,7 @@ def load_config(path: Path | None = None) -> Config:
         min_words=int(raw["min_words"]),
         max_words=int(raw["max_words"]),
         endcard_seconds=float(raw["endcard_seconds"]),
+        music_volume=float(raw.get("music_volume", 0.12)),
         output_dir=output,
         cache_dir=cache,
         font_bold=Path(raw["font_bold"]),

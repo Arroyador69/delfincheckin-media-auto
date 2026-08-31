@@ -18,5 +18,7 @@ assets/bank/app/*.MP4
 assets/bank/app/*.mov
 assets/bank/app/*.MOV
 assets/bank/hooks/*.mp4
+assets/bank/music/*.mp3
+output/ready/*/
 .idea/
 .vscode/

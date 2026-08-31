@@ -72,6 +72,12 @@ def sync_bank() -> list[Path]:
             print(f"  aviso: no se pudo bajar {item['file']}: {exc}")
     (BANK_DIR / "app").mkdir(parents=True, exist_ok=True)
     (BANK_DIR / "hooks").mkdir(parents=True, exist_ok=True)
+    (BANK_DIR / "music").mkdir(parents=True, exist_ok=True)
+    for item in bank.get("music", []):
+        try:
+            paths.append(_download_video(item))
+        except Exception as exc:
+            print(f"  aviso: no se pudo bajar {item['file']}: {exc}")
     return paths
 
 
@@ -121,6 +127,9 @@ def pick_hook(persona: Persona) -> Path:
                 tagged.append(p)
         elif "hombre" in tokens:
             tagged.append(p)
+    surprise = [p for p in tagged if "sorpresa" in p.stem.lower()]
+    if surprise:
+        return random.choice(surprise)
     if tagged:
         return random.choice(tagged)
     stills = _existing(bank.get(key, []))
@@ -220,3 +229,15 @@ def pick_app_clip(pain_id: str) -> Path | None:
 
 def is_video(path: Path) -> bool:
     return path.suffix.lower() in VIDEO_EXT
+
+
+def pick_music() -> Path | None:
+    """MP3 de fondo. Rota entre varias pistas del banco."""
+    items = load_bank().get("music") or []
+    paths = _existing(items)
+    if len(paths) < 1:
+        sync_bank()
+        paths = _existing(load_bank().get("music") or [])
+    if not paths:
+        return None
+    return random.choice(paths)

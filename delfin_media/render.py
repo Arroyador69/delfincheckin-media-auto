@@ -150,6 +150,7 @@ def render_reel(
     hook_seconds: float,
     body_seconds: float,
     cfg: Config,
+    music: Path | None = None,
 ) -> Path:
     if not shutil.which("ffmpeg"):
         raise RenderError("ffmpeg no está en PATH. brew install ffmpeg")
@@ -181,20 +182,41 @@ def render_reel(
     body = work / "voiced.mp4"
     ass_esc = str(ass.resolve()).replace("\\", "/").replace(":", "\\:")
     logo = ROOT / "assets" / "brand" / "logo-512.png"
+    voiced = hook_seconds + body_seconds
+    fade_out = max(hook_seconds + 0.8, voiced - 0.75)
     mux = ["ffmpeg", "-y", "-i", str(joined_v), "-i", str(audio)]
+    next_idx = 2
+    music_idx = None
+    if music is not None and music.exists() and music.stat().st_size > 20_000:
+        mux += ["-stream_loop", "-1", "-i", str(music)]
+        music_idx = next_idx
+        next_idx += 1
+    logo_idx = None
     if logo.exists():
         mux += ["-i", str(logo)]
-        vf = (
-            f"[0:v]ass='{ass_esc}'[sub];"
-            f"[2:v]scale=110:110[logo];"
-            f"[sub][logo]overlay=40:40,setsar=1,format=yuv420p[v];"
-            f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a]"
-        )
+        logo_idx = next_idx
+
+    parts: list[str] = []
+    if logo_idx is not None:
+        parts.append(f"[0:v]ass='{ass_esc}'[sub]")
+        parts.append(f"[{logo_idx}:v]scale=110:110[logo]")
+        parts.append("[sub][logo]overlay=40:40,setsar=1,format=yuv420p[v]")
     else:
-        vf = (
-            f"[0:v]ass='{ass_esc}',setsar=1,format=yuv420p[v];"
-            f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a]"
+        parts.append(f"[0:v]ass='{ass_esc}',setsar=1,format=yuv420p[v]")
+    parts.append("[1:a]aformat=sample_rates=44100:channel_layouts=stereo[vo]")
+    if music_idx is not None:
+        vol = max(0.04, min(float(cfg.music_volume), 0.22))
+        parts.append(
+            f"[{music_idx}:a]atrim=0:{voiced:.3f},asetpts=PTS-STARTPTS,"
+            f"aformat=sample_rates=44100:channel_layouts=stereo,"
+            f"volume={vol:.3f},afade=t=in:st={hook_seconds:.3f}:d=0.45,"
+            f"afade=t=out:st={fade_out:.3f}:d=0.65[bg]"
         )
+        parts.append("[vo][bg]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]")
+    else:
+        parts.append("[vo]volume=1[a]")
+
+    vf = ";".join(parts)
     mux += [
         "-filter_complex",
         vf,

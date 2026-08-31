@@ -24,7 +24,7 @@ pains:
     theme: tiempo
     money_angle: false
     hook: No es un mal mes. Es todos los días
-    spoken_hook: No es un mal mes. Es todos los días.
+    spoken_hook: ¿Otra noche en el sofá copiando DNIs?
     scene: Propietario de noche en el sofá, móvil, check-in a destiempo.
     image_extra: late evening on the sofa with phone, tired host
     scripts:
@@ -42,7 +42,7 @@ pains:
     theme: legal
     money_angle: false
     hook: Airbnb no te salva del Ministerio
-    spoken_hook: Airbnb no te salva del Ministerio.
+    spoken_hook: Airbnb no envía el parte. Te toca a ti.
     scene: Propietario confundido mirando el portátil, notificación, ceño.
     image_extra: confused host looking at laptop screen, Spanish apartment
     scripts:
@@ -97,7 +97,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: El panel es más que el parte
-    spoken_hook: El panel es más que el parte.
+    spoken_hook: Si solo mandas el parte, te falta el dinero.
     scene: Propietario que solo usa una función, resto del producto invisible.
     image_extra: host at laptop with many browser tabs, overwhelmed
     scripts:
@@ -114,7 +114,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: Tu gestor cobra por cada check-in
-    spoken_hook: Tu gestor cobra por cada check-in.
+    spoken_hook: ¿De verdad pagas por copiar un DNI?
     scene: Propietario mirando factura de gestor, calculadora, ceño.
     image_extra: invoice papers on table, host calculating with phone
     scripts:
@@ -149,7 +149,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: El que ya te conoce sigue pagando comisión
-    spoken_hook: El que ya te conoce sigue pagando comisión.
+    spoken_hook: El que vuelve te deja otra comisión. Otra vez.
     scene: WhatsApp con un huésped repetidor pidiendo de nuevo el piso.
     image_extra: host looking at phone WhatsApp, bright apartment
     scripts:
@@ -167,7 +167,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: Te buscan en Google y no sales
-    spoken_hook: Te buscan en Google y no sales.
+    spoken_hook: Te buscan en Google y no existes.
     scene: Búsqueda en el móvil de su piso, solo salen Airbnb y Booking.
     image_extra: host looking at Google Maps on phone, apartment building
     scripts:
@@ -184,7 +184,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: Una doble reserva te come el mes
-    spoken_hook: Una doble reserva te come el mes.
+    spoken_hook: Una doble reserva te come el mes entero.
     scene: Calendario con dos reservas el mismo día, estrés.
     image_extra: calendar on laptop with overlapping dates, stressed host
     scripts:
@@ -202,7 +202,7 @@ pains:
     theme: dinero
     money_angle: true
     hook: El domingo en el Excel no factura
-    spoken_hook: El domingo en el Excel no factura.
+    spoken_hook: El Excel del domingo no te paga el alquiler.
     scene: Reloj de pared, domingo, portátil abierto, playa por la ventana.
     image_extra: Sunday, host at laptop, beach visible through window unused
     scripts:
@@ -215,3 +215,20 @@ pains:
         las coman. Delfín Check-in. Formulario al huésped, envío al MIR, tú
         a vender el piso. Una propiedad gratis, sin tarjeta, en
         delfincheckin.com
+
+  - id: whatsapp_dni
+    theme: tiempo
+    money_angle: false
+    hook: Otra foto del DNI por WhatsApp
+    spoken_hook: Otra foto del DNI por WhatsApp. ¿En serio?
+    scene: Propietario de noche con el móvil, captura de un pasaporte borrosa.
+    image_extra: host looking at phone with document photo, late evening apartment
+    scripts:
+      - >
+        Te mandan el pasaporte a las tantas y tú lo copias a mano. Con Delfín
+        Check-in el huésped rellena el parte en su idioma antes de llegar y
+        el Ministerio lo recibe. Una propiedad gratis en delfincheckin.com
+      - >
+        WhatsApp no es un check-in. Delfín Check-in manda el enlace, el viajero
+        lo completa y el envío al MIR va solo. Tú duermes. Empieza gratis,
+        sin tarjeta, en delfincheckin.com

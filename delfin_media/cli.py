@@ -108,7 +108,7 @@ def main(argv: list[str] | None = None) -> int:
                 use_llm=args.llm,
             )
         print(f"\nVídeos en {cfg.ready_dir}")
-        print("Pack del día (Lucía+Pablo+carruseles+stories): python -m delfin_media day")
+        print("Pack de producción (Reels + carruseles + stories): python -m delfin_media day")
         print("Para abrirlos: python -m delfin_media open")
         return 0
 

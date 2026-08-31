@@ -23,6 +23,21 @@ stories:
     kicker: Recuerda
     phrase: El repetidor no tiene que pagarte comisión.
     cta: Enlace directo · tú cobras
+  - id: ses_xml
+    kind: recuerda
+    kicker: Recuerda
+    phrase: El Ministerio te lo pide a ti. No a Airbnb.
+    cta: Empieza gratis · sin tarjeta
+  - id: whatsapp
+    kind: recuerda
+    kicker: Recuerda
+    phrase: WhatsApp no es un check-in.
+    cta: El huésped lo rellena antes
+  - id: maps
+    kind: recuerda
+    kicker: Recuerda
+    phrase: Si no sales en Google, te eligen la plataforma.
+    cta: Microsite y reseñas · Plan Pro
   - id: una_gratis
     kind: registro
     kicker: Hoy

@@ -19,6 +19,12 @@ Hook en **movimiento** (persona preocupada) + subtítulos **amarillos** grandes 
 
 En carruseles, stories y captions **no** aparecen Lucía ni Pablo: todo es Delfín Check-in.
 
+El caption del **Reel** (CAPTION_REEL_*.txt) es distinto al del **carrusel** (CAPTION_CARRUSEL_*.txt). No se copia el locutado del vídeo en el carrusel.
+
+Tras el hook entra **música de fondo baja**; baja otra vez antes del cierre. Rota entre pistas de `assets/bank/music/`.
+
+Salida en carpetas de producción: `01_reel_tiempo`, `02_reel_dinero`, `03_carrusel_tiempo`, `04_carrusel_dinero`, `05_stories`.
+
 Pablo nunca va en foto fija: clip `hombre-estres-*.mp4` en `assets/bank/hooks/`.
 
 ## Voces

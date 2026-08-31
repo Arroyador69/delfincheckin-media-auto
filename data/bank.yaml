@@ -27,6 +27,36 @@ rooms:
   - id: 2029722
     file: rooms/apto-mesa.jpg
     note: Dormitorio con cabezales teal
+  - id: 271639
+    file: rooms/hotel-ventana.jpg
+    note: Habitación con ventanal
+  - id: 262048
+    file: rooms/suite-cama.jpg
+    note: Suite con cama king
+  - id: 2373201
+    file: rooms/piscina-atardecer.jpg
+    note: Piscina de resort al atardecer
+  - id: 2506988
+    file: rooms/dormitorio-claro.jpg
+    note: Dormitorio claro con textiles
+  - id: 1457847
+    file: rooms/salon-grande.jpg
+    note: Salón amplio de apartamento
+  - id: 1643383
+    file: rooms/salon-luz.jpg
+    note: Salón con luz natural
+  - id: 2029667
+    file: rooms/habitacion-madera.jpg
+    note: Habitación con madera
+  - id: 1134176
+    file: rooms/hotel-lujo-2.jpg
+    note: Hotel boutique interior
+  - id: 2467285
+    file: rooms/terraza-vistas.jpg
+    note: Terraza con vistas
+  - id: 1743231
+    file: rooms/cama-blanca.jpg
+    note: Cama blanca hotel
 
 people_female:
   - id: 774909
@@ -50,10 +80,20 @@ hooks_female:
     file: hooks/mujer-estres-03.jpg
   - id: 4458554
     file: hooks/mujer-estres-04.jpg
+  - id: 3807736
+    file: hooks/mujer-estres-05.jpg
+  - id: 3756679
+    file: hooks/mujer-estres-06.jpg
 
 hooks_male:
   - id: 3778607
     file: hooks/hombre-estres-01.jpg
+  - id: 3785079
+    file: hooks/hombre-estres-02.jpg
+  - id: 220453
+    file: hooks/hombre-estres-03.jpg
+  - id: 1043474
+    file: hooks/hombre-estres-04.jpg
 
 hook_videos:
   - url: https://assets.mixkit.co/videos/25592/25592-720.mp4
@@ -68,6 +108,23 @@ hook_videos:
     file: hooks/hombre-estres-b.mp4
   - url: https://assets.mixkit.co/videos/9055/9055-720.mp4
     file: hooks/hombre-estres-c.mp4
+  - url: https://assets.mixkit.co/videos/4700/4700-720.mp4
+    file: hooks/mujer-sorpresa-d.mp4
+  - url: https://assets.mixkit.co/videos/25286/25286-720.mp4
+    file: hooks/mujer-sorpresa-e.mp4
+  - url: https://assets.mixkit.co/videos/39852/39852-720.mp4
+    file: hooks/hombre-sorpresa-d.mp4
+  - url: https://videos.pexels.com/video-files/3209298/3209298-hd_1920_1080_25fps.mp4
+    file: hooks/hombre-sorpresa-e.mp4
+
+# Música de fondo (Pixabay: comercial, sin atribución). Entra tras el hook y baja antes del cierre.
+music:
+  - url: https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3
+    file: music/fondo-a.mp3
+  - url: https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3
+    file: music/fondo-b.mp3
+  - url: https://cdn.pixabay.com/audio/2022/11/22/audio_febc508520.mp3
+    file: music/fondo-c.mp3
 
 # Clips de la app (MP4/MOV). El título del archivo dice qué muestra.
 # El emparejado busca esas palabras en el nombre (acentos, espacios y erratas no importan).
@@ -79,6 +136,7 @@ app:
     todos_los_dias: calendario de limpieza
     no_entienden_mir: credenciales mir
     huesped_noche: formulario
+    whatsapp_dni: formulario
     dinero_comision: microsite
     no_saben_que_pueden_mas: confirmar reserva
     gestor_caro: formulario

@@ -207,19 +207,19 @@ def write_instagram_pack(
     preview = dest_dir.parent / f".{dest_dir.name}_app.jpg"
     if preview.exists():
         preview.unlink()
-    (dest_dir / "CAPTION_INSTAGRAM_FACEBOOK.txt").write_text(
-        _caption(pain, persona, script, "ig"), encoding="utf-8"
+    (dest_dir / "CAPTION_CARRUSEL_INSTAGRAM_FACEBOOK.txt").write_text(
+        _carousel_caption(pain, script, "ig"), encoding="utf-8"
     )
-    (dest_dir / "CAPTION_TIKTOK.txt").write_text(
-        _caption(pain, persona, script, "tiktok"), encoding="utf-8"
+    (dest_dir / "CAPTION_CARRUSEL_TIKTOK.txt").write_text(
+        _carousel_caption(pain, script, "tiktok"), encoding="utf-8"
     )
-    (dest_dir / "CAPTION_YOUTUBE.txt").write_text(
-        _caption(pain, persona, script, "youtube"), encoding="utf-8"
+    (dest_dir / "CAPTION_CARRUSEL_YOUTUBE.txt").write_text(
+        _carousel_caption(pain, script, "youtube"), encoding="utf-8"
     )
     return dest_dir
 
 
-def _caption(pain: Pain, persona: Persona, script: Script, platform: str) -> str:
+def _reel_caption(pain: Pain, script: Script, platform: str) -> str:
     body = (
         f"{pain.spoken_hook}\n\n"
         f"{script.text}\n\n"
@@ -229,7 +229,7 @@ def _caption(pain: Pain, persona: Persona, script: Script, platform: str) -> str
     if platform == "tiktok":
         tags = "#DelfinCheckin #AlquilerVacacional #CheckInDigital #ParteDeViajeros"
     elif platform == "youtube":
-        tags = "Check-in digital y parte de viajeros. Empieza en delfincheckin.com"
+        tags = "Vídeo: check-in digital y parte de viajeros. Empieza en delfincheckin.com"
     else:
         tags = (
             "#DelfinCheckin #ParteDeViajeros #AlquilerVacacional "
@@ -238,33 +238,75 @@ def _caption(pain: Pain, persona: Persona, script: Script, platform: str) -> str
     return f"{body}\n{tags}\n"
 
 
+def _carousel_caption(pain: Pain, script: Script, platform: str) -> str:
+    """Texto del carrusel: no copia el locutado del Reel."""
+    body = (
+        "Tres fotos. El mismo lío de propietario, y cómo se ve en Delfín Check-in.\n\n"
+        f"1) {pain.hook}\n"
+        "2) El huésped rellena el parte. Tú no copias DNIs.\n"
+        "3) Una propiedad gratis. Sin tarjeta.\n\n"
+        "Airbnb y Booking no envían el parte al Ministerio. Te lo piden a ti.\n"
+        "En delfincheckin.com lo deja hecho el viajero.\n"
+    )
+    if platform == "tiktok":
+        tags = "#AlquilerVacacional #ParteDeViajeros #DelfinCheckin #CheckInDigital"
+    elif platform == "youtube":
+        tags = "Carrusel: parte de viajeros y check-in digital. Registro en delfincheckin.com"
+    else:
+        tags = (
+            "#AlquilerVacacional #RD933 #ParteDeViajeros "
+            "#CheckInDigital #DelfinCheckin"
+        )
+    return f"{body}\n{tags}\n"
+
+
+def write_reel_captions(
+    dest_dir: Path,
+    pain: Pain,
+    script: Script,
+) -> None:
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    (dest_dir / "CAPTION_REEL_INSTAGRAM_FACEBOOK.txt").write_text(
+        _reel_caption(pain, script, "ig"), encoding="utf-8"
+    )
+    (dest_dir / "CAPTION_REEL_TIKTOK.txt").write_text(
+        _reel_caption(pain, script, "tiktok"), encoding="utf-8"
+    )
+    (dest_dir / "CAPTION_REEL_YOUTUBE.txt").write_text(
+        _reel_caption(pain, script, "youtube"), encoding="utf-8"
+    )
+
+
+def _caption(pain: Pain, persona: Persona, script: Script, platform: str) -> str:
+    return _reel_caption(pain, script, platform)
+
+
 def write_publish_guide(
     dest_dir: Path,
-    lucia_slug: str,
-    pablo_slug: str,
+    tiempo_dir: str,
+    dinero_dir: str,
 ) -> Path:
-    text = f"""PACK DEL DÍA · Delfín Check-in
-Instagram · Facebook · TikTok · YouTube Shorts / Stories
+    text = f"""PACK DE PRODUCCIÓN · Delfín Check-in
+Instagram · Facebook · TikTok · YouTube
 
-1) REELS / SHORTS / TIKTOK (9:16)
-   - {lucia_slug}.mp4  → Reel 1 (tiempo / legal)
-   - {pablo_slug}.mp4  → Reel 2 (dinero)
-   Misma pieza en Instagram Reels, Facebook Reels, TikTok y YouTube Shorts.
+Carpetas (todo 9:16 salvo el carrusel IG/FB 1080×1350):
 
-2) CARRUSEL (uno por vídeo, explica ESE Reel)
-   - {lucia_slug}_ig/  01-03-carousel.jpg = Instagram y Facebook (1080×1350)
-                         01-03-tiktok.jpg  = TikTok y YouTube (1080×1920)
-   - {pablo_slug}_ig/  igual, del Reel 2
-   Sube las 3 fotos en orden. Caption en CAPTION_*.txt
-   La foto 02 es un fotograma de la app de ese Reel.
+1) {tiempo_dir}/
+   reel.mp4 + CAPTION_REEL_*.txt  → pega ESTE texto en el Reel / Short / TikTok
 
-3) STORIES (2, solo recuerdan + registro)
-   - stories/01-*.jpg o .mp4
-   - stories/02-*.jpg o .mp4
-   Instagram, Facebook, TikTok y YouTube. Frase + delfincheckin.com
-   No explican el vídeo. Mandan a registrarse (una propiedad gratis, sin tarjeta).
+2) {dinero_dir}/
+   reel.mp4 + CAPTION_REEL_*.txt  → el otro Reel (dinero)
 
-No publiques a ciegas: mira el MP4 y las fotos antes de subir.
+3) 03_carrusel_tiempo/ y 04_carrusel_dinero/
+   01-03-carousel.jpg = Instagram y Facebook
+   01-03-tiktok.jpg  = TikTok y YouTube
+   CAPTION_CARRUSEL_*.txt  → texto DISTINTO al del vídeo. No copies el del Reel.
+
+4) 05_stories/
+   01 y 02 .jpg / .mp4. Frase + delfincheckin.com. No explican el Reel.
+
+El carrusel no lleva nombres. Todo es Delfín Check-in.
+Mira el MP4 y las fotos antes de subir.
 """
     path = dest_dir / "COMO_PUBLICAR.txt"
     path.write_text(text, encoding="utf-8")

@@ -1,18 +1,18 @@
 from __future__ import annotations
 
 import json
-import random
 import shutil
 from datetime import datetime
 from pathlib import Path
 
-from delfin_media.bank import is_video, pick_app_clip, pick_hook, pick_rooms, sync_bank
+from delfin_media.bank import is_video, pick_app_clip, pick_hook, pick_music, pick_rooms, sync_bank
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
-from delfin_media.posts import write_instagram_pack, write_publish_guide
+from delfin_media.history import mark_published, pick_unused_pain
+from delfin_media.posts import write_instagram_pack, write_publish_guide, write_reel_captions
 from delfin_media.render import render_reel
-from delfin_media.script import Pain, Persona, build_script, load_pains
+from delfin_media.script import Pain, Persona, build_script
 from delfin_media.stories import write_stories_pack
 from delfin_media.tts import concat_voiceovers, speak
 
@@ -30,6 +30,8 @@ def generate_one(
     money_only: bool = False,
     use_llm: bool = False,
     dest_dir: Path | None = None,
+    carousel_dir: Path | None = None,
+    reel_name: str | None = None,
 ) -> Path:
     pain, persona, script = build_script(
         cfg,
@@ -72,10 +74,15 @@ def generate_one(
     else:
         print(f"  app: {app_src.name} ({app_src})")
     print(f"  hook visual: {hook_src.name}")
+    music = pick_music()
+    if music:
+        print(f"  música: {music.name} (entra tras el hook, baja antes del cierre)")
+    else:
+        print("  aviso: sin música de fondo en assets/bank/music/")
 
     ass = write_ass(voice.words, work / "subs.ass", cfg, hook_until=hook_vo.duration)
     endcard = make_endcard(cfg, work / "endcard.png")
-    dest = out_dir / f"{slug}.mp4"
+    dest = out_dir / (reel_name or f"{slug}.mp4")
     render_reel(
         hook_src,
         app_src,
@@ -87,6 +94,7 @@ def generate_one(
         hook_vo.duration,
         body_vo.duration,
         cfg,
+        music=music,
     )
 
     meta = {
@@ -99,18 +107,21 @@ def generate_one(
         "source": script.source,
         "duration_s": round(voice.duration + cfg.endcard_seconds, 2),
         "structure": "hook-app-cierre",
+        "music": music.name if music else None,
+        "app": app_src.name if app_src else None,
         "cta": cfg.cta_url,
         "created_at": datetime.now().isoformat(timespec="seconds"),
     }
-    (out_dir / f"{slug}.json").write_text(
+    (out_dir / "meta.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    write_reel_captions(out_dir, pain, script)
     print(f"  listo: {dest}")
-    ig_dir = out_dir / f"{slug}_ig"
+    ig_dir = carousel_dir or (out_dir / "carrusel")
     clip = app_src if is_video(app_src) else None
     write_instagram_pack(cfg, ig_dir, pain, persona, script, app_clip=clip)
-    print(f"  carrusel {persona.name}: {ig_dir}")
+    print(f"  carrusel: {ig_dir}")
     return dest
 
 
@@ -121,29 +132,45 @@ def generate_day(
     pablo_pain: str | None = None,
     use_llm: bool = False,
 ) -> Path:
-    """Pack fijo del día: Lucía + Pablo + 2 carruseles + 2 stories."""
-    pains = load_pains()
-    time_pains = [p.id for p in pains if not p.money_angle]
-    money_pains = [p.id for p in pains if p.money_angle]
-    lucia_id = lucia_pain or random.choice(time_pains)
-    pablo_id = pablo_pain or random.choice(money_pains)
+    """Pack de producción: Reel tiempo + Reel dinero + 2 carruseles + 2 stories."""
+    lucia_id = lucia_pain or pick_unused_pain(money=False).id
+    pablo_id = pablo_pain or pick_unused_pain(money=True).id
 
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    dest_root = cfg.ready_dir / f"{stamp}_dia"
-    dest_root.mkdir(parents=True, exist_ok=True)
-    print(f"\nPack del día → {dest_root.name}")
-    print("  Lucía (tiempo/legal) + Pablo (dinero) + carrusel de cada una + 2 stories\n")
+    dest_root = cfg.ready_dir / f"{stamp}_pack"
+    reel_t = dest_root / "01_reel_tiempo"
+    reel_d = dest_root / "02_reel_dinero"
+    car_t = dest_root / "03_carrusel_tiempo"
+    car_d = dest_root / "04_carrusel_dinero"
+    stories = dest_root / "05_stories"
+    for folder in (reel_t, reel_d, car_t, car_d, stories):
+        folder.mkdir(parents=True, exist_ok=True)
 
-    lucia = generate_one(
-        cfg, pain_id=lucia_id, persona_id="lucia", dest_dir=dest_root, use_llm=use_llm
+    print(f"\nPack de producción → {dest_root.name}")
+    print("  01 Reel tiempo · 02 Reel dinero · 03-04 carruseles · 05 stories\n")
+
+    generate_one(
+        cfg,
+        pain_id=lucia_id,
+        persona_id="lucia",
+        dest_dir=reel_t,
+        carousel_dir=car_t,
+        reel_name="reel.mp4",
+        use_llm=use_llm,
     )
-    pablo = generate_one(
-        cfg, pain_id=pablo_id, persona_id="pablo", dest_dir=dest_root, use_llm=use_llm
+    generate_one(
+        cfg,
+        pain_id=pablo_id,
+        persona_id="pablo",
+        dest_dir=reel_d,
+        carousel_dir=car_d,
+        reel_name="reel.mp4",
+        use_llm=use_llm,
     )
-    stories = dest_root / "stories"
     write_stories_pack(cfg, stories, n=2)
     print(f"  stories: {stories}")
-    write_publish_guide(dest_root, lucia.stem, pablo.stem)
+    write_publish_guide(dest_root, "01_reel_tiempo", "02_reel_dinero")
+    mark_published([lucia_id, pablo_id])
     print(f"  guía: {dest_root / 'COMO_PUBLICAR.txt'}")
     print(f"\nTodo en {dest_root}")
     return dest_root
