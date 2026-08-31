@@ -109,13 +109,7 @@ hook_videos:
   - url: https://assets.mixkit.co/videos/9055/9055-720.mp4
     file: hooks/hombre-estres-c.mp4
   - url: https://assets.mixkit.co/videos/4700/4700-720.mp4
-    file: hooks/mujer-sorpresa-d.mp4
-  - url: https://assets.mixkit.co/videos/25286/25286-720.mp4
-    file: hooks/mujer-sorpresa-e.mp4
-  - url: https://assets.mixkit.co/videos/39852/39852-720.mp4
-    file: hooks/hombre-sorpresa-d.mp4
-  - url: https://videos.pexels.com/video-files/3209298/3209298-hd_1920_1080_25fps.mp4
-    file: hooks/hombre-sorpresa-e.mp4
+    file: hooks/mujer-estres-d.mp4
 
 # Música de fondo (Pixabay: comercial, sin atribución). Entra tras el hook y baja antes del cierre.
 music:

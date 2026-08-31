@@ -114,22 +114,20 @@ def _hook_tokens(path: Path) -> set[str]:
 
 
 def pick_hook(persona: Persona) -> Path:
-    """Clip o foto de persona preocupada. Preferir vídeo si hay MP4 en hooks/."""
+    """Vídeo de persona preocupada: mujer para Lucía, hombre para Pablo."""
     bank = load_bank()
     key = "hooks_female" if persona.voice == "female" else "hooks_male"
+    want = "mujer" if persona.voice == "female" else "hombre"
     tagged = []
     for p in (BANK_DIR / "hooks").glob("*"):
         if p.suffix.lower() not in VIDEO_EXT:
             continue
         tokens = _hook_tokens(p)
-        if persona.voice == "female":
-            if "mujer" in tokens:
-                tagged.append(p)
-        elif "hombre" in tokens:
-            tagged.append(p)
-    surprise = [p for p in tagged if "sorpresa" in p.stem.lower()]
-    if surprise:
-        return random.choice(surprise)
+        if want not in tokens:
+            continue
+        if "estres" not in tokens:
+            continue
+        tagged.append(p)
     if tagged:
         return random.choice(tagged)
     stills = _existing(bank.get(key, []))
@@ -137,10 +135,10 @@ def pick_hook(persona: Persona) -> Path:
         sync_bank()
         stills = _existing(bank.get(key, []))
     if not stills:
-        people_key = "people_female" if persona.voice == "female" else "people_male"
-        stills = _existing(bank.get(people_key, []))
-    if not stills:
-        raise RuntimeError("Sin hook. python -m delfin_media bank")
+        raise RuntimeError(
+            "Sin hook de persona preocupada. Revisa assets/bank/hooks/ "
+            "(mujer-estres-*.mp4 / hombre-estres-*.mp4)."
+        )
     return random.choice(stills)
 
 

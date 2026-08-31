@@ -9,7 +9,7 @@ from delfin_media.bank import is_video, pick_app_clip, pick_hook, pick_music, pi
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
-from delfin_media.history import mark_published, pick_unused_pain
+from delfin_media.history import load_published, mark_published, pick_unused_pain
 from delfin_media.posts import write_instagram_pack, write_publish_guide, write_reel_captions
 from delfin_media.render import render_reel
 from delfin_media.script import Pain, Persona, build_script
@@ -136,8 +136,10 @@ def generate_day(
     lucia_id = lucia_pain or pick_unused_pain(money=False).id
     pablo_id = pablo_pain or pick_unused_pain(money=True).id
 
-    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    dest_root = cfg.ready_dir / f"{stamp}_pack"
+    pack_n = int(load_published().get("last_pack") or 0) + 1
+    dest_root = cfg.ready_dir / f"{pack_n:02d}_pack"
+    if dest_root.exists():
+        shutil.rmtree(dest_root)
     reel_t = dest_root / "01_reel_tiempo"
     reel_d = dest_root / "02_reel_dinero"
     car_t = dest_root / "03_carrusel_tiempo"
@@ -146,7 +148,7 @@ def generate_day(
     for folder in (reel_t, reel_d, car_t, car_d, stories):
         folder.mkdir(parents=True, exist_ok=True)
 
-    print(f"\nPack de producción → {dest_root.name}")
+    print(f"\nPack de producción {pack_n:02d} → {dest_root.name}")
     print("  01 Reel tiempo · 02 Reel dinero · 03-04 carruseles · 05 stories\n")
 
     generate_one(
@@ -170,7 +172,7 @@ def generate_day(
     write_stories_pack(cfg, stories, n=2)
     print(f"  stories: {stories}")
     write_publish_guide(dest_root, "01_reel_tiempo", "02_reel_dinero")
-    mark_published([lucia_id, pablo_id])
+    mark_published([lucia_id, pablo_id], pack=pack_n)
     print(f"  guía: {dest_root / 'COMO_PUBLICAR.txt'}")
     print(f"\nTodo en {dest_root}")
     return dest_root

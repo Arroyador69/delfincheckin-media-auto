@@ -99,6 +99,8 @@ def validate_script(text: str, cfg: Config, spoken_hook: str = "") -> list[str]:
     low = full.lower()
     if "delfín check-in" not in low and "delfincheckin.com" not in low:
         errors.append("no menciona Delfín Check-in ni la URL")
+    if re.search(r"vender.{0,20}piso", low) or "venta de vivienda" in low:
+        errors.append("Delfín Check-in es alquiler vacacional, no venta de pisos")
     product = load_yaml("product.yaml")
     for banned in product["must_not_say"]:
         if banned.lower() in low:

@@ -15,20 +15,28 @@ def _path() -> Path:
 def load_published() -> dict:
     path = _path()
     if not path.exists():
-        return {"pains": []}
+        return {"pains": [], "last_pack": 0}
     raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     pains = list(raw.get("pains") or [])
-    return {"pains": pains}
+    last_pack = int(raw.get("last_pack") or 0)
+    return {"pains": pains, "last_pack": last_pack}
 
 
-def mark_published(pain_ids: list[str]) -> None:
+def mark_published(pain_ids: list[str], pack: int | None = None) -> None:
     data = load_published()
     seen = list(data["pains"])
     for pid in pain_ids:
         if pid not in seen:
             seen.append(pid)
+    last = data.get("last_pack") or 0
+    if pack is not None:
+        last = pack
     _path().write_text(
-        yaml.safe_dump({"pains": seen}, allow_unicode=True, sort_keys=False),
+        yaml.safe_dump(
+            {"last_pack": last, "pains": seen},
+            allow_unicode=True,
+            sort_keys=False,
+        ),
         encoding="utf-8",
     )
 
