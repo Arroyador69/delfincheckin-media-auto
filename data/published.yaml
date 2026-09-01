@@ -1,4 +1,4 @@
-last_pack: 3
+last_pack: 4
 pains:
 - domingo_dnis
 - dinero_comision
@@ -8,3 +8,5 @@ pains:
 - google_reseñas
 - todos_los_dias
 - tiempo_es_dinero
+- multa_parte
+- gestor_caro

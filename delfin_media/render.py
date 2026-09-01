@@ -205,7 +205,7 @@ def render_reel(
         parts.append(f"[0:v]ass='{ass_esc}',setsar=1,format=yuv420p[v]")
     parts.append("[1:a]aformat=sample_rates=44100:channel_layouts=stereo[vo]")
     if music_idx is not None:
-        vol = max(0.04, min(float(cfg.music_volume), 0.22))
+        vol = max(0.03, min(float(cfg.music_volume), 0.10))
         parts.append(
             f"[{music_idx}:a]atrim=0:{voiced:.3f},asetpts=PTS-STARTPTS,"
             f"aformat=sample_rates=44100:channel_layouts=stereo,"

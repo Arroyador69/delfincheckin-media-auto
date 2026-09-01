@@ -26,7 +26,7 @@ python -m delfin_media open
 
 Cada Reel: hook (~3–5 s, persona preocupada **en movimiento**, subtítulos amarillos grandes) → cuerpo con la **app** (letterbox) → cierre idéntico (logo + delfincheckin.com).
 
-El carrusel va **atado a ese Reel**: slide 1 el dolor, slide 2 lo que cuenta el vídeo, slide 3 registro. 1080×1350 (IG/FB) y 1080×1920 (TikTok/YouTube).
+El carrusel **no copia** el hook ni el locutado del Reel. Cada uno (tiempo vs dinero) tiene **título y textos propios**. 1080×1350 (IG/FB) y 1080×1920 (TikTok/YouTube).
 
 Las stories **no** explican el vídeo. Recuerdan con una frase y mandan a `delfincheckin.com` (una propiedad gratis, sin tarjeta).
 

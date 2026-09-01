@@ -35,12 +35,19 @@ money_facts:
 
 legal_facts:
   - En España el registro de viajeros (PV y RH) al Ministerio del Interior es obligatorio en alojamiento de corta estancia, RD 933/2021.
-  - Airbnb y Booking no envían el parte por ti.
+  - Airbnb y Booking no envían el parte por ti. Interior se lo pide al titular del alojamiento.
   - El huésped rellena el formulario en su idioma antes de llegar. Tú confirmas. El envío al MIR puede ir automático en el plan Check-in.
   - El plan gratis no incluye el envío automático al Ministerio. Eso está en Check-in (2 €/mes).
+  - Según Interior, comunicar fuera de plazo o con errores puede ser infracción leve (100 a 600 €). No figurar en el registro o no comunicar los datos de los huéspedes puede ser infracción grave (601 a 30.000 €). Fuente: interior.gob.es, SES.HOSPEDAJES.
+  - No hay garantía de cero sanciones. Delfín Check-in envía el parte; no es un seguro legal.
 
 must_not_say:
   - Importes de multa inventados
+  - "600.000"
+  - "600000"
+  - nunca te van a multar
+  - cero sanciones
+  - te van a multar sí o sí
   - Que Airbnb o Booking envían el parte al Ministerio
   - Que Delfín sincroniza reservas solas con Airbnb (las reservas se meten a mano; el iCal es para bloquear fechas del microsite)
   - Nombres de clientes reales o testimonios falsos

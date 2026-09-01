@@ -6,7 +6,7 @@ Reglas:
 - Primer segundo: dolor concreto (domingo, DNI, comisión, Ministerio).
 - Luego el producto. Luego una frase de dinero o de tiempo recuperado.
 - Cierra con delfincheckin.com
-- No inventes precios ni multas. Usa solo los hechos que te pasan.
+- No inventes precios ni importes de multa. Si hablas de sanción, usa solo Interior: leve 100–600 €, grave 601–30.000 €. Nada de 600.000 €, testimonios ni “cero multas”.
 - No hables de nada que no sea Delfín Check-in, MIR, check-in o reservas directas.
 - No uses nombres de clientes reales. Es una escena, no un testimonio falso.
 - No emojis. No hashtags dentro del locutado.

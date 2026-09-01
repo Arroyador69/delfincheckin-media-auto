@@ -3,6 +3,11 @@
 # Cada día: 1 recuerda + 1 registro.
 
 stories:
+  - id: parte_multa
+    kind: recuerda
+    kicker: Recuerda
+    phrase: El parte es tuyo. Si no sale, la multa también.
+    cta: Empieza gratis · sin tarjeta
   - id: parte_solo
     kind: recuerda
     kicker: Recuerda

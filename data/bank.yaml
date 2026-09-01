@@ -139,6 +139,7 @@ app:
     google_reseñas: microsite
     ical_doble: calendario y reservas
     tiempo_es_dinero: confirmar reserva
+    multa_parte: credenciales mir
 
 people_male:
   - id: 2379004

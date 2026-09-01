@@ -12,7 +12,7 @@ from delfin_media.endcard import make_endcard
 from delfin_media.history import load_published, mark_published, pick_unused_pain
 from delfin_media.posts import write_instagram_pack, write_publish_guide, write_reel_captions
 from delfin_media.render import render_reel
-from delfin_media.script import Pain, Persona, build_script
+from delfin_media.script import Pain, Persona, build_script, load_pains
 from delfin_media.stories import write_stories_pack
 from delfin_media.tts import concat_voiceovers, speak
 
@@ -125,6 +125,17 @@ def generate_one(
     return dest
 
 
+def _assert_carousel_titles_differ(lucia_id: str, pablo_id: str) -> None:
+    by_id = {p.id: p for p in load_pains()}
+    a = by_id[lucia_id].carousel_title.strip().lower()
+    b = by_id[pablo_id].carousel_title.strip().lower()
+    if a == b:
+        raise RuntimeError(
+            "Los dos carruseles del pack no pueden llevar el mismo título. "
+            f"{lucia_id!r} y {pablo_id!r} usan {a!r}."
+        )
+
+
 def generate_day(
     cfg: Config,
     *,
@@ -135,6 +146,7 @@ def generate_day(
     """Pack de producción: Reel tiempo + Reel dinero + 2 carruseles + 2 stories."""
     lucia_id = lucia_pain or pick_unused_pain(money=False).id
     pablo_id = pablo_pain or pick_unused_pain(money=True).id
+    _assert_carousel_titles_differ(lucia_id, pablo_id)
 
     pack_n = int(load_published().get("last_pack") or 0) + 1
     dest_root = cfg.ready_dir / f"{pack_n:02d}_pack"

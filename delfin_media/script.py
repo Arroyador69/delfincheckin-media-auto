@@ -15,6 +15,9 @@ class Pain:
     money_angle: bool
     hook: str
     spoken_hook: str
+    carousel_title: str
+    carousel_line: str
+    carousel_caption: str
     scene: str
     image_extra: str
     scripts: list[str]
@@ -57,6 +60,9 @@ def load_pains() -> list[Pain]:
             money_angle=bool(item["money_angle"]),
             hook=item["hook"],
             spoken_hook=_clean(item.get("spoken_hook") or item["hook"]),
+            carousel_title=_clean(item.get("carousel_title") or ""),
+            carousel_line=_clean(item.get("carousel_line") or ""),
+            carousel_caption=_clean(item.get("carousel_caption") or ""),
             scene=item["scene"],
             image_extra=item["image_extra"],
             scripts=[_clean(s) for s in item["scripts"]],
@@ -88,6 +94,43 @@ def word_count(text: str) -> int:
     return len(re.findall(r"\S+", text))
 
 
+def _fold(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def validate_carousel_copy(pain: Pain) -> list[str]:
+    """El carrusel no puede reciclar el hook ni el locutado del Reel."""
+    errors: list[str] = []
+    title = _fold(pain.carousel_title)
+    line = _fold(pain.carousel_line)
+    caption = _fold(pain.carousel_caption)
+    hook = _fold(pain.spoken_hook)
+    written = _fold(pain.hook)
+    if not title:
+        errors.append("falta carousel_title")
+    if not line:
+        errors.append("falta carousel_line")
+    if not caption:
+        errors.append("falta carousel_caption")
+    if title and title in {hook, written}:
+        errors.append("el título del carrusel no puede ser el hook del Reel")
+    if line and line in {hook, written}:
+        errors.append("el texto del carrusel no puede ser el hook del Reel")
+    hook_head = " ".join(hook.split()[:7])
+    if hook_head and (hook_head in title or hook_head in line):
+        errors.append("el carrusel arranca como el hook del Reel")
+    if hook and hook in caption:
+        errors.append("el caption del carrusel copia el hook oral")
+    for script in pain.scripts:
+        body = _fold(script)
+        if line and (line in body or body in line):
+            errors.append("carousel_line copia el guion del Reel")
+        head = " ".join(body.split()[:12])
+        if head and (head in caption or head in line):
+            errors.append("el carrusel copia el arranque del locutado")
+    return errors
+
+
 def validate_script(text: str, cfg: Config, spoken_hook: str = "") -> list[str]:
     errors: list[str] = []
     full = _clean(f"{spoken_hook} {text}")
@@ -103,7 +146,7 @@ def validate_script(text: str, cfg: Config, spoken_hook: str = "") -> list[str]:
         errors.append("Delfín Check-in es alquiler vacacional, no venta de pisos")
     product = load_yaml("product.yaml")
     for banned in product["must_not_say"]:
-        if banned.lower() in low:
+        if str(banned).lower() in low:
             errors.append(f"frase prohibida: {banned}")
     hook_n = word_count(spoken_hook) if spoken_hook else 0
     if spoken_hook and (hook_n < 5 or hook_n > 16):
@@ -136,6 +179,9 @@ def pick_persona(persona_id: str | None = None) -> Persona:
 
 
 def template_script(pain: Pain, persona: Persona, cfg: Config) -> Script:
+    copy_errors = validate_carousel_copy(pain)
+    if copy_errors:
+        raise RuntimeError(f"Carrusel inválido {pain.id}: {copy_errors}")
     text = random.choice(pain.scripts)
     errors = validate_script(text, cfg, spoken_hook=pain.spoken_hook)
     if errors:

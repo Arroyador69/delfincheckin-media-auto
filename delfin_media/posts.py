@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import re
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -74,19 +73,6 @@ def _rounded(im: Image.Image, radius: int) -> Image.Image:
     out = im.convert("RGBA")
     out.putalpha(mask)
     return out
-
-
-def solution_line(script: Script) -> str:
-    text = script.text
-    text = re.sub(r"(Empieza|Entra).*$", "", text, flags=re.I | re.S).strip()
-    text = re.sub(r"delfincheckin\.com", "", text, flags=re.I)
-    text = re.sub(r"\s+", " ", text).strip(" .")
-    words = text.split()
-    if len(words) > 28:
-        text = " ".join(words[:28]).rstrip(",;")
-    if text and not text.endswith("."):
-        text += "."
-    return text or "El huésped rellena el parte. Delfín lo envía al Ministerio."
 
 
 def make_carousel_card(
@@ -165,8 +151,8 @@ def make_carousel_card(
 
 def carousel_slides(pain: Pain, persona: Persona, script: Script, cfg: Config) -> list[tuple[str, str, str]]:
     return [
-        ("Delfín Check-in", pain.spoken_hook, "El dolor de este Reel"),
-        ("En este vídeo", solution_line(script), "Así se ve Delfín Check-in"),
+        ("Delfín Check-in", pain.carousel_title, "Alquiler vacacional · parte al MIR"),
+        ("En el panel", pain.carousel_line, "Check-in digital, sin copiar DNIs"),
         ("Empieza", "Una propiedad gratis. Sin tarjeta.", cfg.cta_url),
     ]
 
@@ -239,15 +225,8 @@ def _reel_caption(pain: Pain, script: Script, platform: str) -> str:
 
 
 def _carousel_caption(pain: Pain, script: Script, platform: str) -> str:
-    """Texto del carrusel: no copia el locutado del Reel."""
-    body = (
-        "Tres fotos. El mismo lío de propietario, y cómo se ve en Delfín Check-in.\n\n"
-        f"1) {pain.hook}\n"
-        "2) El huésped rellena el parte. Tú no copias DNIs.\n"
-        "3) Una propiedad gratis. Sin tarjeta.\n\n"
-        "Airbnb y Booking no envían el parte al Ministerio. Te lo piden a ti.\n"
-        "En delfincheckin.com lo deja hecho el viajero.\n"
-    )
+    """Texto del carrusel: copy propio, nunca el locutado ni el hook del Reel."""
+    body = pain.carousel_caption.strip()
     if platform == "tiktok":
         tags = "#AlquilerVacacional #ParteDeViajeros #DelfinCheckin #CheckInDigital"
     elif platform == "youtube":
@@ -257,7 +236,7 @@ def _carousel_caption(pain: Pain, script: Script, platform: str) -> str:
             "#AlquilerVacacional #RD933 #ParteDeViajeros "
             "#CheckInDigital #DelfinCheckin"
         )
-    return f"{body}\n{tags}\n"
+    return f"{body}\n\n{tags}\n"
 
 
 def write_reel_captions(
@@ -300,12 +279,12 @@ Carpetas (todo 9:16 salvo el carrusel IG/FB 1080×1350):
 3) 03_carrusel_tiempo/ y 04_carrusel_dinero/
    01-03-carousel.jpg = Instagram y Facebook
    01-03-tiktok.jpg  = TikTok y YouTube
-   CAPTION_CARRUSEL_*.txt  → texto DISTINTO al del vídeo. No copies el del Reel.
+   Título DISTINTO en cada carrusel. CAPTION_CARRUSEL_*.txt distinto al Reel.
 
 4) 05_stories/
    01 y 02 .jpg / .mp4. Frase + delfincheckin.com. No explican el Reel.
 
-El carrusel no lleva nombres. Todo es Delfín Check-in.
+El carrusel no lleva nombres ni el locutado del vídeo. Todo es Delfín Check-in.
 Mira el MP4 y las fotos antes de subir.
 """
     path = dest_dir / "COMO_PUBLICAR.txt"

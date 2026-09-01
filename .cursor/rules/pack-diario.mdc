@@ -21,9 +21,9 @@ Delfín Check-in es **alquiler vacacional** (check-in y parte al MIR). Nunca hab
 
 En carruseles, stories y captions **no** aparecen Lucía ni Pablo: todo es Delfín Check-in.
 
-El caption del **Reel** (CAPTION_REEL_*.txt) es distinto al del **carrusel** (CAPTION_CARRUSEL_*.txt). No se copia el locutado del vídeo en el carrusel.
+El caption del **Reel** (CAPTION_REEL_*.txt) es distinto al del **carrusel** (CAPTION_CARRUSEL_*.txt). El **título del carrusel** (`carousel_title`) no es el hook del Reel. El texto de las slides (`carousel_line`) y el caption del carrusel **no copian el locutado**. Cada carrusel (tiempo vs dinero) lleva título y copy propios.
 
-Tras el hook entra **música de fondo baja**; baja otra vez antes del cierre. Rota entre pistas de `assets/bank/music/`.
+Tras el hook entra **música de fondo baja** (`music_volume` 0,06); baja otra vez antes del cierre. Rota entre pistas de `assets/bank/music/`.
 
 Salida en carpetas de producción: `01_reel_tiempo`, `02_reel_dinero`, `03_carrusel_tiempo`, `04_carrusel_dinero`, `05_stories`.
 
@@ -35,7 +35,7 @@ Pablo nunca va en foto fija: clip `hombre-estres-*.mp4` en `assets/bank/hooks/`.
 
 ## Hechos (no inventar)
 
-Básico 0 €, 1 propiedad, sin tarjeta. Check-in 2 €/mes. Airbnb/Booking no envían el parte. No multas ni testimonios con nombre.
+Básico 0 €, 1 propiedad, sin tarjeta. Check-in 2 €/mes. Airbnb/Booking no envían el parte. Sanciones: solo cifras de Interior (leve 100–600 €, grave 601–30.000 €). No importes inventados, no “cero multas”, no testimonios con nombre.
 
 ## Git
 
