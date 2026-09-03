@@ -1,4 +1,4 @@
-last_pack: 4
+last_pack: 5
 pains:
 - domingo_dnis
 - dinero_comision
@@ -10,3 +10,5 @@ pains:
 - tiempo_es_dinero
 - multa_parte
 - gestor_caro
+- whatsapp_dni
+- huesped_repite
