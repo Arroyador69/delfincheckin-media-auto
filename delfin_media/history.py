@@ -15,14 +15,34 @@ def _path() -> Path:
 def load_published() -> dict:
     path = _path()
     if not path.exists():
-        return {"pains": [], "last_pack": 0}
+        return {"pains": [], "last_pack": 0, "hooks": []}
     raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     pains = list(raw.get("pains") or [])
     last_pack = int(raw.get("last_pack") or 0)
-    return {"pains": pains, "last_pack": last_pack}
+    hooks = list(raw.get("hooks") or [])
+    return {"pains": pains, "last_pack": last_pack, "hooks": hooks}
 
 
-def mark_published(pain_ids: list[str], pack: int | None = None) -> None:
+def _write_published(data: dict) -> None:
+    _path().write_text(
+        yaml.safe_dump(
+            {
+                "last_pack": int(data.get("last_pack") or 0),
+                "pains": list(data.get("pains") or []),
+                "hooks": list(data.get("hooks") or []),
+            },
+            allow_unicode=True,
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
+
+
+def mark_published(
+    pain_ids: list[str],
+    pack: int | None = None,
+    hooks: list[str] | None = None,
+) -> None:
     data = load_published()
     seen = list(data["pains"])
     for pid in pain_ids:
@@ -31,14 +51,11 @@ def mark_published(pain_ids: list[str], pack: int | None = None) -> None:
     last = data.get("last_pack") or 0
     if pack is not None:
         last = pack
-    _path().write_text(
-        yaml.safe_dump(
-            {"last_pack": last, "pains": seen},
-            allow_unicode=True,
-            sort_keys=False,
-        ),
-        encoding="utf-8",
-    )
+    used_hooks = list(data.get("hooks") or [])
+    for name in hooks or []:
+        if name and name not in used_hooks:
+            used_hooks.append(name)
+    _write_published({"last_pack": last, "pains": seen, "hooks": used_hooks})
 
 
 def pick_unused_pain(*, money: bool) -> Pain:

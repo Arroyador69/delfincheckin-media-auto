@@ -5,7 +5,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
-from delfin_media.bank import is_video, pick_app_clip, pick_hook, pick_music, pick_rooms, sync_bank
+from delfin_media.bank import BANK_DIR, is_video, pick_app_clip, pick_hook, pick_music, pick_rooms, sync_bank
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
@@ -32,6 +32,7 @@ def generate_one(
     dest_dir: Path | None = None,
     carousel_dir: Path | None = None,
     reel_name: str | None = None,
+    hook_file: str | None = None,
 ) -> Path:
     pain, persona, script = build_script(
         cfg,
@@ -65,7 +66,11 @@ def generate_one(
     )
 
     sync_bank()
-    hook_src = pick_hook(persona)
+    if hook_file:
+        candidate = BANK_DIR / "hooks" / hook_file
+        hook_src = candidate if candidate.exists() else pick_hook(persona)
+    else:
+        hook_src = pick_hook(persona)
     app_src = pick_app_clip(pain.id)
     if app_src is None:
         rooms = pick_rooms(1)
@@ -108,6 +113,7 @@ def generate_one(
         "duration_s": round(voice.duration + cfg.endcard_seconds, 2),
         "structure": "hook-app-cierre",
         "music": music.name if music else None,
+        "hook_visual": hook_src.name,
         "app": app_src.name if app_src else None,
         "cta": cfg.cta_url,
         "created_at": datetime.now().isoformat(timespec="seconds"),
@@ -142,6 +148,8 @@ def generate_day(
     lucia_pain: str | None = None,
     pablo_pain: str | None = None,
     use_llm: bool = False,
+    lucia_hook: str | None = None,
+    pablo_hook: str | None = None,
 ) -> Path:
     """Pack de producción: Reel tiempo + Reel dinero + 2 carruseles + 2 stories."""
     lucia_id = lucia_pain or pick_unused_pain(money=False).id
@@ -171,6 +179,7 @@ def generate_day(
         carousel_dir=car_t,
         reel_name="reel.mp4",
         use_llm=use_llm,
+        hook_file=lucia_hook,
     )
     generate_one(
         cfg,
@@ -180,11 +189,20 @@ def generate_day(
         carousel_dir=car_d,
         reel_name="reel.mp4",
         use_llm=use_llm,
+        hook_file=pablo_hook,
     )
     write_stories_pack(cfg, stories, n=2)
     print(f"  stories: {stories}")
     write_publish_guide(dest_root, "01_reel_tiempo", "02_reel_dinero")
-    mark_published([lucia_id, pablo_id], pack=pack_n)
+    hook_names = []
+    for folder in (reel_t, reel_d):
+        meta_path = folder / "meta.json"
+        if meta_path.exists():
+            payload = json.loads(meta_path.read_text(encoding="utf-8"))
+            name = payload.get("hook_visual")
+            if name:
+                hook_names.append(name)
+    mark_published([lucia_id, pablo_id], pack=pack_n, hooks=hook_names)
     print(f"  guía: {dest_root / 'COMO_PUBLICAR.txt'}")
     print(f"\nTodo en {dest_root}")
     return dest_root

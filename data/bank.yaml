@@ -110,6 +110,18 @@ hook_videos:
     file: hooks/hombre-estres-c.mp4
   - url: https://assets.mixkit.co/videos/4700/4700-720.mp4
     file: hooks/mujer-estres-d.mp4
+  - url: https://assets.mixkit.co/videos/4708/4708-720.mp4
+    file: hooks/mujer-estres-e.mp4
+    note: Chica joven, manos a la cara, agita la cabeza (preocupada).
+  - url: https://assets.mixkit.co/videos/42270/42270-720.mp4
+    file: hooks/mujer-estres-f.mp4
+    note: Primer plano cara de chica preocupada.
+  - url: https://assets.mixkit.co/videos/8744/8744-720.mp4
+    file: hooks/hombre-estres-e.mp4
+    note: Chico joven en el sofá, mira el móvil y se frustra.
+  - url: https://assets.mixkit.co/videos/4701/4701-720.mp4
+    file: hooks/hombre-estres-f.mp4
+    note: Primer plano hombre preocupado, se toca la cara.
 
 # Música de fondo (Pixabay: comercial, sin atribución). Entra tras el hook y baja antes del cierre.
 music:

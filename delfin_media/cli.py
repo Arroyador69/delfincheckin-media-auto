@@ -37,6 +37,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     day.add_argument("--lucia-pain", help="dolor de Lucía (tiempo/legal)")
     day.add_argument("--pablo-pain", help="dolor de Pablo (dinero)")
+    day.add_argument("--lucia-hook", help="archivo de hook en assets/bank/hooks/")
+    day.add_argument("--pablo-hook", help="archivo de hook en assets/bank/hooks/")
     day.add_argument("--llm", action="store_true")
 
     sub.add_parser("list", help="Lista dolores y personas")
@@ -92,6 +94,8 @@ def main(argv: list[str] | None = None) -> int:
             lucia_pain=args.lucia_pain,
             pablo_pain=args.pablo_pain,
             use_llm=args.llm,
+            lucia_hook=args.lucia_hook,
+            pablo_hook=args.pablo_hook,
         )
         print("Para abrirlos: python -m delfin_media open")
         return 0

@@ -114,7 +114,12 @@ def _hook_tokens(path: Path) -> set[str]:
 
 
 def pick_hook(persona: Persona) -> Path:
-    """Vídeo de persona preocupada: mujer para Lucía, hombre para Pablo."""
+    """Vídeo de persona preocupada: mujer para Lucía, hombre para Pablo.
+
+    Prioriza clips que aún no han salido en un pack (data/published.yaml → hooks).
+    """
+    from delfin_media.history import load_published
+
     bank = load_bank()
     key = "hooks_female" if persona.voice == "female" else "hooks_male"
     want = "mujer" if persona.voice == "female" else "hombre"
@@ -128,8 +133,11 @@ def pick_hook(persona: Persona) -> Path:
         if "estres" not in tokens:
             continue
         tagged.append(p)
-    if tagged:
-        return random.choice(tagged)
+    used = set(load_published().get("hooks") or [])
+    fresh = [p for p in tagged if p.name not in used]
+    pool = fresh or tagged
+    if pool:
+        return random.choice(pool)
     stills = _existing(bank.get(key, []))
     if not stills:
         sync_bank()
