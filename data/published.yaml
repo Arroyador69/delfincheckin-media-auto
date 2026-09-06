@@ -1,4 +1,4 @@
-last_pack: 6
+last_pack: 7
 pains:
 - domingo_dnis
 - dinero_comision
@@ -13,9 +13,12 @@ pains:
 - whatsapp_dni
 - huesped_repite
 - ical_doble
+- no_saben_que_pueden_mas
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
 - hombre-estres-b.mp4
 - mujer-estres-e.mp4
 - hombre-estres-f.mp4
+- mujer-estres-f.mp4
+- hombre-estres-e.mp4
