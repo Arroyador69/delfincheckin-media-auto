@@ -1,4 +1,4 @@
-last_pack: 7
+last_pack: 8
 pains:
 - domingo_dnis
 - dinero_comision
@@ -22,3 +22,5 @@ hooks:
 - hombre-estres-f.mp4
 - mujer-estres-f.mp4
 - hombre-estres-e.mp4
+- mujer-estres-d.mp4
+- hombre-estres-c.mp4
