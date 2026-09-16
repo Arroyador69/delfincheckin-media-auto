@@ -1,0 +1,855 @@
+# Ángulos extra: cada dolor = un Reel distinto (hook + locutado + carrusel únicos).
+# No repetir el mismo 3 s ni el mismo cuerpo. Hechos solo de product.yaml.
+
+pains:
+  - id: plazo_24h
+    theme: legal
+    money_angle: false
+    hook: Veinticuatro horas para el parte
+    spoken_hook: Tienes veinticuatro horas. El reloj no espera.
+    carousel_title: La comunicación al MIR no admite aplazarlo a la semana
+    carousel_line: El huésped rellena antes. Delfín envía al Ministerio a tiempo.
+    carousel_caption: >
+      Interior pide comunicar los datos en un plazo corto, no cuando puedas.
+      Con Delfín Check-in el viajero completa el check-in y el envío al MIR
+      puede ir solo. Una propiedad gratis, sin tarjeta. delfincheckin.com
+    scene: Propietario mirando el reloj y el móvil, check-in reciente.
+    image_extra: host looking at phone clock, worried, Spanish apartment
+    scripts:
+      - >
+        La reserva ya empezó y el parte sigue en el aire. Delfín Check-in
+        deja el formulario hecho antes de la llegada y el Ministerio lo
+        puede recibir sin que copies DNIs. Empieza gratis en delfincheckin.com
+
+  - id: ses_lio
+    theme: legal
+    money_angle: false
+    hook: El SES no es tu segundo trabajo
+    spoken_hook: El SES no tiene que comerte otro domingo.
+    carousel_title: Hospedajes no es un hobby. Es el parte al Ministerio
+    carousel_line: Check-in digital, envío al MIR, tú fuera del laberinto.
+    carousel_caption: >
+      SES.HOSPEDAJES es la vía de Interior. No hace falta pelearte con ella
+      cada llegada. Delfín Check-in arma el parte y lo manda. Empieza
+      gratis, sin tarjeta, en delfincheckin.com
+    scene: Propietario perdido en una web institucional, ceño.
+    image_extra: confused host at laptop government website
+    scripts:
+      - >
+        Entras al SES, sales, vuelves, y el huésped ya está en el rellano.
+        Delfín Check-in hace el check-in digital y el envío al MIR. Tú das
+        la llave. Una propiedad gratis en delfincheckin.com
+
+  - id: particular_tambien
+    theme: legal
+    money_angle: false
+    hook: Particular o no, el parte es tuyo
+    spoken_hook: Aunque seas particular, el real decreto te incluye.
+    carousel_title: Interior no distingue si tienes uno o diez anuncios
+    carousel_line: El titular comunica. Airbnb no. Delfín sí puede enviarlo.
+    carousel_caption: >
+      El RD 933/2021 alcanza a quien da hospedaje, también a particulares.
+      Airbnb no envía el parte. Delfín Check-in sí puede hacerlo por ti.
+      Una propiedad para probar, sin tarjeta. delfincheckin.com
+    scene: Propietario en casa, un solo piso, papeles del MIR.
+    image_extra: single apartment host with papers, Spanish kitchen
+    scripts:
+      - >
+        No eres cadena hotelera. Da igual. El Ministerio te pide el parte
+        a ti. Delfín Check-in: el viajero rellena en su idioma y el envío
+        al MIR puede ir solo. Empieza gratis en delfincheckin.com
+
+  - id: grupo_documentos
+    theme: tiempo
+    money_angle: false
+    hook: Cinco huéspedes, cinco documentos
+    spoken_hook: Cinco huéspedes. ¿Cinco fotos de DNI por WhatsApp?
+    carousel_title: Un grupo no se registra pegando pasaportes al chat
+    carousel_line: Cada viajero rellena. Un envío. Tú no haces de secretaría.
+    carousel_caption: >
+      Familias y grupos multiplican el papeleo. En Delfín Check-in cada
+      huésped completa el check-in y el parte sale hacia el Ministerio.
+      Empieza gratis en delfincheckin.com
+    scene: Mesa con varios pasaportes, propietario desbordado.
+    image_extra: several passports on table, tired host
+    scripts:
+      - >
+        Uno llega, cuatro detrás, y tú con el móvil lleno de capturas.
+        Delfín Check-in manda el enlace. Ellos rellenan. El MIR recibe.
+        Tú abres. Una propiedad gratis, sin tarjeta, en delfincheckin.com
+
+  - id: idioma_formulario
+    theme: tiempo
+    money_angle: false
+    hook: El huésped no habla español
+    spoken_hook: No habla español. El parte, en cambio, no espera.
+    carousel_title: El formulario en su idioma. El Ministerio en el tuyo
+    carousel_line: Él entiende el check-in. Tú no traduces el DNI a gritos.
+    carousel_caption: >
+      El viajero rellena en su idioma antes de llegar. Tú confirmas. Delfín
+      Check-in puede enviar al MIR. Una propiedad gratis, sin tarjeta.
+      delfincheckin.com
+    scene: Propietario gesticulando con un turista en el portal.
+    image_extra: host and tourist at door, language barrier, evening
+    scripts:
+      - >
+        Le pides el pasaporte a señas y perdéis diez minutos. Con Delfín
+        Check-in lo rellenó ayer, en su idioma. El Ministerio lo tiene.
+        Empieza gratis en delfincheckin.com
+
+  - id: plantilla_airbnb
+    theme: tiempo
+    money_angle: false
+    hook: El enlace va en la plantilla
+    spoken_hook: Pon el enlace en la plantilla. Y suelta el Excel.
+    carousel_title: La bienvenida de Airbnb puede llevar el check-in
+    carousel_line: Un enlace. El huésped llega con el parte hecho.
+    carousel_caption: >
+      El mensaje de bienvenida sirve para el check-in, no para pedir fotos
+      del DNI. Delfín Check-in da el enlace; el MIR puede recibir el parte.
+      Empieza gratis en delfincheckin.com
+    scene: Propietario editando el mensaje automático de Airbnb.
+    image_extra: host editing Airbnb message template on laptop
+    scripts:
+      - >
+        Cada reserva es el mismo copiar y pegar. Delfín Check-in: el enlace
+        en la plantilla, el huésped rellena y el envío al Ministerio va
+        solo. Una propiedad gratis en delfincheckin.com
+
+  - id: adios_xml
+    theme: tiempo
+    money_angle: false
+    hook: El XML no es un check-in
+    spoken_hook: Si sigues con el XML, el check-in te sigue comiendo.
+    carousel_title: El registro de viajeros no tiene que ser un archivo raro
+    carousel_line: Formulario al huésped. Envío al MIR. Sin pegarte con el XML.
+    carousel_caption: >
+      Pelearte con archivos no acerca el parte a Interior. Delfín Check-in
+      arma el registro y puede mandarlo. Una propiedad, sin tarjeta.
+      delfincheckin.com
+    scene: Propietario frente a un archivo incomprensible, ceño.
+    image_extra: host staring at XML on screen, frustrated
+    scripts:
+      - >
+        El fichero, el error, otra vez. Delfín Check-in deja el check-in
+        al viajero y el envío al MIR puede ir automático por dos euros al
+        mes. Empieza gratis en delfincheckin.com
+
+  - id: anula_tambien
+    theme: legal
+    money_angle: false
+    hook: Si anulan, también hay que avisar
+    spoken_hook: Anularon. El Ministerio también se tiene que enterar.
+    carousel_title: La reserva cancelada también entra en la comunicación
+    carousel_line: Reservas y cambios en el mismo panel. El parte no se olvida.
+    carousel_caption: >
+      No solo se comunica la llegada. Las reservas y anulaciones también
+      cuentan. Delfín Check-in junta reservas y check-in. Empieza gratis
+      en delfincheckin.com
+    scene: Notificación de cancelación, propietario con duda legal.
+    image_extra: cancellation notification on phone, worried host
+    scripts:
+      - >
+        Cancelaron ayer y tú no sabes qué mandar. Delfín Check-in tiene
+        reservas y check-in juntos. El parte al Ministerio no se queda
+        a medias. Una propiedad gratis en delfincheckin.com
+
+  - id: tu_confirmas
+    theme: tiempo
+    money_angle: false
+    hook: Ellos rellenan. Tú confirmas
+    spoken_hook: El viajero rellena. Tú confirmas. Y punto.
+    carousel_title: No copias. Revisas y el envío puede salir solo
+    carousel_line: "Check-in digital: él escribe, tú das el OK, el MIR recibe."
+    carousel_caption: >
+      El huésped completa los datos. Tú confirmas. El plan Check-in puede
+      enviar al MIR. Delfín Check-in, una propiedad gratis, sin tarjeta.
+      delfincheckin.com
+    scene: Propietario en el panel, botón de confirmar, alivio.
+    image_extra: host tapping confirm on laptop, relieved
+    scripts:
+      - >
+        No eres un cajero de DNIs. Con Delfín Check-in el huésped rellena
+        antes, tú confirmas y el envío al Ministerio puede ir solo.
+        Empieza gratis, sin tarjeta, en delfincheckin.com
+
+  - id: basico_no_mir
+    theme: legal
+    money_angle: false
+    hook: Gratis no incluye el envío al MIR
+    spoken_hook: El plan gratis no manda el parte. Ojo con eso.
+    carousel_title: Probar el panel es cero euros. El envío al MIR es Check-in
+    carousel_line: Empieza sin tarjeta. El envío automático está en dos euros.
+    carousel_caption: >
+      El Básico es una propiedad, cero euros, sin tarjeta. El envío al
+      Ministerio está en Check-in, dos euros al mes. Delfín Check-in.
+      delfincheckin.com
+    scene: Propietario viendo planes en la web, comparando.
+    image_extra: host looking at pricing on laptop
+    scripts:
+      - >
+        Registrarte no envía el parte. Eso va en Check-in, dos euros al mes.
+        Delfín Check-in: prueba una propiedad gratis y cuando quieras, el
+        MIR. Entra en delfincheckin.com
+
+  - id: checkin_dos_euros
+    theme: legal
+    money_angle: false
+    hook: El MIR por dos euros al mes
+    spoken_hook: El envío al Ministerio. Dos euros al mes.
+    carousel_title: Check-in digital y parte al MIR no tienen que ser un gestor
+    carousel_line: Dos euros al mes más dos por propiedad. El huésped rellena.
+    carousel_caption: >
+      Plan Check-in: dos euros al mes más dos por propiedad. Check-in
+      digital y envío al MIR. Empieza con una propiedad gratis.
+      delfincheckin.com
+    scene: Calculadora y factura, propietario comparando.
+    image_extra: host calculating small monthly fee vs hassle
+    scripts:
+      - >
+        No es un software de mil euros. Delfín Check-in envía al MIR por
+        dos euros al mes. El viajero rellena. Tú confirmas. Una propiedad
+        para probar, sin tarjeta, en delfincheckin.com
+
+  - id: solo_quieres_llave
+    theme: tiempo
+    money_angle: false
+    hook: Tú quieres dar la llave
+    spoken_hook: Tú quieres dar la llave. No hacer de policía.
+    carousel_title: El portal es para abrir. El parte, hecho de ayer
+    carousel_line: Check-in antes de la llegada. En el rellano, solo la llave.
+    carousel_caption: >
+      La llegada es entregar acceso, no interrogar con el DNI. Delfín
+      Check-in deja el parte listo. Empieza gratis en delfincheckin.com
+    scene: Propietario en el portal con llaves, huésped esperando.
+    image_extra: host with keys at apartment door, guest waiting
+    scripts:
+      - >
+        En el rellano no hay mesa ni impresora. Con Delfín Check-in el
+        parte ya está. Abres, das la llave, te vas. Empieza gratis en
+        delfincheckin.com
+
+  - id: pasaporte_borroso
+    theme: tiempo
+    money_angle: false
+    hook: Esa foto no se lee
+    spoken_hook: Esa foto del pasaporte no se lee. Pídesela otra vez.
+    carousel_title: Una captura movida no sustituye el registro de viajeros
+    carousel_line: El huésped escribe los datos. Tú no descifras un reflejo.
+    carousel_caption: >
+      Pedir otra foto no es un sistema. El check-in digital de Delfín
+      Check-in lo rellena el viajero y el MIR puede recibirlo. Empieza
+      gratis en delfincheckin.com
+    scene: Propietario ampliando una foto ilegible en el móvil.
+    image_extra: blurry passport photo on phone, host squinting
+    scripts:
+      - >
+        Zoom, luz, otra vez. Basta. Delfín Check-in: enlace, formulario
+        en su idioma, envío al Ministerio. Una propiedad gratis, sin
+        tarjeta, en delfincheckin.com
+
+  - id: no_eres_hotel
+    theme: legal
+    money_angle: false
+    hook: No hace falta ser un hotel
+    spoken_hook: No eres un hotel. El parte te lo piden igual.
+    carousel_title: "Piso turístico, casa, hostal: el RD te alcanza"
+    carousel_line: El titular comunica a Interior. Delfín lo deja hecho.
+    carousel_caption: >
+      Vivienda de uso turístico también registra viajeros. Airbnb no lo
+      hace por ti. Delfín Check-in sí puede enviar el parte. delfincheckin.com
+    scene: Anuncio de piso turístico en el portátil, duda.
+    image_extra: vacation rental listing on laptop, host thinking
+    scripts:
+      - >
+        Es un piso, no un hotel de cuatro estrellas. Da igual para el
+        Ministerio. Delfín Check-in hace el check-in digital y el envío
+        al MIR. Empieza gratis en delfincheckin.com
+
+  - id: familia_sin_dni
+    theme: tiempo
+    money_angle: false
+    hook: Llega la familia y ni un DNI
+    spoken_hook: Llega la familia entera y no tienes ni un DNI.
+    carousel_title: "Niños, padres y abuelos: el check-in no es el portal"
+    carousel_line: El enlace se mandó ayer. Hoy solo abres.
+    carousel_caption: >
+      Un grupo familiar no se registra en el descansillo. Con Delfín
+      Check-in rellenan antes y el Ministerio puede tener el parte.
+      Una propiedad gratis. delfincheckin.com
+    scene: Familia en la puerta, propietario con el móvil en blanco.
+    image_extra: family at door with luggage, host on phone
+    scripts:
+      - >
+        Maletas, niños, y tú sin datos. Delfín Check-in lo dejaron hecho
+        en su idioma. El MIR lo recibe. Tú sonríes y das la llave.
+        Empieza gratis en delfincheckin.com
+
+  - id: puente_llegadas
+    theme: tiempo
+    money_angle: false
+    hook: El puente te llena el calendario
+    spoken_hook: "El puente: cuatro llegadas y el portátil aún abierto."
+    carousel_title: Un puente no tiene que ser cuatro partes a mano
+    carousel_line: Cada reserva, un enlace. El panel junta los check-in.
+    carousel_caption: >
+      Varias entradas seguidas comen el fin de semana. Delfín Check-in
+      deja cada parte listo. Empieza con una propiedad gratis.
+      delfincheckin.com
+    scene: Calendario lleno el puente, propietario agotado.
+    image_extra: busy calendar on laptop, holiday weekend, tired host
+    scripts:
+      - >
+        Jueves, viernes, sábado, domingo. Cuatro partes. Delfín Check-in
+        manda el enlace a cada uno y el Ministerio los puede recibir.
+        Tú recuperas el puente. Empieza gratis en delfincheckin.com
+
+  - id: pv_y_rh
+    theme: legal
+    money_angle: false
+    hook: PV y RH, los dos partes
+    spoken_hook: PV y RH. Dos partes. ¿Los estás mandando los dos?
+    carousel_title: No es un papel. Son el PV y el RH al Ministerio
+    carousel_line: Delfín arma los partes. Tú no improvisas siglas.
+    carousel_caption: >
+      PV y RH son los registros que Interior espera. Delfín Check-in los
+      trabaja en el check-in digital. Una propiedad para probar, sin
+      tarjeta. delfincheckin.com
+    scene: Propietario googling PV RH, confusión.
+    image_extra: host googling PV RH on phone, confused
+    scripts:
+      - >
+        No es un único papel mágico. Son el PV y el RH. Delfín Check-in
+        los arma con el check-in del huésped y el envío al MIR. Entra en
+        delfincheckin.com
+
+  - id: reserva_y_entrada
+    theme: legal
+    money_angle: false
+    hook: Reserva y entrada, dos momentos
+    spoken_hook: La reserva y la entrada. Dos momentos. Dos avisos.
+    carousel_title: No basta con el check-in del día. También la reserva
+    carousel_line: El panel guarda la reserva. El parte cubre la llegada.
+    carousel_caption: >
+      Interior habla de comunicar en la reserva y al inicio. Delfín
+      Check-in junta reservas y check-in. Empieza gratis en
+      delfincheckin.com
+    scene: Dos notificaciones, reserva y check-in, estrés.
+    image_extra: two notifications on phone, booking and check-in
+    scripts:
+      - >
+        No es solo cuando abren la puerta. La reserva también cuenta.
+        Delfín Check-in tiene reservas y check-in. El Ministerio no se
+        queda a medias. Una propiedad gratis en delfincheckin.com
+
+  - id: mensaje_medianoche
+    theme: tiempo
+    money_angle: false
+    hook: Otro mensaje a medianoche
+    spoken_hook: "Medianoche. Otra vez: mándame el DNI, porfa."
+    carousel_title: A las doce no se piden documentos. Se duerme
+    carousel_line: El enlace salió con la reserva. De noche, silencio.
+    carousel_caption: >
+      El check-in no es un hilo de madrugada. Delfín Check-in lo deja
+      hecho antes. Empieza gratis, sin tarjeta, en delfincheckin.com
+    scene: Propietario en la cama con el móvil, notificación.
+    image_extra: host in bed with phone notification, midnight
+    scripts:
+      - >
+        Estás en la cama y te piden el pasaporte. Con Delfín Check-in
+        el enlace ya fue. El parte puede estar en el MIR. Tú duermes.
+        Empieza gratis en delfincheckin.com
+
+  - id: dni_en_el_coche
+    theme: tiempo
+    money_angle: false
+    hook: Copiando el DNI en el coche
+    spoken_hook: En el coche, delante del piso, copiando un DNI.
+    carousel_title: El salpicadero no es una oficina de registro
+    carousel_line: Antes de salir de casa, el parte ya puede estar enviado.
+    carousel_caption: >
+      Si el check-in te persigue hasta el aparcamiento, el sistema falla.
+      Delfín Check-in lo deja en el móvil del huésped. delfincheckin.com
+    scene: Propietario al volante con el móvil, DNI en la otra mano.
+    image_extra: host in car with phone, apartment building outside
+    scripts:
+      - >
+        Luces de emergencia, DNI, teclado. Basta. Delfín Check-in: el
+        viajero rellenó antes y el Ministerio lo recibe. Tú aparcas y
+        abres. Una propiedad gratis en delfincheckin.com
+
+  - id: varios_idiomas
+    theme: tiempo
+    money_angle: false
+    hook: Alemán, francés, inglés
+    spoken_hook: Alemán, francés, inglés. ¿Y tú copiando el DNI?
+    carousel_title: Cada nacionalidad, el mismo enlace de check-in
+    carousel_line: El formulario está en su idioma. El envío, al MIR.
+    carousel_caption: >
+      No hace falta hablar seis idiomas para el parte. Delfín Check-in
+      deja que el viajero rellene. Empieza gratis en delfincheckin.com
+    scene: Varios huéspedes internacionales, propietario perdido.
+    image_extra: international guests at door, host overwhelmed
+    scripts:
+      - >
+        Tres idiomas en el rellano y un parte en español. Delfín Check-in
+        lo rellenan ellos, en el suyo. El MIR lo recibe. Empieza gratis
+        en delfincheckin.com
+
+  - id: plataforma_no_es_registro
+    theme: legal
+    money_angle: false
+    hook: La OTA no es tu registro
+    spoken_hook: Airbnb no es un registro de viajeros. Ni Booking.
+    carousel_title: Anunciar no equivale a comunicar a Interior
+    carousel_line: La ficha de la plataforma no sustituye el parte al MIR.
+    carousel_caption: >
+      Publicar el anuncio no envía el PV ni el RH. Eso te lo piden a ti.
+      Delfín Check-in hace el check-in y el envío. delfincheckin.com
+    scene: Propietario creyendo que Airbnb ya lo cubre, notificación.
+    image_extra: host looking at Airbnb listing thinking it's enough
+    scripts:
+      - >
+        Tener el anuncio activo no manda el parte. Te toca a ti. Delfín
+        Check-in: check-in digital y envío al Ministerio. Una propiedad
+        gratis, sin tarjeta, en delfincheckin.com
+
+  - id: un_enlace_antes
+    theme: tiempo
+    money_angle: false
+    hook: Un enlace antes de que vuele
+    spoken_hook: Un enlace. Antes de que el avión despegue.
+    carousel_title: El check-in empieza en el sofá del huésped, no en tu portal
+    carousel_line: Lo completa en casa. Tú recibes la llegada en paz.
+    carousel_caption: >
+      Si el parte espera al aterrizaje, llegas tarde. Delfín Check-in
+      se lo manda antes. Empieza gratis en delfincheckin.com
+    scene: Huésped en el aeropuerto, propietario aún sin datos.
+    image_extra: airplane boarding, host still without guest data
+    scripts:
+      - >
+        Cuando aterriza ya es tarde para pedir el DNI. Delfín Check-in
+        se lo mandaste al reservar. El Ministerio puede tenerlo. Tú
+        solo abres. Empieza gratis en delfincheckin.com
+
+  - id: panel_un_sitio
+    theme: tiempo
+    money_angle: false
+    hook: Todo en un solo panel
+    spoken_hook: Reservas, habitaciones y parte. ¿Aún en tres sitios?
+    carousel_title: Un panel. Reservas, check-in y envío al MIR
+    carousel_line: Dejas las pestañas. Delfín junta lo que usas cada día.
+    carousel_caption: >
+      El Básico ya es reservas y habitaciones. El Check-in suma el MIR.
+      Todo en Delfín Check-in. Una propiedad gratis, sin tarjeta.
+      delfincheckin.com
+    scene: Muchas pestañas, propietario perdido.
+    image_extra: too many browser tabs, overwhelmed host
+    scripts:
+      - >
+        Una pestaña para reservas, otra para el Ministerio, el Excel
+        en medio. Delfín Check-in lo junta. Check-in y parte al MIR.
+        Empieza gratis en delfincheckin.com
+
+  - id: stripe_te_paga
+    theme: dinero
+    money_angle: true
+    hook: Te paga a ti, no a la OTA
+    spoken_hook: El viajero te paga a ti. No a la plataforma.
+    carousel_title: Stripe en tu cuenta. Sin esperar el payout de la OTA
+    carousel_line: Enlace de pago, fechas e importe. El dinero entra en tu banco.
+    carousel_caption: >
+      Con el enlace de pago de Delfín Check-in el viajero te paga a ti.
+      El parte al Ministerio se hace igual. Mira los planes en
+      delfincheckin.com
+    scene: Propietario comparando un payout de Airbnb con un cobro Stripe.
+    image_extra: bank app vs Airbnb payout on phone
+    scripts:
+      - >
+        Dejas de esperar a que la OTA te suelte el dinero. Delfín Check-in
+        te da enlace de pago y el parte al MIR en el mismo sitio. Más
+        neto. Entra en delfincheckin.com
+
+  - id: enlace_whatsapp_pago
+    theme: dinero
+    money_angle: true
+    hook: El cobro por WhatsApp, en serio
+    spoken_hook: Le mandas el enlace por WhatsApp. Y te paga.
+    carousel_title: Fechas e importe en un enlace. No un bizum a ciegas
+    carousel_line: Pago con tarjeta, check-in digital y parte al Ministerio.
+    carousel_caption: >
+      Un enlace de pago con fechas e importe, por WhatsApp o email.
+      Delfín Check-in. El huésped paga y el MIR puede recibir el parte.
+      delfincheckin.com
+    scene: WhatsApp con un enlace, notificación de pago.
+    image_extra: WhatsApp payment link on phone, host smiling
+    scripts:
+      - >
+        No es un bizum sin datos. Delfín Check-in: enlace con fechas e
+        importe, pago a ti, y el check-in cubre el parte. Empieza gratis
+        en delfincheckin.com
+
+  - id: extra_propiedad_dos
+    theme: dinero
+    money_angle: true
+    hook: La segunda propiedad, dos euros
+    spoken_hook: Otra propiedad. Dos euros al mes. No un software nuevo.
+    carousel_title: Escalas de piso sin cambiar de panel ni de factura loca
+    carousel_line: Extra de propiedad, dos euros. El check-in sigue igual.
+    carousel_caption: >
+      Cada propiedad extra son dos euros al mes. El panel es el mismo.
+      Delfín Check-in, una de prueba gratis. delfincheckin.com
+    scene: Dos llaves, una factura pequeña, alivio.
+    image_extra: two keychains, small bill, host relieved
+    scripts:
+      - >
+        No contratas otro programa por el segundo piso. Delfín Check-in:
+        dos euros más y el mismo check-in al MIR. Empieza con una
+        propiedad gratis en delfincheckin.com
+
+  - id: standard_sin_anuncios
+    theme: dinero
+    money_angle: true
+    hook: Nueve noventa y nueve, sin anuncios
+    spoken_hook: "Standard: nueve noventa y nueve. Se acaban los anuncios."
+    carousel_title: Check-in, MIR y panel limpio. Una propiedad incluida
+    carousel_line: Todo lo de Check-in, sin anuncios, 9,99 € al mes.
+    carousel_caption: >
+      Plan Standard: 9,99 € al mes, lo de Check-in y una propiedad.
+      Delfín Check-in. Mira los planes en delfincheckin.com
+    scene: Propietario cerrando un anuncio molesto en el panel.
+    image_extra: host dismissing ads on laptop dashboard
+    scripts:
+      - >
+        Si ya envías al MIR y te sobran los anuncios, Standard son nueve
+        noventa y nueve. Delfín Check-in, una propiedad incluida. Entra
+        en delfincheckin.com
+
+  - id: cero_sin_tarjeta
+    theme: dinero
+    money_angle: true
+    hook: Cero euros. Sin tarjeta
+    spoken_hook: Una propiedad. Cero euros. Y no te piden tarjeta.
+    carousel_title: Probar el panel no es dejar el número de la Visa
+    carousel_line: Básico gratis. El envío al MIR, cuando pases a Check-in.
+    carousel_caption: >
+      Básico: 0 €, una propiedad, sin tarjeta. Luego Check-in a 2 € si
+      quieres el MIR. Delfín Check-in. delfincheckin.com
+    scene: Formulario de registro sin campo de tarjeta, alivio.
+    image_extra: signup form no credit card, host relieved
+    scripts:
+      - >
+        No dejas la tarjeta para mirar el panel. Delfín Check-in: una
+        propiedad, cero euros. El parte al MIR cuando quieras Check-in.
+        Empieza en delfincheckin.com
+
+  - id: payout_espera
+    theme: dinero
+    money_angle: true
+    hook: Cansado de esperar el payout
+    spoken_hook: ¿Hasta cuándo esperas el payout de la plataforma?
+    carousel_title: El cobro directo no espera a la liquidación de la OTA
+    carousel_line: Te pagan a ti. El check-in y el parte, en el mismo flujo.
+    carousel_caption: >
+      El payout de la OTA llega cuando ellos quieren. El enlace de Delfín
+      Check-in cobra en tu cuenta. Mira los planes en delfincheckin.com
+    scene: Calendario de pagos de Airbnb, propietario impaciente.
+    image_extra: Airbnb payout calendar, impatient host
+    scripts:
+      - >
+        El dinero está en su caja. En la tuya, aún no. Delfín Check-in:
+        pago directo y parte al Ministerio. Menos espera. Más neto.
+        Entra en delfincheckin.com
+
+  - id: booking_tambien
+    theme: dinero
+    money_angle: true
+    hook: Booking también se queda comisión
+    spoken_hook: El que vuelve por Booking también te deja comisión.
+    carousel_title: No es solo Airbnb. Booking también muerde al repetidor
+    carousel_line: Enlace propio, pago a ti, parte al MIR igual.
+    carousel_caption: >
+      El repetidor de Booking no tiene que pasar otra vez por la OTA.
+      Delfín Check-in: página o enlace, cobro directo y check-in.
+      delfincheckin.com
+    scene: Liquidación de Booking, ceño.
+    image_extra: Booking payout on laptop, serious host
+    scripts:
+      - >
+        Airbnb no es el único peaje. Booking también. Delfín Check-in le
+        mandas el enlace, te paga y el parte se hace. Te quedas el margen.
+        delfincheckin.com
+
+  - id: maps_antes_ota
+    theme: dinero
+    money_angle: true
+    hook: Maps antes que el anuncio
+    spoken_hook: Que te busquen en Maps. No otra vez en Airbnb.
+    carousel_title: La reseña en Google es una puerta que no cobra comisión
+    carousel_line: Tras el checkout, Delfín recuerda la reseña. Te encuentran.
+    carousel_caption: >
+      Plan Pro: microsite y reseñas Google. Te ven en Maps y reservan
+      en directo. Delfín Check-in, veintinueve noventa y nueve.
+      delfincheckin.com
+    scene: Búsqueda en Maps, por fin sale el piso.
+    image_extra: Google Maps pin on apartment, host looking at phone
+    scripts:
+      - >
+        Si Maps no te nombra, eligen la ficha de la OTA. Delfín Check-in
+        Plan Pro pide la reseña y te da página. Más reservas tuyas.
+        Entra en delfincheckin.com
+
+  - id: tu_pagina_tu_margen
+    theme: dinero
+    money_angle: true
+    hook: Tu página, tu margen
+    spoken_hook: Tu página. Tu reserva. Tu margen. ¿O no?
+    carousel_title: El microsite no es un adorno. Es cobrar sin la OTA
+    carousel_line: Página propia, pago con tarjeta, check-in y parte.
+    carousel_caption: >
+      El Plan Pro es microsite, reseñas y más directa. El parte al MIR
+      sigue cubierto. Delfín Check-in. delfincheckin.com
+    scene: Propietario enseñando su web al huésped por WhatsApp.
+    image_extra: host sending own website link on WhatsApp
+    scripts:
+      - >
+        Si no tienes página, el huésped solo sabe reservar en la
+        plataforma. Delfín Check-in Plan Pro: microsite, pago y parte.
+        Veintinueve noventa y nueve. delfincheckin.com
+
+  - id: horas_que_anuncias
+    theme: dinero
+    money_angle: true
+    hook: El parte te quita el anuncio
+    spoken_hook: Cada hora de parte es una hora que no anuncias.
+    carousel_title: Publicar más noches empieza cuando sueltas el DNI
+    carousel_line: Check-in solo. Tú al anuncio, al precio, a contestar.
+    carousel_caption: >
+      El tiempo del Excel no factura. Delfín Check-in te lo devuelve
+      para coger más reservas. Empieza gratis en delfincheckin.com
+    scene: Anuncio a medias, DNI a medias, nada cerrado.
+    image_extra: unfinished listing and ID papers, host stuck
+    scripts:
+      - >
+        No publicas porque estás copiando pasaportes. Delfín Check-in
+        manda el parte y tú vuelves al anuncio. Eso es dinero. Empieza
+        gratis en delfincheckin.com
+
+  - id: directo_y_mir
+    theme: dinero
+    money_angle: true
+    hook: Directa y parte, juntos
+    spoken_hook: Reserva directa. Parte al MIR. ¿Por qué en dos mundos?
+    carousel_title: Cobrar tú no te libra del Ministerio. El panel cubre ambos
+    carousel_line: Pago directo y check-in digital. Un solo flujo.
+    carousel_caption: >
+      La reserva tuya también lleva parte. Delfín Check-in junta cobro
+      y MIR. Empieza gratis, una propiedad, en delfincheckin.com
+    scene: Dos herramientas, un propietario harto.
+    image_extra: two apps on phone, payments and legal, tired host
+    scripts:
+      - >
+        Cobras en directo y luego vuelves al Excel del DNI. Al revés.
+        Delfín Check-in: pago y parte al Ministerio. Entra en
+        delfincheckin.com
+
+  - id: no_pagues_mirar
+    theme: dinero
+    money_angle: true
+    hook: No pagues para mirar
+    spoken_hook: No pagues para ver si te sirve. Prueba en serio.
+    carousel_title: Una propiedad de prueba. Cero euros. Sin tarjeta
+    carousel_line: El Básico existe para eso. Luego Check-in o Pro.
+    carousel_caption: >
+      Delfín Check-in se prueba: una propiedad, 0 €, sin tarjeta. El
+      envío al MIR y el microsite vienen después. delfincheckin.com
+    scene: Propietario dudando si sacar la tarjeta, no hace falta.
+    image_extra: host putting wallet away, signup on laptop
+    scripts:
+      - >
+        Si te piden la tarjeta para “probar”, desconfía. Delfín Check-in:
+        una propiedad, cero euros. Luego decides Check-in o Pro. Entra
+        en delfincheckin.com
+
+  - id: checkout_google
+    theme: dinero
+    money_angle: true
+    hook: Después del checkout, Google
+    spoken_hook: Se van. ¿Quién les pide la reseña en Google?
+    carousel_title: La reseña no se pide a gritos en el rellano
+    carousel_line: Tras el checkout, Delfín lo recuerda. Maps te empieza a mostrar.
+    carousel_caption: >
+      Plan Pro: recordatorio de reseñas en Google. Te encuentran y
+      reservan sin la comisión de siempre. delfincheckin.com
+    scene: Piso vacío, propietario sin pedir reseña.
+    image_extra: empty apartment after checkout, host thinking
+    scripts:
+      - >
+        El huésped se fue contento y Google no se enteró. Delfín Check-in
+        Plan Pro pide la reseña. Maps, directa, más margen. Entra en
+        delfincheckin.com
+
+  - id: margen_es_la_cuenta
+    theme: dinero
+    money_angle: true
+    hook: La cuenta es el margen
+    spoken_hook: No es facturar más. Es que te quede más.
+    carousel_title: Comisión de menos es alquiler de más. Esa es la hoja
+    carousel_line: Directa, pago a ti, parte al MIR. El neto sube.
+    carousel_caption: >
+      Cada repetición en la OTA recorta el mes. Delfín Check-in te deja
+      cobrar tú. Mira los planes en delfincheckin.com
+    scene: Hoja de márgenes, propietario serio.
+    image_extra: margin spreadsheet on laptop, serious host
+    scripts:
+      - >
+        Puedes tener el calendario lleno y el banco flojo. Delfín Check-in:
+        menos intermediario, pago directo y el parte al Ministerio igual.
+        Más neto cada mes. Entra en delfincheckin.com
+
+  - id: contestar_es_reservar
+    theme: dinero
+    money_angle: true
+    hook: Contestar tarde cuesta noches
+    spoken_hook: Contestas tarde porque estás con el DNI. Pierdes la noche.
+    carousel_title: El mensaje del interesado no espera a que copies un pasaporte
+    carousel_line: El check-in va solo. Tú respondes y cierras la reserva.
+    carousel_caption: >
+      Liberar el parte es tiempo para contestar. Eso llena el calendario.
+      Delfín Check-in, empieza gratis. delfincheckin.com
+    scene: Mensaje sin responder, DNI a medias.
+    image_extra: unread booking inquiry, ID papers, host stressed
+    scripts:
+      - >
+        El interesado escribió. Tú copiabas un DNI. Se fue. Delfín Check-in
+        te devuelve esas horas. Más respuestas, más reservas. Empieza
+        gratis en delfincheckin.com
+
+  - id: pagina_y_tarjeta
+    theme: dinero
+    money_angle: true
+    hook: Página y tarjeta, tú cobras
+    spoken_hook: Página propia. Pago con tarjeta. Tú cobras.
+    carousel_title: Sin ficha de OTA no hay peaje. Hay tu cobro
+    carousel_line: Microsite, Stripe, check-in. El repetidor ya no se te escapa.
+    carousel_caption: >
+      Plan Pro de Delfín Check-in: web, pagos y reseñas. El parte sigue.
+      Veintinueve noventa y nueve. delfincheckin.com
+    scene: Huésped pagando en la web del propietario.
+    image_extra: guest paying on host website on phone
+    scripts:
+      - >
+        Si solo existes en Airbnb, cobras lo que Airbnb dice. Delfín
+        Check-in Plan Pro: tu página, pago con tarjeta y parte al MIR.
+        Entra en delfincheckin.com
+
+  - id: excel_comisiones
+    theme: dinero
+    money_angle: true
+    hook: El Excel de comisiones
+    spoken_hook: El Excel de comisiones no es un negocio. Es un aviso.
+    carousel_title: Si la hoja de la OTA crece, tu neto se encoge
+    carousel_line: Pasa al enlace directo. El check-in no se queda atrás.
+    carousel_caption: >
+      Apuntar comisiones no las baja. Delfín Check-in te da cobro directo
+      y parte al Ministerio. Mira los planes en delfincheckin.com
+    scene: Excel largo de comisiones, propietario cansado.
+    image_extra: long Excel of commissions, tired host
+    scripts:
+      - >
+        La columna de comisiones no para de crecer. Delfín Check-in: el
+        repetidor te paga a ti y el MIR recibe el parte. Más neto.
+        delfincheckin.com
+
+  - id: prueba_luego_pro
+    theme: dinero
+    money_angle: true
+    hook: Empieza gratis, el Pro después
+    spoken_hook: Empieza gratis. El Pro, cuando quieras el microsite.
+    carousel_title: No hace falta el Pro el día uno. Hace falta dejar el Excel
+    carousel_line: Básico o Check-in primero. Microsite cuando toque Maps.
+    carousel_caption: >
+      Prueba sin tarjeta. Pasa a Check-in por el MIR. El Pro es microsite
+      y reseñas. Delfín Check-in. delfincheckin.com
+    scene: Propietario eligiendo plan, sin prisa.
+    image_extra: host choosing plan on website, calm
+    scripts:
+      - >
+        No te vendas el Pro el primer minuto. Delfín Check-in: prueba
+        gratis, Check-in a dos euros, Pro si quieres Maps y directa.
+        Entra en delfincheckin.com
+
+  - id: pro_veintinueve
+    theme: dinero
+    money_angle: true
+    hook: Pro a veintinueve noventa y nueve
+    spoken_hook: Plan Pro. Veintinueve noventa y nueve. Página y reseñas.
+    carousel_title: Microsite y Google no son un extra raro. Están en el Pro
+    carousel_line: 29,99 € al mes. Te encuentran, te pagan a ti, el MIR igual.
+    carousel_caption: >
+      Plan Pro de Delfín Check-in: microsite, reseñas Google y más
+      reservas directas. El check-in y el parte siguen. Mira los planes
+      en delfincheckin.com
+    scene: Propietario viendo el plan Pro, comparando con comisiones.
+    image_extra: host comparing Pro plan vs OTA fees on laptop
+    scripts:
+      - >
+        Si ya quieres página y Maps, Pro son veintinueve noventa y nueve.
+        Delfín Check-in: microsite, reseñas y el parte al Ministerio.
+        Entra en delfincheckin.com
+
+  - id: noches_vacias
+    theme: dinero
+    money_angle: true
+    hook: Noches vacías y solo un anuncio
+    spoken_hook: Tienes noches vacías y solo un anuncio. Eso se paga.
+    carousel_title: Depender de una ficha de OTA deja huecos en el mes
+    carousel_line: Página propia y Maps. Otra puerta. El check-in cubre el MIR.
+    carousel_caption: >
+      Si solo existes en la plataforma, cuando baja el algoritmo bajan
+      las noches. Delfín Check-in Plan Pro te da otra vía. delfincheckin.com
+    scene: Calendario con huecos, propietario serio.
+    image_extra: calendar with empty nights, worried host
+    scripts:
+      - >
+        El calendario con huecos no es mala suerte. Es una sola puerta.
+        Delfín Check-in Plan Pro: microsite y reseñas. Más directa, mismo
+        parte. Entra en delfincheckin.com
+
+  - id: ocupar_mejor
+    theme: dinero
+    money_angle: true
+    hook: Llenar no es cobrar más
+    spoken_hook: Tener el piso lleno no significa que te quede más.
+    carousel_title: Ocupación alta con comisión alta es un mes flojo
+    carousel_line: Directa en lo que puedas. El parte, igual de cubierto.
+    carousel_caption: >
+      Llenar por la OTA no es lo mismo que llenar cobrando tú. Delfín
+      Check-in junta pago directo y check-in. Mira los planes en
+      delfincheckin.com
+    scene: Calendario lleno, liquidación floja, ceño.
+    image_extra: full calendar but small payout, frustrated host
+    scripts:
+      - >
+        Puedes no tener un hueco y aun así ganar poco. Delfín Check-in:
+        el que ya te conoce te paga a ti y el Ministerio recibe el parte.
+        Más neto. delfincheckin.com
+
+  - id: visibilidad_sin_ota
+    theme: dinero
+    money_angle: true
+    hook: Que te encuentren sin la OTA
+    spoken_hook: Que te encuentren ellos. Sin pasar otra vez por la OTA.
+    carousel_title: Si solo te ve Airbnb, solo cobras lo que Airbnb deja
+    carousel_line: Maps, microsite, enlace. El huésped llega a ti.
+    carousel_caption: >
+      Salir de la ficha de la plataforma es visibilidad tuya. Plan Pro
+      de Delfín Check-in: reseñas y página. El parte no se cae.
+      delfincheckin.com
+    scene: Huésped buscando el piso fuera de Airbnb.
+    image_extra: guest searching apartment on Google, not Airbnb
+    scripts:
+      - >
+        Si nadie te encuentra fuera de la OTA, siempre pagas peaje.
+        Delfín Check-in Plan Pro: Maps, microsite y parte al MIR.
+        Entra en delfincheckin.com

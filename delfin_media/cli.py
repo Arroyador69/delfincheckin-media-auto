@@ -53,10 +53,25 @@ def main(argv: list[str] | None = None) -> int:
         return run_doctor(cfg, ci=args.ci)
 
     if args.cmd == "list":
+        from delfin_media.history import inventory, remaining_pains
+
+        stats = inventory()
         print("Dolores")
+        unused_t = {p.id for p in remaining_pains(money=False)}
+        unused_d = {p.id for p in remaining_pains(money=True)}
         for pain in load_pains():
             tag = "dinero" if pain.money_angle else "tiempo/legal"
-            print(f"  {pain.id:24} [{tag}] {pain.hook}")
+            fresh = pain.id in unused_t or pain.id in unused_d
+            mark = "libre" if fresh else "usado"
+            print(f"  {pain.id:24} [{tag}] [{mark}] {pain.hook}")
+        print(
+            f"\nÚnicos sin usar: {stats['tiempo']} tiempo/legal, {stats['dinero']} dinero "
+            f"({stats['tiempo'] + stats['dinero']} Reels, {stats['total']} en total)."
+        )
+        if stats["tiempo"] < 8 or stats["dinero"] < 8:
+            print(
+                "Aviso: quedan pocos guiones únicos. Añade dolores en data/pains_more.yaml."
+            )
         print("Personas")
         for persona in load_personas():
             print(f"  {persona.id:24} {persona.name}, {persona.city}")

@@ -9,10 +9,16 @@ from delfin_media.bank import BANK_DIR, is_video, pick_app_clip, pick_hook, pick
 from delfin_media.captions import write_ass
 from delfin_media.config import Config
 from delfin_media.endcard import make_endcard
-from delfin_media.history import load_published, mark_published, pick_unused_pain
+from delfin_media.history import (
+    load_published,
+    mark_published,
+    pick_unused_pain,
+    pick_unused_script_index,
+    warn_inventory,
+)
 from delfin_media.posts import write_instagram_pack, write_publish_guide, write_reel_captions
 from delfin_media.render import render_reel
-from delfin_media.script import Pain, Persona, build_script, load_pains
+from delfin_media.script import Pain, Persona, build_script, load_pains, pick_pain
 from delfin_media.stories import write_stories_pack
 from delfin_media.tts import concat_voiceovers, speak
 
@@ -34,12 +40,14 @@ def generate_one(
     reel_name: str | None = None,
     hook_file: str | None = None,
 ) -> Path:
+    resolved = pick_pain(pain_id, money_only=money_only)
     pain, persona, script = build_script(
         cfg,
-        pain_id=pain_id,
+        pain_id=resolved.id,
         persona_id=persona_id,
         money_only=money_only,
         use_llm=use_llm,
+        script_index=pick_unused_script_index(resolved),
     )
     slug = _slug(pain, persona)
     work = Path("/tmp/delfin-media") / slug
@@ -53,6 +61,7 @@ def generate_one(
     print(f"→ {slug}")
     print(f"  dolor: {pain.hook}")
     print(f"  hook 3s: {script.spoken_hook}")
+    print(f"  guion: {script.script_key or pain.id}")
     print(f"  persona: {persona.name} ({persona.city})")
     print(f"  cuerpo ({script.source}): {script.text}")
     print(f"  motor voz: {cfg.voice_engine}")
@@ -109,6 +118,7 @@ def generate_one(
         "hook": pain.hook,
         "spoken_hook": script.spoken_hook,
         "script": script.text,
+        "script_key": script.script_key or pain.id,
         "source": script.source,
         "duration_s": round(voice.duration + cfg.endcard_seconds, 2),
         "structure": "hook-app-cierre",
@@ -155,6 +165,7 @@ def generate_day(
     lucia_id = lucia_pain or pick_unused_pain(money=False).id
     pablo_id = pablo_pain or pick_unused_pain(money=True).id
     _assert_carousel_titles_differ(lucia_id, pablo_id)
+    warn_inventory(lucia_id=lucia_id, pablo_id=pablo_id)
 
     pack_n = int(load_published().get("last_pack") or 0) + 1
     dest_root = cfg.ready_dir / f"{pack_n:02d}_pack"
@@ -195,6 +206,7 @@ def generate_day(
     print(f"  stories: {stories}")
     write_publish_guide(dest_root, "01_reel_tiempo", "02_reel_dinero")
     hook_names = []
+    script_keys = []
     for folder in (reel_t, reel_d):
         meta_path = folder / "meta.json"
         if meta_path.exists():
@@ -202,7 +214,10 @@ def generate_day(
             name = payload.get("hook_visual")
             if name:
                 hook_names.append(name)
-    mark_published([lucia_id, pablo_id], pack=pack_n, hooks=hook_names)
+            key = payload.get("script_key")
+            if key:
+                script_keys.append(key)
+    mark_published([lucia_id, pablo_id], pack=pack_n, hooks=hook_names, scripts=script_keys)
     print(f"  guía: {dest_root / 'COMO_PUBLICAR.txt'}")
     print(f"\nTodo en {dest_root}")
     return dest_root

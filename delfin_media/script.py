@@ -4,8 +4,10 @@ import random
 import re
 from dataclasses import dataclass
 
+import yaml
+
 from delfin_media.config import Config, load_yaml
-from delfin_media.paths import ROOT
+from delfin_media.paths import ROOT, data_path
 
 
 @dataclass(frozen=True)
@@ -45,30 +47,67 @@ class Script:
     spoken_hook: str
     text: str
     source: str
+    script_key: str = ""
 
 
 def _clean(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def _pain_from_raw(item: dict) -> Pain:
+    return Pain(
+        id=item["id"],
+        theme=item["theme"],
+        money_angle=bool(item["money_angle"]),
+        hook=item["hook"],
+        spoken_hook=_clean(item.get("spoken_hook") or item["hook"]),
+        carousel_title=_clean(item.get("carousel_title") or ""),
+        carousel_line=_clean(item.get("carousel_line") or ""),
+        carousel_caption=_clean(item.get("carousel_caption") or ""),
+        scene=item["scene"],
+        image_extra=item["image_extra"],
+        scripts=[_clean(s) for s in item["scripts"]],
+    )
+
+
+def _assert_unique_scripts(pains: list[Pain]) -> None:
+    """Cada Reel usa un dolor con hook oral distinto. Sin eso se recicla el locutado."""
+    ids: dict[str, str] = {}
+    hooks: dict[str, str] = {}
+    titles: dict[str, str] = {}
+    errors: list[str] = []
+    for pain in pains:
+        if pain.id in ids:
+            errors.append(f"id duplicado: {pain.id}")
+        ids[pain.id] = pain.id
+        hook = _fold(pain.spoken_hook)
+        if hook in hooks:
+            errors.append(
+                f"hook oral repetido: {pain.id!r} y {hooks[hook]!r} → {pain.spoken_hook!r}"
+            )
+        hooks[hook] = pain.id
+        title = _fold(pain.carousel_title)
+        if title and title in titles:
+            errors.append(
+                f"título de carrusel repetido: {pain.id!r} y {titles[title]!r}"
+            )
+        if title:
+            titles[title] = pain.id
+        if not pain.scripts:
+            errors.append(f"{pain.id}: sin locutado")
+    if errors:
+        raise RuntimeError("Guiones no únicos:\n  - " + "\n  - ".join(errors))
+
+
 def load_pains() -> list[Pain]:
-    raw = load_yaml("pains.yaml")["pains"]
-    return [
-        Pain(
-            id=item["id"],
-            theme=item["theme"],
-            money_angle=bool(item["money_angle"]),
-            hook=item["hook"],
-            spoken_hook=_clean(item.get("spoken_hook") or item["hook"]),
-            carousel_title=_clean(item.get("carousel_title") or ""),
-            carousel_line=_clean(item.get("carousel_line") or ""),
-            carousel_caption=_clean(item.get("carousel_caption") or ""),
-            scene=item["scene"],
-            image_extra=item["image_extra"],
-            scripts=[_clean(s) for s in item["scripts"]],
-        )
-        for item in raw
-    ]
+    raw = list(load_yaml("pains.yaml")["pains"])
+    extra = data_path("pains_more.yaml")
+    if extra.exists():
+        more = yaml.safe_load(extra.read_text(encoding="utf-8")) or {}
+        raw.extend(more.get("pains") or [])
+    pains = [_pain_from_raw(item) for item in raw]
+    _assert_unique_scripts(pains)
+    return pains
 
 
 def load_personas() -> list[Persona]:
@@ -178,11 +217,20 @@ def pick_persona(persona_id: str | None = None) -> Persona:
     return random.choice(personas)
 
 
-def template_script(pain: Pain, persona: Persona, cfg: Config) -> Script:
+def template_script(
+    pain: Pain,
+    persona: Persona,
+    cfg: Config,
+    script_index: int | None = None,
+) -> Script:
     copy_errors = validate_carousel_copy(pain)
     if copy_errors:
         raise RuntimeError(f"Carrusel inválido {pain.id}: {copy_errors}")
-    text = random.choice(pain.scripts)
+    if script_index is None:
+        idx = random.randrange(len(pain.scripts))
+    else:
+        idx = max(0, min(script_index, len(pain.scripts) - 1))
+    text = pain.scripts[idx]
     errors = validate_script(text, cfg, spoken_hook=pain.spoken_hook)
     if errors:
         raise RuntimeError(f"Plantilla inválida {pain.id}: {errors}")
@@ -193,6 +241,7 @@ def template_script(pain: Pain, persona: Persona, cfg: Config) -> Script:
         spoken_hook=pain.spoken_hook,
         text=text,
         source="template",
+        script_key=f"{pain.id}:{idx}",
     )
 
 
@@ -252,10 +301,21 @@ def build_script(
     persona_id: str | None = None,
     money_only: bool = False,
     use_llm: bool = False,
+    script_index: int | None = None,
 ) -> tuple[Pain, Persona, Script]:
     pain = pick_pain(pain_id, money_only=money_only)
     persona = pick_persona(persona_id)
     script = llm_script(pain, persona, cfg) if use_llm else None
     if script is None:
-        script = template_script(pain, persona, cfg)
+        script = template_script(pain, persona, cfg, script_index=script_index)
+    elif not script.script_key:
+        script = Script(
+            pain_id=script.pain_id,
+            persona_id=script.persona_id,
+            hook=script.hook,
+            spoken_hook=script.spoken_hook,
+            text=script.text,
+            source=script.source,
+            script_key=f"{pain.id}:llm",
+        )
     return pain, persona, script

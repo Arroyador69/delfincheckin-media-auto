@@ -152,6 +152,52 @@ app:
     ical_doble: calendario y reservas
     tiempo_es_dinero: confirmar reserva
     multa_parte: credenciales mir
+    plazo_24h: credenciales mir
+    ses_lio: credenciales mir
+    particular_tambien: credenciales mir
+    grupo_documentos: formulario
+    idioma_formulario: formulario
+    plantilla_airbnb: formulario
+    adios_xml: credenciales mir
+    anula_tambien: calendario y reservas
+    tu_confirmas: confirmar reserva
+    basico_no_mir: credenciales mir
+    checkin_dos_euros: credenciales mir
+    solo_quieres_llave: formulario
+    pasaporte_borroso: formulario
+    no_eres_hotel: credenciales mir
+    familia_sin_dni: formulario
+    puente_llegadas: calendario y reservas
+    pv_y_rh: credenciales mir
+    reserva_y_entrada: confirmar reserva
+    mensaje_medianoche: formulario
+    dni_en_el_coche: formulario
+    varios_idiomas: formulario
+    plataforma_no_es_registro: credenciales mir
+    un_enlace_antes: formulario
+    panel_un_sitio: propiedades booking
+    stripe_te_paga: pagina de reservas
+    enlace_whatsapp_pago: pagina de reservas
+    extra_propiedad_dos: propiedades booking
+    standard_sin_anuncios: confirmar reserva
+    cero_sin_tarjeta: propiedades booking
+    payout_espera: pagina de reservas
+    booking_tambien: propiedades booking
+    maps_antes_ota: microsite
+    tu_pagina_tu_margen: microsite
+    horas_que_anuncias: confirmar reserva
+    directo_y_mir: pagina de reservas
+    no_pagues_mirar: propiedades booking
+    checkout_google: microsite
+    margen_es_la_cuenta: microsite
+    contestar_es_reservar: confirmar reserva
+    pagina_y_tarjeta: microsite
+    excel_comisiones: microsite
+    prueba_luego_pro: propiedades booking
+    pro_veintinueve: microsite
+    noches_vacias: calendario y reservas
+    ocupar_mejor: microsite
+    visibilidad_sin_ota: microsite
 
 people_male:
   - id: 2379004
