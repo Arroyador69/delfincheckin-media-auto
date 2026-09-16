@@ -1,4 +1,4 @@
-last_pack: 8
+last_pack: 9
 pains:
 - domingo_dnis
 - dinero_comision
@@ -14,6 +14,8 @@ pains:
 - huesped_repite
 - ical_doble
 - no_saben_que_pueden_mas
+- plazo_24h
+- stripe_te_paga
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -24,3 +26,8 @@ hooks:
 - hombre-estres-e.mp4
 - mujer-estres-d.mp4
 - hombre-estres-c.mp4
+- mujer-estres-a.mp4
+- hombre-estres-a.mp4
+scripts:
+- plazo_24h:0
+- stripe_te_paga:0
