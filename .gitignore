@@ -5,6 +5,7 @@ __pycache__/
 .DS_Store
 .env
 .env.local
+data/tiktok_oauth.json
 output/work/
 output/ready/*.mp4
 output/ready/*.json
@@ -19,6 +20,9 @@ assets/bank/app/*.mov
 assets/bank/app/*.MOV
 assets/bank/hooks/*.mp4
 assets/bank/music/*.mp3
+assets/bank/rooms/wm-*.jpg
+assets/bank/rooms/pexels-*.jpg
+assets/bank/rooms/ov-*.jpg
 output/ready/*/
 .idea/
 .vscode/

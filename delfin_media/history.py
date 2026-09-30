@@ -18,13 +18,20 @@ def _path() -> Path:
 def load_published() -> dict:
     path = _path()
     if not path.exists():
-        return {"pains": [], "last_pack": 0, "hooks": [], "scripts": []}
+        return {"pains": [], "last_pack": 0, "hooks": [], "scripts": [], "rooms": []}
     raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     pains = list(raw.get("pains") or [])
     last_pack = int(raw.get("last_pack") or 0)
     hooks = list(raw.get("hooks") or [])
     scripts = list(raw.get("scripts") or [])
-    return {"pains": pains, "last_pack": last_pack, "hooks": hooks, "scripts": scripts}
+    rooms = list(raw.get("rooms") or [])
+    return {
+        "pains": pains,
+        "last_pack": last_pack,
+        "hooks": hooks,
+        "scripts": scripts,
+        "rooms": rooms,
+    }
 
 
 def _write_published(data: dict) -> None:
@@ -35,6 +42,7 @@ def _write_published(data: dict) -> None:
                 "pains": list(data.get("pains") or []),
                 "hooks": list(data.get("hooks") or []),
                 "scripts": list(data.get("scripts") or []),
+                "rooms": list(data.get("rooms") or []),
             },
             allow_unicode=True,
             sort_keys=False,
@@ -48,6 +56,7 @@ def mark_published(
     pack: int | None = None,
     hooks: list[str] | None = None,
     scripts: list[str] | None = None,
+    rooms: list[str] | None = None,
 ) -> None:
     data = load_published()
     seen = list(data["pains"])
@@ -65,12 +74,26 @@ def mark_published(
     for key in scripts or []:
         if key and key not in used_scripts:
             used_scripts.append(key)
+    used_rooms = list(data.get("rooms") or [])
+    for name in rooms or []:
+        if name and name not in used_rooms:
+            used_rooms.append(name)
+    # Si el banco se ha reciclado entero, vaciar el historial de habitaciones.
+    rooms_dir = Path(__file__).resolve().parents[1] / "assets" / "bank" / "rooms"
+    on_disk = {
+        p.name
+        for p in rooms_dir.glob("*")
+        if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}
+    }
+    if on_disk and used_rooms and set(used_rooms) >= on_disk:
+        used_rooms = list(rooms or [])
     _write_published(
         {
             "last_pack": last,
             "pains": seen,
             "hooks": used_hooks,
             "scripts": used_scripts,
+            "rooms": used_rooms,
         }
     )
 

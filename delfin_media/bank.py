@@ -101,12 +101,41 @@ def _fill(paths: list[Path], n: int) -> list[Path]:
     return chosen
 
 
+def _room_files() -> list[Path]:
+    folder = BANK_DIR / "rooms"
+    if not folder.exists():
+        return []
+    out = [
+        p
+        for p in folder.iterdir()
+        if p.is_file()
+        and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}
+        and p.stat().st_size > 8_000
+    ]
+    return sorted(out, key=lambda p: p.name.lower())
+
+
 def pick_rooms(n: int = 3) -> list[Path]:
-    rooms = _existing(load_bank()["rooms"])
-    if not rooms:
+    """Fotos de habitación para carrusel/stories. Prioriza las aún no usadas."""
+    from delfin_media.history import load_published, mark_published
+
+    rooms = _room_files()
+    if len(rooms) < n:
         sync_bank()
-        rooms = _existing(load_bank()["rooms"])
-    return _fill(rooms, n)
+        rooms = _room_files() or _existing(load_bank().get("rooms") or [])
+    if not rooms:
+        return []
+    used = set(load_published().get("rooms") or [])
+    fresh = [p for p in rooms if p.name not in used]
+    pool = fresh if len(fresh) >= n else rooms
+    chosen = random.sample(pool, min(n, len(pool)))
+    # Completa si el muestreo quedó corto.
+    i = 0
+    while len(chosen) < n:
+        chosen.append(pool[i % len(pool)])
+        i += 1
+    mark_published([], rooms=[p.name for p in chosen])
+    return chosen
 
 
 def _hook_tokens(path: Path) -> set[str]:
