@@ -1,4 +1,4 @@
-last_pack: 23
+last_pack: 24
 pains:
 - domingo_dnis
 - dinero_comision
@@ -44,6 +44,8 @@ pains:
 - ocupar_mejor
 - familia_sin_dni
 - tu_pagina_tu_margen
+- mensaje_medianoche
+- pro_veintinueve
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -60,6 +62,8 @@ hooks:
 - hombre-estres-n.mp4
 - mujer-estres-s.mp4
 - hombre-estres-h.mp4
+- mujer-estres-i.mp4
+- hombre-estres-g.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -91,6 +95,8 @@ scripts:
 - ocupar_mejor:0
 - familia_sin_dni:0
 - tu_pagina_tu_margen:0
+- mensaje_medianoche:0
+- pro_veintinueve:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -98,3 +104,11 @@ rooms:
 - wm-54856682-hotel-hospes-palacio-de-los-patos-panora.jpg
 - wm-148483553-at-berlin-2024-002-jpg.jpg
 - wm-21703109-park-view-hotel-img-6930-jpg.jpg
+- wm-85053755-room-interior-in-the-park-hotel-tokyo-in.jpg
+- wm-136290748-villa-lr-jpg.jpg
+- wm-198126564-villa-tugendhat-haus-house-brno-br-nn-ba.jpg
+- wm-141848157-boone-tavern-hotel-october-2023-sarah-st.jpg
+- wm-41860233-american-homes-and-gardens-1911-18158009.jpg
+- wm-129877970-quisling-towers-apartments-gilman-street.jpg
+- wm-129877939-quisling-towers-apartments-gilman-street.jpg
+- wm-6232287-mount-zion-hotel-img-1662-jpg.jpg
