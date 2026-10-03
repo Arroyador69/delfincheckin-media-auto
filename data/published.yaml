@@ -1,4 +1,4 @@
-last_pack: 24
+last_pack: 25
 pains:
 - domingo_dnis
 - dinero_comision
@@ -46,6 +46,8 @@ pains:
 - tu_pagina_tu_margen
 - mensaje_medianoche
 - pro_veintinueve
+- varios_idiomas
+- visibilidad_sin_ota
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -64,6 +66,8 @@ hooks:
 - hombre-estres-h.mp4
 - mujer-estres-i.mp4
 - hombre-estres-g.mp4
+- mujer-estres-m.mp4
+- hombre-estres-o.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -97,6 +101,8 @@ scripts:
 - tu_pagina_tu_margen:0
 - mensaje_medianoche:0
 - pro_veintinueve:0
+- varios_idiomas:0
+- visibilidad_sin_ota:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -112,3 +118,11 @@ rooms:
 - wm-129877970-quisling-towers-apartments-gilman-street.jpg
 - wm-129877939-quisling-towers-apartments-gilman-street.jpg
 - wm-6232287-mount-zion-hotel-img-1662-jpg.jpg
+- wm-6232390-mount-zion-hotel-img-1690-jpg.jpg
+- wm-144519077-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-69875162-hotel-am-schlosspark-gotha-dsc06570-pano.jpg
+- wm-144519050-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-67672925-waldorf-astoria-hotel-new-york-interiors.jpg
+- wm-33165237-greek-bedroom-waldorf-jpg.jpg
+- wm-151740853-villa-luginsland-march-2024-18-neo-renai.jpg
+- wm-27398252-concorde-lafayette-hotel-paris-room-425.jpg
