@@ -1,4 +1,4 @@
-last_pack: 25
+last_pack: 26
 pains:
 - domingo_dnis
 - dinero_comision
@@ -48,6 +48,8 @@ pains:
 - pro_veintinueve
 - varios_idiomas
 - visibilidad_sin_ota
+- basico_no_mir
+- standard_sin_anuncios
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -68,6 +70,8 @@ hooks:
 - hombre-estres-g.mp4
 - mujer-estres-m.mp4
 - hombre-estres-o.mp4
+- mujer-estres-l.mp4
+- hombre-estres-j.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -103,6 +107,8 @@ scripts:
 - pro_veintinueve:0
 - varios_idiomas:0
 - visibilidad_sin_ota:0
+- basico_no_mir:0
+- standard_sin_anuncios:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -126,3 +132,11 @@ rooms:
 - wm-33165237-greek-bedroom-waldorf-jpg.jpg
 - wm-151740853-villa-luginsland-march-2024-18-neo-renai.jpg
 - wm-27398252-concorde-lafayette-hotel-paris-room-425.jpg
+- wm-170058637-2025-07-13-interior-bedroom-hotel-hlybok.jpg
+- wm-86257138-lake-sylvester-during-the-sunrise-kahura.jpg
+- wm-94406266-2020-the-student-hotel-maastricht-10-jpg.jpg
+- wm-54999512-villa-malaparte-interior-jpg.jpg
+- wm-47897223-koryo-hotel-pyongyang-north-korea-260400.jpg
+- wm-31292441-tokyo-station-hotel-02-jpg.jpg
+- wm-82001146-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-312884-p-ij-nne-and-p-ij-tsalo-jpg.jpg
