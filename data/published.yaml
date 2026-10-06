@@ -1,4 +1,4 @@
-last_pack: 26
+last_pack: 27
 pains:
 - domingo_dnis
 - dinero_comision
@@ -50,6 +50,8 @@ pains:
 - visibilidad_sin_ota
 - basico_no_mir
 - standard_sin_anuncios
+- grupo_documentos
+- contestar_es_reservar
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -72,6 +74,8 @@ hooks:
 - hombre-estres-o.mp4
 - mujer-estres-l.mp4
 - hombre-estres-j.mp4
+- mujer-estres-n.mp4
+- hombre-estres-l.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -109,6 +113,8 @@ scripts:
 - visibilidad_sin_ota:0
 - basico_no_mir:0
 - standard_sin_anuncios:0
+- grupo_documentos:0
+- contestar_es_reservar:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -140,3 +146,11 @@ rooms:
 - wm-31292441-tokyo-station-hotel-02-jpg.jpg
 - wm-82001146-tw-taiwan-taipei-city-zhongzheng-distric.jpg
 - wm-312884-p-ij-nne-and-p-ij-tsalo-jpg.jpg
+- wm-144519094-prohibition-bar-foshay-tower-9th-street.jpg
+- wm-129877974-quisling-towers-apartments-gilman-street.jpg
+- wm-82001140-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-71582479-br-gge-b-st-salvator-kathedrale-2018-855.jpg
+- wm-143519848-bedroom-hotel-pulitzer-8698641138-jpg.jpg
+- wm-141848156-boone-tavern-hotel-october-2023-sarah-st.jpg
+- wm-55712527-hotel-interior-2017-32301033062-jpg.jpg
+- wm-76703415-d-lmen-hausd-lmen-heubach-2019-3260-jpg.jpg
