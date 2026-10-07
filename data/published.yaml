@@ -1,4 +1,4 @@
-last_pack: 27
+last_pack: 28
 pains:
 - domingo_dnis
 - dinero_comision
@@ -52,6 +52,8 @@ pains:
 - standard_sin_anuncios
 - grupo_documentos
 - contestar_es_reservar
+- plantilla_airbnb
+- no_pagues_mirar
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -76,6 +78,8 @@ hooks:
 - hombre-estres-j.mp4
 - mujer-estres-n.mp4
 - hombre-estres-l.mp4
+- mujer-estres-p.mp4
+- hombre-estres-v.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -115,6 +119,8 @@ scripts:
 - standard_sin_anuncios:0
 - grupo_documentos:0
 - contestar_es_reservar:0
+- plantilla_airbnb:0
+- no_pagues_mirar:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -154,3 +160,11 @@ rooms:
 - wm-141848156-boone-tavern-hotel-october-2023-sarah-st.jpg
 - wm-55712527-hotel-interior-2017-32301033062-jpg.jpg
 - wm-76703415-d-lmen-hausd-lmen-heubach-2019-3260-jpg.jpg
+- wm-79823270-hotel-arts-4049264242-jpg.jpg
+- wm-82001144-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-170751510-2025-01-02-bialystok-hotel-branicki-inte.jpg
+- wm-46779187-tower-hotel-executive-twin-jpg.jpg
+- wm-18982968-hotel-du-louvre-paris-room-377-jpg.jpg
+- wm-43170390-machu-picchu-per-2015-07-30-dd-47-jpg.jpg
+- wm-144519038-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-890912-sunset-of-the-forbidden-city-2006-jpg.jpg
