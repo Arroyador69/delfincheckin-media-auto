@@ -1,0 +1,25 @@
+# Postiz (buffer de publicación) — copiar al Mac Mini cuando lo tengas.
+# Repo: https://github.com/gitroomhq/postiz-app
+#
+# 1) Clona Postiz y usa su docker-compose oficial (este archivo es referencia de env).
+# 2) FRONTEND_URL y redirect OAuth deben apuntar a social.delfincheckin.com
+# 3) El Mac genera packs con: python -m delfin_media day
+# 4) Publica/agenda vía API de Postiz (IG/FB/YT/TikTok)
+
+services:
+  postiz:
+    # imagen / build según docs oficiales de Postiz
+    environment:
+      FRONTEND_URL: https://social.delfincheckin.com
+      MAIN_URL: https://social.delfincheckin.com
+      NEXT_PUBLIC_BACKEND_URL: https://social.delfincheckin.com/api
+      JWT_SECRET: change-me
+      DATABASE_URL: postgresql://postiz:postiz@db:5432/postiz
+      REDIS_URL: redis://redis:6379
+      # Meta / YouTube / TikTok: claves de apps en developers
+      # FACEBOOK_APP_ID=
+      # FACEBOOK_APP_SECRET=
+      # YOUTUBE_CLIENT_ID=
+      # YOUTUBE_CLIENT_SECRET=
+      # TIKTOK_CLIENT_ID=
+      # TIKTOK_CLIENT_SECRET=
