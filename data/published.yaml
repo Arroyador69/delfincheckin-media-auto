@@ -1,4 +1,4 @@
-last_pack: 28
+last_pack: 29
 pains:
 - domingo_dnis
 - dinero_comision
@@ -54,6 +54,8 @@ pains:
 - contestar_es_reservar
 - plantilla_airbnb
 - no_pagues_mirar
+- solo_quieres_llave
+- cero_sin_tarjeta
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -80,6 +82,8 @@ hooks:
 - hombre-estres-l.mp4
 - mujer-estres-p.mp4
 - hombre-estres-v.mp4
+- mujer-estres-o.mp4
+- hombre-estres-i.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -121,6 +125,8 @@ scripts:
 - contestar_es_reservar:0
 - plantilla_airbnb:0
 - no_pagues_mirar:0
+- solo_quieres_llave:0
+- cero_sin_tarjeta:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -168,3 +174,11 @@ rooms:
 - wm-43170390-machu-picchu-per-2015-07-30-dd-47-jpg.jpg
 - wm-144519038-foshay-tower-9th-street-and-marquette-av.jpg
 - wm-890912-sunset-of-the-forbidden-city-2006-jpg.jpg
+- wm-129877978-quisling-towers-apartments-gilman-street.jpg
+- wm-144519033-reflection-foshay-tower-9th-street-and-m.jpg
+- wm-16140832-salle-de-bains-en-granite-hotel-nice-jpg.jpg
+- wm-41513635-ceylan-building-taksim-15165854456-jpg.jpg
+- wm-27942395-sunny-room-in-old-apartment-jpg.jpg
+- wm-42872949-parapente-166-jpg.jpg
+- wm-89305022-0549-01-grand-canyon-railroad-depot-4761.jpg
+- wm-32481222-mrs-marianna-costanzo-in-the-living-room.jpg
