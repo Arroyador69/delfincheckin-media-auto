@@ -1,0 +1,42 @@
+Qué grabar para TikTok for Developers (App review)
+=================================================
+
+NO grabes un Reel de Lucía/Pablo. TikTok quiere ver LA APP: login + publicar.
+
+Duración: 60–90 s. Formato mp4 o mov. Menos de 50 MB.
+QuickTime Player → Archivo → Nueva grabación de pantalla.
+Que se lea la barra de direcciones: social.delfincheckin.com
+
+Antes
+-----
+1. Sandbox en developers.tiktok.com (no Production).
+2. Direct Post ON, Login Kit + Content Posting API.
+3. Redirect URI: https://social.delfincheckin.com/oauth/tiktok
+4. En Vercel (proyecto delfin-check-in, mismo que admin/tap/clean/g):
+   Domains → Add → social.delfincheckin.com (DNS CNAME a Vercel).
+5. Claves Sandbox en .env (TIKTOK_CLIENT_KEY / SECRET).
+6. TIKTOK_REDIRECT_URI=https://social.delfincheckin.com/oauth/tiktok
+7. python -m delfin_media day   (si no hay pack)
+8. python -m delfin_media tiktok serve
+9. Cuenta TikTok de Delfín en privado (Sandbox / sin auditar).
+
+Plano a plano
+-------------
+1. 5 s  https://social.delfincheckin.com  (hub Social).
+2. 5 s  https://social.delfincheckin.com/tiktok/  título «Publicar en TikTok».
+3. 10 s Pulsa «Continue with TikTok». Se ve Login Kit. Autoriza user.info.basic y video.publish.
+4. 10 s Vuelves a social.delfincheckin.com. Se ve el nick («se publica en esta cuenta»).
+5. 15 s Preview del Reel 9:16. Edita el caption. Abre visibilidad (vacía al inicio) y elige Only me.
+6. 10 s Comentarios/Duet/Stitch desmarcados. Enciende contenido comercial → Your brand.
+        Lee en voz alta o deja visible: Music Usage Confirmation.
+7. 10 s Pulsa «Publicar en TikTok». Espera el estado (PROCESSING / COMPLETE).
+8. 10 s Abre TikTok (app o web) y muestra el vídeo en privado.
+
+Si algo falla, no subas el vídeo. Repite en Sandbox.
+
+Qué NO hacer
+------------
+- Subir un MP4 del pack como «demo».
+- Grabar solo la terminal.
+- Enviar Production sin este flujo.
+- Mostrar localhost como URL principal (el dominio tiene que ser social.delfincheckin.com).

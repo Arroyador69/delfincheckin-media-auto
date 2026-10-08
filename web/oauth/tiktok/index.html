@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Delfín Check-in · TikTok</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 48px 24px; color: #0B1220; }
+  </style>
+</head>
+<body>
+  <h1>Delfín Check-in</h1>
+  <p id="msg">Conectando con TikTok…</p>
+  <script>
+    (function () {
+      var q = window.location.search || "";
+      var api = "http://127.0.0.1:8765";
+      var msg = document.getElementById("msg");
+      var socialHost = location.hostname === "social.delfincheckin.com";
+      if (!q) {
+        window.location.replace(socialHost ? "/tiktok" : api + "/tiktok");
+        return;
+      }
+      fetch(api + "/api/exchange", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: window.location.href })
+      }).then(function (res) {
+        if (!res.ok) throw new Error("exchange");
+        window.location.replace(socialHost ? "/tiktok" : api + "/tiktok");
+      }).catch(function () {
+        msg.textContent = "Copia esta URL y pégala en el Mac: python -m delfin_media tiktok login --code …";
+      });
+    })();
+  </script>
+</body>
+</html>
