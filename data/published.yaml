@@ -1,4 +1,4 @@
-last_pack: 29
+last_pack: 30
 pains:
 - domingo_dnis
 - dinero_comision
@@ -56,6 +56,8 @@ pains:
 - no_pagues_mirar
 - solo_quieres_llave
 - cero_sin_tarjeta
+- idioma_formulario
+- horas_que_anuncias
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -84,6 +86,8 @@ hooks:
 - hombre-estres-v.mp4
 - mujer-estres-o.mp4
 - hombre-estres-i.mp4
+- mujer-estres-k.mp4
+- hombre-estres-p.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -127,6 +131,8 @@ scripts:
 - no_pagues_mirar:0
 - solo_quieres_llave:0
 - cero_sin_tarjeta:0
+- idioma_formulario:0
+- horas_que_anuncias:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -182,3 +188,11 @@ rooms:
 - wm-42872949-parapente-166-jpg.jpg
 - wm-89305022-0549-01-grand-canyon-railroad-depot-4761.jpg
 - wm-32481222-mrs-marianna-costanzo-in-the-living-room.jpg
+- wm-56538536-hardrock-hotel-5th-floor-ocean-pool-view.jpg
+- wm-99708971-clift-hotel-san-francisco-2009-320788290.jpg
+- wm-20509364-swallow-flying-drinking-jpg.jpg
+- wm-177136625-christmas-room-in-sweden-jpg.jpg
+- wm-126985026-villa-philmonte-3-2022-jpg.jpg
+- wm-60329552-san-andr-s-san-andr-s-y-providencia-colo.jpg
+- wm-50214871-keskuse-14-bedroom-during-rewiring-jpg.jpg
+- wm-186248811-two-bedrooms-of-the-grand-apartment-at-c.jpg
