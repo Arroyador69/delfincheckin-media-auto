@@ -393,6 +393,36 @@ def speak_azure(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceov
     return Voiceover(path=dest, duration=duration + 0.12, words=words)
 
 
+def _macos_voice(persona: Persona) -> str:
+    # Voces nativas es_ES (macOS). Lucía = Flo, Pablo = Eddy.
+    return "Flo" if persona.voice == "female" else "Eddy"
+
+
+def speak_macos(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+    """Reserva local cuando Azure y Edge fallan (útil en el Mac / Mac Mini)."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    aiff = dest.with_suffix(".aiff")
+    voice = _macos_voice(persona)
+    proc = subprocess.run(
+        ["say", "-v", voice, "-o", str(aiff), text],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0 or not aiff.exists():
+        raise RuntimeError(proc.stderr[-800:] or proc.stdout[-800:] or "say falló")
+    raw = dest.with_name(dest.stem + "_macos.mp3")
+    _wav_to_mp3(aiff, raw)
+    if aiff.exists():
+        aiff.unlink()
+    _sweeten(raw, dest)
+    if raw.exists() and raw != dest:
+        raw.unlink(missing_ok=True)
+    duration = _probe_duration(dest)
+    words = _fallback_words(text, duration)
+    print(f"  voz macOS say: {voice}")
+    return Voiceover(path=dest, duration=duration + 0.12, words=words)
+
+
 def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
     if cfg.voice_engine == "azure":
         try:
@@ -404,4 +434,8 @@ def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
             return speak_pocket(text, persona, dest, cfg)
         except Exception as exc:
             print(f"  aviso Pocket TTS: {exc}. Uso Edge.")
-    return speak_edge(text, persona, dest, cfg)
+    try:
+        return speak_edge(text, persona, dest, cfg)
+    except Exception as exc:
+        print(f"  aviso Edge: {exc}. Uso macOS say.")
+        return speak_macos(text, persona, dest, cfg)

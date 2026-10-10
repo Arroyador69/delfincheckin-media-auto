@@ -1,4 +1,4 @@
-last_pack: 30
+last_pack: 31
 pains:
 - domingo_dnis
 - dinero_comision
@@ -58,6 +58,8 @@ pains:
 - cero_sin_tarjeta
 - idioma_formulario
 - horas_que_anuncias
+- datos_mal_puestos
+- ical_sin_solape
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -88,6 +90,8 @@ hooks:
 - hombre-estres-i.mp4
 - mujer-estres-k.mp4
 - hombre-estres-p.mp4
+- mujer-estres-g.mp4
+- hombre-estres-m.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -133,6 +137,8 @@ scripts:
 - cero_sin_tarjeta:0
 - idioma_formulario:0
 - horas_que_anuncias:0
+- datos_mal_puestos:0
+- ical_sin_solape:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -196,3 +202,11 @@ rooms:
 - wm-60329552-san-andr-s-san-andr-s-y-providencia-colo.jpg
 - wm-50214871-keskuse-14-bedroom-during-rewiring-jpg.jpg
 - wm-186248811-two-bedrooms-of-the-grand-apartment-at-c.jpg
+- wm-91700648-pera-palas-hotel-eenpersoonskamer-in-200.jpg
+- wm-169416233-hotel-central-room-jpg.jpg
+- wm-19990946-new-orleans-french-quarter-apartment-liv.jpg
+- wm-31938904-villa-san-michele-interior-05-jpg.jpg
+- wm-27283435-hyatt-fisherman-s-bedroom-2-jpg.jpg
+- wm-89305025-0549-0158-grand-canyon-railroad-depot-47.jpg
+- hotel-cama.jpg
+- wm-154015425-bregenz-cluttered-interiors-compulsive-h.jpg
