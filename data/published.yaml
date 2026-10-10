@@ -1,4 +1,4 @@
-last_pack: 30
+last_pack: 31
 pains:
 - domingo_dnis
 - dinero_comision
@@ -58,6 +58,8 @@ pains:
 - cero_sin_tarjeta
 - idioma_formulario
 - horas_que_anuncias
+- datos_mal_puestos
+- ical_sin_solape
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -90,6 +92,8 @@ hooks:
 - hombre-estres-p.mp4
 - mujer-estres-g.mp4
 - hombre-estres-m.mp4
+- mujer-estres-h.mp4
+- hombre-estres-t.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -135,6 +139,8 @@ scripts:
 - cero_sin_tarjeta:0
 - idioma_formulario:0
 - horas_que_anuncias:0
+- datos_mal_puestos:0
+- ical_sin_solape:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -206,3 +212,11 @@ rooms:
 - wm-89305025-0549-0158-grand-canyon-railroad-depot-47.jpg
 - hotel-cama.jpg
 - wm-154015425-bregenz-cluttered-interiors-compulsive-h.jpg
+- wm-43879961-mexico-its-ancient-and-modern-civilisati.jpg
+- wm-129877962-quisling-towers-apartments-gilman-street.jpg
+- wm-55023509-villa-necchi-campiglio-appartamento-di-n.jpg
+- wm-6232212-mount-zion-hotel-img-1615-jpg.jpg
+- wm-43421603-nini-andrade-silva-aquapura-doudo-valler.jpg
+- wm-131869456-living-room-in-villa-cavrois-en2023-1-jp.jpg
+- wm-144519067-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-129877948-quisling-towers-apartments-gilman-street.jpg
