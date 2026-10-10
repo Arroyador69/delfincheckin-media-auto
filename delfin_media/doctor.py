@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -74,7 +75,17 @@ def run_doctor(cfg: Config, ci: bool = False) -> int:
             f"({cfg.azure_speech_region})"
         )
         if cfg.voice_engine == "azure" and not key:
-            print("  aviso: voice_engine=azure pero falta la clave. Se usará Edge.")
+            print("  ERROR: voice_engine=azure exige AZURE_SPEECH_KEY (Dragon HD). Sin fallback.")
+        elif cfg.voice_engine == "azure" and key:
+            if (cfg.azure_speech_region or "").lower() != "westeurope":
+                print(
+                    f"  aviso: región {cfg.azure_speech_region!r}; "
+                    "recomendado AZURE_SPEECH_REGION=westeurope (S0)."
+                )
+        tt_key = os.environ.get("TIKTOK_CLIENT_KEY", "").strip()
+        print(f"  tiktok: {'clave en .env' if tt_key else 'sin TIKTOK_CLIENT_KEY'}")
+        token_file = ROOT / "data" / "tiktok_oauth.json"
+        print(f"  tiktok sesión: {'ok' if token_file.exists() else 'no hay login'}")
         try:
             import azure.cognitiveservices.speech  # noqa: F401
 

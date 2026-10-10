@@ -424,11 +424,9 @@ def speak_macos(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceov
 
 
 def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
+    """Con voice_engine=azure solo Dragon HD (Ximena/Tristan). Sin Edge ni macOS say."""
     if cfg.voice_engine == "azure":
-        try:
-            return speak_azure(text, persona, dest, cfg)
-        except Exception as exc:
-            print(f"  aviso Azure: {exc}. Uso Edge.")
+        return speak_azure(text, persona, dest, cfg)
     if cfg.voice_engine == "pocket":
         try:
             return speak_pocket(text, persona, dest, cfg)
@@ -437,5 +435,7 @@ def speak(text: str, persona: Persona, dest: Path, cfg: Config) -> Voiceover:
     try:
         return speak_edge(text, persona, dest, cfg)
     except Exception as exc:
-        print(f"  aviso Edge: {exc}. Uso macOS say.")
-        return speak_macos(text, persona, dest, cfg)
+        raise RuntimeError(
+            f"TTS falló ({exc}). Con voice_engine=azure USA Azure Dragon HD; "
+            "revisa AZURE_SPEECH_KEY y AZURE_SPEECH_REGION=westeurope (recurso S0)."
+        ) from exc

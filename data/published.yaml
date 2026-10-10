@@ -1,4 +1,4 @@
-last_pack: 31
+last_pack: 30
 pains:
 - domingo_dnis
 - dinero_comision
@@ -58,8 +58,6 @@ pains:
 - cero_sin_tarjeta
 - idioma_formulario
 - horas_que_anuncias
-- datos_mal_puestos
-- ical_sin_solape
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -137,8 +135,6 @@ scripts:
 - cero_sin_tarjeta:0
 - idioma_formulario:0
 - horas_que_anuncias:0
-- datos_mal_puestos:0
-- ical_sin_solape:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
