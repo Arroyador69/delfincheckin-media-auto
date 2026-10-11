@@ -1,4 +1,4 @@
-last_pack: 31
+last_pack: 32
 pains:
 - domingo_dnis
 - dinero_comision
@@ -60,6 +60,8 @@ pains:
 - horas_que_anuncias
 - datos_mal_puestos
 - ical_sin_solape
+- panel_un_sitio
+- neto_despues_comision
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -94,6 +96,8 @@ hooks:
 - hombre-estres-m.mp4
 - mujer-estres-h.mp4
 - hombre-estres-t.mp4
+- mujer-estres-j.mp4
+- hombre-estres-q.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -141,6 +145,8 @@ scripts:
 - horas_que_anuncias:0
 - datos_mal_puestos:0
 - ical_sin_solape:0
+- panel_un_sitio:0
+- neto_despues_comision:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -220,3 +226,11 @@ rooms:
 - wm-131869456-living-room-in-villa-cavrois-en2023-1-jp.jpg
 - wm-144519067-lobby-foshay-tower-9th-street-and-marque.jpg
 - wm-129877948-quisling-towers-apartments-gilman-street.jpg
+- wm-35095896-tokyo-station-hotel-05-jpg.jpg
+- wm-187101714-modern-bedroom-design-in-a-stylish-hotel.jpg
+- wm-51675416-anacapri-villa-san-michele-living-room-0.jpg
+- wm-187101698-elegant-dining-area-in-a-modern-apartmen.jpg
+- wm-144519099-prohibition-bar-foshay-tower-9th-street.jpg
+- wm-192721009-villa-cavrois-croix-salon-jpg.jpg
+- wm-10369790-villa-del-lupo-giardino-interno-primo-pi.jpg
+- wm-144519102-foshay-tower-9th-street-and-marquette-av.jpg
