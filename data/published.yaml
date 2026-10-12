@@ -1,4 +1,4 @@
-last_pack: 32
+last_pack: 33
 pains:
 - domingo_dnis
 - dinero_comision
@@ -62,6 +62,8 @@ pains:
 - ical_sin_solape
 - panel_un_sitio
 - neto_despues_comision
+- sin_impresora_casa
+- propiedad_extra_clara
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -98,6 +100,8 @@ hooks:
 - hombre-estres-t.mp4
 - mujer-estres-j.mp4
 - hombre-estres-q.mp4
+- mujer-estres-q.mp4
+- hombre-estres-s.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -147,6 +151,8 @@ scripts:
 - ical_sin_solape:0
 - panel_un_sitio:0
 - neto_despues_comision:0
+- sin_impresora_casa:0
+- propiedad_extra_clara:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -234,3 +240,11 @@ rooms:
 - wm-192721009-villa-cavrois-croix-salon-jpg.jpg
 - wm-10369790-villa-del-lupo-giardino-interno-primo-pi.jpg
 - wm-144519102-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-88770147-bedroom-efteling-loonsche-land-hotel-jpg.jpg
+- wm-25213478-hard-days-night-hotel-a-guest-room-liver.jpg
+- wm-6231797-mount-zion-hotel-img-1593-jpg.jpg
+- wm-168960519-2024-04-19-interior-of-hotel-room-of-gos.jpg
+- wm-47703825-premier-room-the-peninsula-paris-4-june.jpg
+- wm-2413512-park-krajobrazowy-lasy-nad-g-rn-liswart.jpg
+- wm-31639181-north-korea-yanggakdo-international-hote.jpg
+- wm-195282457-bedroom-in-loft-apartment-jpg.jpg
