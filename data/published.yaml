@@ -1,4 +1,4 @@
-last_pack: 33
+last_pack: 34
 pains:
 - domingo_dnis
 - dinero_comision
@@ -64,6 +64,8 @@ pains:
 - neto_despues_comision
 - sin_impresora_casa
 - propiedad_extra_clara
+- ses_lio
+- dos_euros_no_gestor
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -102,6 +104,7 @@ hooks:
 - hombre-estres-q.mp4
 - mujer-estres-q.mp4
 - hombre-estres-s.mp4
+- hombre-estres-k.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -153,6 +156,8 @@ scripts:
 - neto_despues_comision:0
 - sin_impresora_casa:0
 - propiedad_extra_clara:0
+- ses_lio:0
+- dos_euros_no_gestor:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -248,3 +253,11 @@ rooms:
 - wm-2413512-park-krajobrazowy-lasy-nad-g-rn-liswart.jpg
 - wm-31639181-north-korea-yanggakdo-international-hote.jpg
 - wm-195282457-bedroom-in-loft-apartment-jpg.jpg
+- wm-144519152-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-49790515-villa-balbianello-3658-planar-5-jpg.jpg
+- wm-195982860-hotel-castle-inn-w-kamienicy-ko-cielskic.jpg
+- wm-33431706-sleeping-room-jpg.jpg
+- wm-65661183-earthquake-ready-high-rise-in-chile-4479.jpg
+- wm-144519156-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-186266999-gallery-of-the-grand-apartments-at-ch-te.jpg
+- wm-27539573-kolde-100-17-future-bedroom-jpg.jpg
