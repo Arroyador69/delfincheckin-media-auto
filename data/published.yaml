@@ -1,4 +1,4 @@
-last_pack: 34
+last_pack: 35
 pains:
 - domingo_dnis
 - dinero_comision
@@ -66,6 +66,8 @@ pains:
 - propiedad_extra_clara
 - ses_lio
 - dos_euros_no_gestor
+- llegada_madrugada
+- cobro_sin_espera
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -105,6 +107,7 @@ hooks:
 - mujer-estres-q.mp4
 - hombre-estres-s.mp4
 - hombre-estres-k.mp4
+- hombre-estres-u.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -158,6 +161,8 @@ scripts:
 - propiedad_extra_clara:0
 - ses_lio:0
 - dos_euros_no_gestor:0
+- llegada_madrugada:0
+- cobro_sin_espera:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -261,3 +266,11 @@ rooms:
 - wm-144519156-foshay-tower-9th-street-and-marquette-av.jpg
 - wm-186266999-gallery-of-the-grand-apartments-at-ch-te.jpg
 - wm-27539573-kolde-100-17-future-bedroom-jpg.jpg
+- wm-19166712-mount-zion-hotel-img-1588-jpg.jpg
+- wm-42646459-hotel-room-interior-at-hotel-radisson-bl.jpg
+- wm-82001154-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-143519853-bedroom-suite-hotel-pulitzer-8697518713.jpg
+- wm-138562508-budapest-astoria-hotel-58-jpg.jpg
+- wm-1722627-top-of-atmosphere-jpg.jpg
+- wm-144519153-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-27552496-paekaare-24-future-bedroom-jpg.jpg
