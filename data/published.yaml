@@ -1,4 +1,4 @@
-last_pack: 35
+last_pack: 36
 pains:
 - domingo_dnis
 - dinero_comision
@@ -68,6 +68,8 @@ pains:
 - dos_euros_no_gestor
 - llegada_madrugada
 - cobro_sin_espera
+- un_panel_todo
+- reseña_trae_directa
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -108,6 +110,7 @@ hooks:
 - hombre-estres-s.mp4
 - hombre-estres-k.mp4
 - hombre-estres-u.mp4
+- hombre-estres-r.mp4
 scripts:
 - plazo_24h:0
 - stripe_te_paga:0
@@ -163,6 +166,8 @@ scripts:
 - dos_euros_no_gestor:0
 - llegada_madrugada:0
 - cobro_sin_espera:0
+- un_panel_todo:0
+- reseña_trae_directa:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -274,3 +279,11 @@ rooms:
 - wm-1722627-top-of-atmosphere-jpg.jpg
 - wm-144519153-foshay-tower-9th-street-and-marquette-av.jpg
 - wm-27552496-paekaare-24-future-bedroom-jpg.jpg
+- wm-6231988-mount-zion-hotel-img-1605-jpg.jpg
+- wm-6231769-mount-zion-hotel-img-1592-jpg.jpg
+- wm-46779190-tower-hotel-standard-jpg.jpg
+- wm-129877155-quisling-towers-apartments-gilman-street.jpg
+- wm-127754678-one-bedroom-living-room-8952196604-jpg.jpg
+- wm-147695847-abaliget-elhagyatott-hotel-20-jpg.jpg
+- wm-81214491-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-37678979-waldorf-colonial-bedroom-jpg.jpg
