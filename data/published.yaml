@@ -1,4 +1,4 @@
-last_pack: 37
+last_pack: 38
 pains:
 - domingo_dnis
 - dinero_comision
@@ -72,6 +72,8 @@ pains:
 - reseña_trae_directa
 - checkin_en_el_avion
 - enlace_cobro_whatsapp
+- antes_del_taxi
+- repetidor_otra_vez
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -172,6 +174,8 @@ scripts:
 - reseña_trae_directa:0
 - checkin_en_el_avion:0
 - enlace_cobro_whatsapp:0
+- antes_del_taxi:0
+- repetidor_otra_vez:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -299,3 +303,11 @@ rooms:
 - wm-16886172-c-17-test-sortie-jpg.jpg
 - wm-25799967-yanggakdo-international-hotel-room-2-jpg.jpg
 - wm-42558211-normal-room-in-beijing-hotel-20150822151.jpg
+- wm-115433094-2007-02-26-apartment-bedroom-on-display.jpg
+- hotel-ventana.jpg
+- wm-115520650-croix-villa-cavrois-chambre-parents-fuse.jpg
+- wm-26751142-paekaare-24-bedroom-jpg.jpg
+- wm-144519128-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-88770004-bedroom-s-pardoes-suite-efteling-hotel-j.jpg
+- wm-170751515-2025-01-02-bialystok-hotel-branicki-inte.jpg
+- wm-81214508-tw-taiwan-taipei-city-zhongzheng-distric.jpg
