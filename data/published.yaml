@@ -1,4 +1,4 @@
-last_pack: 38
+last_pack: 39
 pains:
 - domingo_dnis
 - dinero_comision
@@ -74,6 +74,8 @@ pains:
 - enlace_cobro_whatsapp
 - antes_del_taxi
 - repetidor_otra_vez
+- confirma_y_cierra
+- stripe_entra_hoy
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -176,6 +178,8 @@ scripts:
 - enlace_cobro_whatsapp:0
 - antes_del_taxi:0
 - repetidor_otra_vez:0
+- confirma_y_cierra:0
+- stripe_entra_hoy:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -311,3 +315,11 @@ rooms:
 - wm-88770004-bedroom-s-pardoes-suite-efteling-hotel-j.jpg
 - wm-170751515-2025-01-02-bialystok-hotel-branicki-inte.jpg
 - wm-81214508-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-42573185-disney-aulani-1-bedroom-villa-3-jpg.jpg
+- wm-127754675-villa-del-palmar-cancun-mexico-2012-8952.jpg
+- wm-51316734-fuerte-bordj-el-kebir-mahdia-t-nez-2016.jpg
+- wm-57261643-plate-29-elders-room-png.jpg
+- wm-144519054-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-63380761-the-airy-salon-i-really-enjoy-this-apart.jpg
+- wm-144519059-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-50565338-hotel-telephone-radio-fortepan-57304-jpg.jpg
