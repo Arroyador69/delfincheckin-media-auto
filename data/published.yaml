@@ -1,4 +1,4 @@
-last_pack: 39
+last_pack: 40
 pains:
 - domingo_dnis
 - dinero_comision
@@ -76,6 +76,8 @@ pains:
 - repetidor_otra_vez
 - confirma_y_cierra
 - stripe_entra_hoy
+- no_dni_por_chat
+- cobrar_sin_excel
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -180,6 +182,8 @@ scripts:
 - repetidor_otra_vez:0
 - confirma_y_cierra:0
 - stripe_entra_hoy:0
+- no_dni_por_chat:0
+- cobrar_sin_excel:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -323,3 +327,11 @@ rooms:
 - wm-63380761-the-airy-salon-i-really-enjoy-this-apart.jpg
 - wm-144519059-lobby-foshay-tower-9th-street-and-marque.jpg
 - wm-50565338-hotel-telephone-radio-fortepan-57304-jpg.jpg
+- wm-42573184-disney-aulani-1-bedroom-villa-1-jpg.jpg
+- wm-32481223-mrs-marianna-costanzo-in-the-living-room.jpg
+- wm-5445619-tugendhat-living-room-jpg.jpg
+- wm-27398241-concorde-lafayette-hotel-paris-room-425.jpg
+- wm-195282459-bed-under-skylight-jpg.jpg
+- wm-41886081-american-homes-and-gardens-1905-18124877.jpg
+- wm-26779556-hotel-arista-room-jpg.jpg
+- wm-6231972-mount-zion-hotel-img-1603-jpg.jpg
