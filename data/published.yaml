@@ -1,4 +1,4 @@
-last_pack: 40
+last_pack: 41
 pains:
 - domingo_dnis
 - dinero_comision
@@ -78,6 +78,8 @@ pains:
 - stripe_entra_hoy
 - no_dni_por_chat
 - cobrar_sin_excel
+- tres_apps_abiertas
+- menos_gestor_mas_neto
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -184,6 +186,8 @@ scripts:
 - stripe_entra_hoy:0
 - no_dni_por_chat:0
 - cobrar_sin_excel:0
+- tres_apps_abiertas:0
+- menos_gestor_mas_neto:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -335,3 +339,11 @@ rooms:
 - wm-41886081-american-homes-and-gardens-1905-18124877.jpg
 - wm-26779556-hotel-arista-room-jpg.jpg
 - wm-6231972-mount-zion-hotel-img-1603-jpg.jpg
+- wm-26190478-iss034e016601-stratocumulus-clouds-pacif.jpg
+- wm-144519100-prohibition-bar-foshay-tower-9th-street.jpg
+- wm-82001137-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-144519057-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-17601186-hotel-concorde-lafayette-paris-room-2412.jpg
+- wm-142550487-iss-66-atmospheric-plume-from-2022-hunga.jpg
+- wm-57092672-palace-of-vizcaya-interiors-miami-panora.jpg
+- wm-89305004-0549-0003-grand-canyon-railroad-depot-47.jpg
