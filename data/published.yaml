@@ -1,4 +1,4 @@
-last_pack: 41
+last_pack: 42
 pains:
 - domingo_dnis
 - dinero_comision
@@ -80,6 +80,8 @@ pains:
 - cobrar_sin_excel
 - tres_apps_abiertas
 - menos_gestor_mas_neto
+- huésped_ya_en_escalera
+- anuncio_sin_tiempo
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -188,6 +190,8 @@ scripts:
 - cobrar_sin_excel:0
 - tres_apps_abiertas:0
 - menos_gestor_mas_neto:0
+- huésped_ya_en_escalera:0
+- anuncio_sin_tiempo:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -347,3 +351,11 @@ rooms:
 - wm-142550487-iss-66-atmospheric-plume-from-2022-hunga.jpg
 - wm-57092672-palace-of-vizcaya-interiors-miami-panora.jpg
 - wm-89305004-0549-0003-grand-canyon-railroad-depot-47.jpg
+- wm-31938903-villa-san-michele-interior-04-jpg.jpg
+- wm-4084676-villa-boscoreale-plan-png.jpg
+- wm-129877956-quisling-towers-apartments-gilman-street.jpg
+- apto-mesa.jpg
+- wm-79695687-baikal-ice-on-sunset-jpg.jpg
+- wm-73972281-hotel-luna-maya-4881234213-jpg.jpg
+- wm-251339-sonnenuntergang-bodensee-jpg.jpg
+- wm-129877991-quisling-towers-apartments-gilman-street.jpg
