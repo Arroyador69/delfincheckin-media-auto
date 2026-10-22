@@ -1,4 +1,4 @@
-last_pack: 42
+last_pack: 43
 pains:
 - domingo_dnis
 - dinero_comision
@@ -82,6 +82,8 @@ pains:
 - menos_gestor_mas_neto
 - huésped_ya_en_escalera
 - anuncio_sin_tiempo
+- solo_confirmas
+- maps_antes_booking
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -192,6 +194,8 @@ scripts:
 - menos_gestor_mas_neto:0
 - huésped_ya_en_escalera:0
 - anuncio_sin_tiempo:0
+- solo_confirmas:0
+- maps_antes_booking:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -359,3 +363,11 @@ rooms:
 - wm-73972281-hotel-luna-maya-4881234213-jpg.jpg
 - wm-251339-sonnenuntergang-bodensee-jpg.jpg
 - wm-129877991-quisling-towers-apartments-gilman-street.jpg
+- wm-97711462-artchapiz2-artchapiz-es-apartment-rental.jpg
+- wm-129877965-quisling-towers-apartments-gilman-street.jpg
+- wm-73462291-large-cloud-over-mexican-landscape-jpg.jpg
+- wm-144519160-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-42558210-normal-room-in-beijing-hotel-20150822151.jpg
+- wm-168960543-2024-04-19-interior-of-hotel-room-of-gos.jpg
+- wm-140933756-hotel-gillow-room-jpg.jpg
+- wm-58655855-jpg.jpg
