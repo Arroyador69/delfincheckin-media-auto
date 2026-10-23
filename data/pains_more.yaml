@@ -1371,3 +1371,222 @@ pains:
         No copies el documento a las once de la noche. Delfín Check-in:
         el huésped rellena, tú confirmas, el envío al MIR puede ir.
         Empieza gratis en delfincheckin.com
+
+  # --- Ampliación pack 44+ (tiempo casi agotado) ---
+
+  - id: llave_sin_papel
+    theme: tiempo
+    money_angle: false
+    hook: La llave, sin papeleo
+    spoken_hook: Das la llave. El parte ya debería estar hecho.
+    carousel_title: Entregar la llave no es el momento de pedir el DNI
+    carousel_line: Check-in antes. En el portal solo abres.
+    carousel_caption: >
+      Si el formulario llega tarde, el rellano se convierte en oficina.
+      Delfín Check-in lo adelanta. Una propiedad gratis en
+      delfincheckin.com
+    scene: Propietario con llave, sin papeles en la mano.
+    image_extra: host handing key no paperwork
+    scripts:
+      - >
+        En el portal no toca teclear. Delfín Check-in: el huésped ya
+        rellenó y el envío al MIR puede ir. Empieza gratis en
+        delfincheckin.com
+
+  - id: parte_antes_cafe
+    theme: tiempo
+    money_angle: false
+    hook: Antes del café
+    spoken_hook: El parte hecho antes del café. No a las once en el portal.
+    carousel_title: El check-in digital se resuelve por la mañana, no al llegar
+    carousel_line: Enlace previo. Datos listos. Tú desayunas tranquilo.
+    carousel_caption: >
+      Adelantar el formulario te quita el pico de estrés. Delfín
+      Check-in. Empieza gratis, sin tarjeta, en delfincheckin.com
+    scene: Café y móvil con check-in completado.
+    image_extra: morning coffee and completed check-in phone
+    scripts:
+      - >
+        Mejor con el café que con la maleta en la puerta. Delfín
+        Check-in manda el enlace, ellos rellenan, el MIR recibe.
+        Empieza gratis en delfincheckin.com
+
+  - id: no_fotos_borrosas
+    theme: legal
+    money_angle: false
+    hook: Fotos borrosas otra vez
+    spoken_hook: Otra foto borrosa del pasaporte. Eso no vale para el MIR.
+    carousel_title: Una captura mal hecha no sustituye el registro de viajeros
+    carousel_line: Formulario claro. Envío al Ministerio. Sin pelearte con el zoom.
+    carousel_caption: >
+      Interior necesita datos legibles, no un chat lleno de capturas.
+      Delfín Check-in. Empieza gratis en delfincheckin.com
+    scene: Pasaporte borroso en WhatsApp.
+    image_extra: blurry passport photo on whatsapp
+    scripts:
+      - >
+        Zoom, luz mala, otra captura. Delfín Check-in: el viajero
+        escribe bien sus datos y el parte puede ir al MIR. Empieza
+        gratis en delfincheckin.com
+
+  - id: domingo_libre_de_verdad
+    theme: tiempo
+    money_angle: false
+    hook: Domingo libre de verdad
+    spoken_hook: ¿Domingo libre o domingo con el Excel del parte?
+    carousel_title: Recuperar el fin de semana empieza por quitar el papeleo
+    carousel_line: Check-in digital. Envío al MIR. Tú fuera del portátil.
+    carousel_caption: >
+      Si el parte te come el domingo, no es descanso. Delfín Check-in
+      lo automatiza. Una propiedad gratis en delfincheckin.com
+    scene: Domingo en la playa vs portátil.
+    image_extra: beach sunday vs laptop paperwork
+    scripts:
+      - >
+        El Excel del parte no es plan de domingo libre. Delfín Check-in:
+        enlace al huésped, formulario y envío al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: llegada_en_grupo
+    theme: tiempo
+    money_angle: false
+    hook: Llegan todos a la vez
+    spoken_hook: Llegan seis a la vez. ¿Vas a pedir seis pasaportes?
+    carousel_title: Un grupo no se registra en el rellano uno por uno
+    carousel_line: Cada viajero rellena antes. Tú abres una vez.
+    carousel_caption: >
+      Familias y grupos multiplican el caos si lo haces a mano. Delfín
+      Check-in. Empieza gratis en delfincheckin.com
+    scene: Grupo en el portal con maletas.
+    image_extra: group of guests at apartment door
+    scripts:
+      - >
+        Seis maletas y tú con el móvil. Delfín Check-in: cada uno
+        rellenó antes y el MIR puede tener el parte. Empieza gratis en
+        delfincheckin.com
+
+  - id: aviso_plazo_corto
+    theme: legal
+    money_angle: false
+    hook: El plazo no espera
+    spoken_hook: El plazo del parte corre. No cuando puedas.
+    carousel_title: Comunicar tarde al MIR no es una opción cómoda
+    carousel_line: Check-in a tiempo. Envío al Ministerio sin improvisar.
+    carousel_caption: >
+      Interior pide plazos cortos. Delfín Check-in adelanta el
+      formulario. Empieza gratis en delfincheckin.com
+    scene: Reloj y móvil con aviso.
+    image_extra: clock and phone deadline stress host
+    scripts:
+      - >
+        Dejarlo para luego es jugar con el plazo. Delfín Check-in: el
+        viajero rellena antes y el envío al MIR puede ir. Empieza
+        gratis en delfincheckin.com
+
+  - id: menos_chat_mas_formulario
+    theme: tiempo
+    money_angle: false
+    hook: Menos chat, más formulario
+    spoken_hook: Deja el hilo eterno. Manda el enlace del check-in.
+    carousel_title: WhatsApp no es el sistema de registro de viajeros
+    carousel_line: Un enlace. Datos oficiales. Parte al MIR.
+    carousel_caption: >
+      El chat sirve para la llave, no para el expediente. Delfín
+      Check-in. Una propiedad gratis en delfincheckin.com
+    scene: Chat largo vs enlace corto.
+    image_extra: long whatsapp thread vs short form link
+    scripts:
+      - >
+        Veinte mensajes y aún falta un dato del documento. Delfín
+        Check-in manda el enlace de check-in y el envío al MIR.
+        Empieza gratis en delfincheckin.com
+
+  - id: noche_sin_teclear
+    theme: tiempo
+    money_angle: false
+    hook: Noche sin teclear
+    spoken_hook: Por la noche solo abres. No tecleas pasaportes.
+    carousel_title: La llegada nocturna no justifica improvisar el parte
+    carousel_line: Formulario de día. Por la noche, llave y punto.
+    carousel_caption: >
+      Adelanta el check-in y duerme. Delfín Check-in. Empieza gratis
+      en delfincheckin.com
+    scene: Noche en el portal, solo llave.
+    image_extra: night arrival key only no laptop
+    scripts:
+      - >
+        A las doce de la noche no hay oficina. Delfín Check-in: el
+        parte puede estar hecho y tú solo abres. Empieza gratis en
+        delfincheckin.com
+
+  - id: directa_sin_peaje
+    theme: dinero
+    money_angle: true
+    hook: Directa sin peaje
+    spoken_hook: Reserva directa. Sin peaje de plataforma en esa noche.
+    carousel_title: Cada noche en directa es margen que no se va en comisión
+    carousel_line: Enlace propio, cobro a ti, parte al MIR cubierto.
+    carousel_caption: >
+      No hace falta llenar solo con OTA. Delfín Check-in te da cobro
+      directo y check-in. Empieza gratis en delfincheckin.com
+    scene: Reserva directa confirmada en el móvil.
+    image_extra: direct booking confirmation on phone
+    scripts:
+      - >
+        Una noche sin comisión de plataforma ya cambia el mes. Delfín
+        Check-in: cobro directo y envío al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: precio_neto_claro
+    theme: dinero
+    money_angle: true
+    hook: Precio neto claro
+    spoken_hook: Pon el precio pensando en el neto, no solo en el anuncio.
+    carousel_title: El precio del anuncio miente si no restas la comisión
+    carousel_line: Compara OTA y directa. El check-in sigue siendo tuyo.
+    carousel_caption: >
+      El bruto engaña. El neto paga facturas. Delfín Check-in ayuda a
+      cobrar fuera del peaje. delfincheckin.com
+    scene: Calculadora y anuncio.
+    image_extra: calculator and listing price comparison
+    scripts:
+      - >
+        El anuncio alto y el neto flojo. Delfín Check-in: directa
+        cuando puedas y parte al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: calendar_sin_solapes
+    theme: dinero
+    money_angle: true
+    hook: Calendario sin solapes
+    spoken_hook: Un solape te cuesta una noche y una reseña.
+    carousel_title: Bloquear fechas evita vender dos veces la misma noche
+    carousel_line: iCal al día. Directa y OTA sin pisarse. MIR cubierto.
+    carousel_caption: >
+      El caos del calendario se come el margen. Delfín Check-in con
+      iCal. Mira delfincheckin.com
+    scene: Dos reservas el mismo día.
+    image_extra: double booking calendar conflict
+    scripts:
+      - >
+        Dos reservas para una sola noche. Desastre. Delfín Check-in
+        bloquea con iCal y el parte al MIR sigue en marcha. Entra en
+        delfincheckin.com
+
+  - id: repetir_sin_comision
+    theme: dinero
+    money_angle: true
+    hook: Que vuelva sin comisión
+    spoken_hook: Si ya te conoce, que no pase otra vez por la OTA.
+    carousel_title: El huésped repetidor merece tu enlace, no otro peaje
+    carousel_line: WhatsApp con tu link. Cobro a ti. Parte al Ministerio.
+    carousel_caption: >
+      El que vuelve no debería costarte otra comisión. Delfín Check-in.
+      Empieza gratis en delfincheckin.com
+    scene: Huésped conocido escribiendo por WhatsApp.
+    image_extra: returning guest whatsapp message host
+    scripts:
+      - >
+        Ya estuvo aquí. No hace falta otra comisión. Delfín Check-in:
+        tu enlace, tu cobro y el MIR. Empieza gratis en
+        delfincheckin.com

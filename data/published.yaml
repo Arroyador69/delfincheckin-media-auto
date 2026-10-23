@@ -1,4 +1,4 @@
-last_pack: 43
+last_pack: 44
 pains:
 - domingo_dnis
 - dinero_comision
@@ -84,6 +84,8 @@ pains:
 - anuncio_sin_tiempo
 - solo_confirmas
 - maps_antes_booking
+- llegada_en_grupo
+- precio_neto_claro
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -196,6 +198,8 @@ scripts:
 - anuncio_sin_tiempo:0
 - solo_confirmas:0
 - maps_antes_booking:0
+- llegada_en_grupo:0
+- precio_neto_claro:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -371,3 +375,11 @@ rooms:
 - wm-168960543-2024-04-19-interior-of-hotel-room-of-gos.jpg
 - wm-140933756-hotel-gillow-room-jpg.jpg
 - wm-58655855-jpg.jpg
+- wm-82001145-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-192721008-villa-cavrois-croix-le-salon-jpg.jpg
+- salon-grande.jpg
+- wm-21816337-porter-flats-apartments-2012-lewis-and-c.jpg
+- wm-74267113-bishkek-kyrgyzstan-42851645590-jpg.jpg
+- wm-83792211-apartment-of-a-wealthy-citizen-of-st-pet.jpg
+- wm-41856047-american-homes-and-gardens-1911-18154677.jpg
+- wm-39693114-hotel-room-interior-at-apartment-hotel-o.jpg
