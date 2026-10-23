@@ -1533,9 +1533,9 @@ pains:
     image_extra: direct booking confirmation on phone
     scripts:
       - >
-        Una noche sin comisión de plataforma ya cambia el mes. Delfín
-        Check-in: cobro directo y envío al MIR. Empieza gratis en
-        delfincheckin.com
+        Una noche sin comisión de plataforma ya te cambia el mes.
+        Delfín Check-in: cobro directo y envío al MIR. Empieza gratis
+        en delfincheckin.com
 
   - id: precio_neto_claro
     theme: dinero
