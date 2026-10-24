@@ -1,4 +1,4 @@
-last_pack: 44
+last_pack: 45
 pains:
 - domingo_dnis
 - dinero_comision
@@ -86,6 +86,8 @@ pains:
 - maps_antes_booking
 - llegada_en_grupo
 - precio_neto_claro
+- no_fotos_borrosas
+- directa_sin_peaje
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -200,6 +202,8 @@ scripts:
 - maps_antes_booking:0
 - llegada_en_grupo:0
 - precio_neto_claro:0
+- no_fotos_borrosas:0
+- directa_sin_peaje:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -383,3 +387,11 @@ rooms:
 - wm-83792211-apartment-of-a-wealthy-citizen-of-st-pet.jpg
 - wm-41856047-american-homes-and-gardens-1911-18154677.jpg
 - wm-39693114-hotel-room-interior-at-apartment-hotel-o.jpg
+- wm-121556710-villa-cavrois-interior-q518747-8-jpg.jpg
+- wm-20093481-imperial-hotel-osaka-regular-floor-stand.jpg
+- wm-144519107-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-144519112-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-82001174-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-51675247-anacapri-villa-san-michele-living-room-0.jpg
+- wm-145644647-new-orleans-hotel-bed-february-2024-by-m.jpg
+- wm-144519138-foshay-tower-9th-street-and-marquette-av.jpg
