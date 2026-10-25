@@ -1,4 +1,4 @@
-last_pack: 45
+last_pack: 46
 pains:
 - domingo_dnis
 - dinero_comision
@@ -88,6 +88,8 @@ pains:
 - precio_neto_claro
 - no_fotos_borrosas
 - directa_sin_peaje
+- domingo_libre_de_verdad
+- repetir_sin_comision
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -204,6 +206,8 @@ scripts:
 - precio_neto_claro:0
 - no_fotos_borrosas:0
 - directa_sin_peaje:0
+- domingo_libre_de_verdad:0
+- repetir_sin_comision:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -395,3 +399,11 @@ rooms:
 - wm-51675247-anacapri-villa-san-michele-living-room-0.jpg
 - wm-145644647-new-orleans-hotel-bed-february-2024-by-m.jpg
 - wm-144519138-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-123986667-cuolm-sura-1585m-21-09-2022-d-j-b-03-jpg.jpg
+- wm-192721032-villa-cavrois-croix-salon-vu-de-l-tage-j.jpg
+- wm-51675413-anacapri-villa-san-michele-living-room-0.jpg
+- wm-48324335-d-lmen-kirchspiel-oedlerteich-2016-1932.jpg
+- wm-27398251-concorde-lafayette-hotel-paris-room-425.jpg
+- wm-131869459-living-room-in-villa-cavrois-en2023-5-jp.jpg
+- wm-63718831-conrad-indianapolis-hotel-room-jpg.jpg
+- wm-79882580-pripjat-2019-30-jpg.jpg
