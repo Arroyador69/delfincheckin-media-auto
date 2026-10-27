@@ -1,4 +1,4 @@
-last_pack: 47
+last_pack: 48
 pains:
 - domingo_dnis
 - dinero_comision
@@ -92,6 +92,8 @@ pains:
 - repetir_sin_comision
 - noche_sin_teclear
 - comision_cada_vez
+- llave_sin_papel
+- directa_fin_de_semana
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -212,6 +214,8 @@ scripts:
 - repetir_sin_comision:0
 - noche_sin_teclear:0
 - comision_cada_vez:0
+- llave_sin_papel:0
+- directa_fin_de_semana:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -419,3 +423,11 @@ rooms:
 - wm-64783522-seattle-great-wheel-seattle-washington-e.jpg
 - apto-moderno.jpg
 - wm-48868282-washington-mayfair-hotel-bedroom-jpg.jpg
+- habitacion-madera.jpg
+- wm-144519078-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-87134428-university-arms-hotel-room-interior-1999.jpg
+- wm-144519110-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-73957509-hotel-hacienda-los-laureles-44951596531.jpg
+- wm-6232189-mount-zion-hotel-img-1614-jpg.jpg
+- wm-129877963-quisling-towers-apartments-gilman-street.jpg
+- wm-33431713-flat-jpg.jpg
