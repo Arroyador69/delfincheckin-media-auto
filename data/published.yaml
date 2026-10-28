@@ -1,4 +1,4 @@
-last_pack: 48
+last_pack: 49
 pains:
 - domingo_dnis
 - dinero_comision
@@ -94,6 +94,8 @@ pains:
 - comision_cada_vez
 - llave_sin_papel
 - directa_fin_de_semana
+- aviso_plazo_corto
+- hueco_entre_reservas
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -216,6 +218,8 @@ scripts:
 - comision_cada_vez:0
 - llave_sin_papel:0
 - directa_fin_de_semana:0
+- aviso_plazo_corto:0
+- hueco_entre_reservas:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -431,3 +435,11 @@ rooms:
 - wm-6232189-mount-zion-hotel-img-1614-jpg.jpg
 - wm-129877963-quisling-towers-apartments-gilman-street.jpg
 - wm-33431713-flat-jpg.jpg
+- wm-144519149-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-88770152-bedroom-efteling-loonsche-land-hotel-jpg.jpg
+- wm-129877935-quisling-towers-apartments-gilman-street.jpg
+- wm-42080743-cottage-residences-or-a-series-of-design.jpg
+- wm-195256275-sauna-room-next-to-a-bedroom-in-a-modern.jpg
+- wm-144519098-prohibition-bar-foshay-tower-9th-street.jpg
+- wm-6232141-mount-zion-hotel-img-1612-jpg.jpg
+- wm-84992355-jw-marriott-hotel-new-orleans-march-2012.jpg
