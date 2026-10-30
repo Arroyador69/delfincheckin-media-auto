@@ -1717,8 +1717,8 @@ pains:
     scripts:
       - >
         Si esperas al rellano, ya vas tarde otra vez. Delfín Check-in:
-        enlace previo, formulario y parte al MIR. Empieza gratis en
-        delfincheckin.com
+        enlace antes de llegar, formulario y parte al MIR. Empieza
+        gratis en delfincheckin.com
 
   - id: sin_cola_en_portal
     theme: tiempo
