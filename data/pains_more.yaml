@@ -1590,3 +1590,186 @@ pains:
         Ya estuvo aquí. No hace falta otra comisión. Delfín Check-in:
         tu enlace, tu cobro y el MIR. Empieza gratis en
         delfincheckin.com
+
+  # --- Ampliación pack 50+ (dinero casi agotado) ---
+
+  - id: cobro_antes_llegada
+    theme: dinero
+    money_angle: true
+    hook: Cobra antes de que lleguen
+    spoken_hook: Cobra antes de la llegada. No improvises el bizum en el portal.
+    carousel_title: El cobro claro evita líos en el check-in presencial
+    carousel_line: Enlace con fechas. Pago hecho. Parte al MIR aparte.
+    carousel_caption: >
+      Si el dinero queda a medias, el rellano se complica. Delfín
+      Check-in: enlace de pago y check-in digital. Empieza gratis en
+      delfincheckin.com
+    scene: Enlace de pago enviado antes de la llegada.
+    image_extra: payment link sent before guest arrival
+    scripts:
+      - >
+        En el portal no es momento de hablar de dinero. Delfín Check-in:
+        enlace de pago antes y parte al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: margen_del_mes
+    theme: dinero
+    money_angle: true
+    hook: El margen del mes
+    spoken_hook: Al final de mes mira el margen, no solo las noches llenas.
+    carousel_title: Llenar el calendario no basta si la comisión se come el neto
+    carousel_line: Directa en lo posible. Check-in y MIR cubiertos.
+    carousel_caption: >
+      Ocupación alta con poco neto es un mal mes. Delfín Check-in te
+      ayuda a cobrar fuera del peaje. delfincheckin.com
+    scene: Resumen mensual con comisión restada.
+    image_extra: monthly payout vs occupancy chart host
+    scripts:
+      - >
+        El mes lleno y el margen flojo. Delfín Check-in: cobra en
+        directa cuando puedas y manda el parte al MIR. Empieza en
+        delfincheckin.com
+
+  - id: sin_esperar_liquidacion
+    theme: dinero
+    money_angle: true
+    hook: Sin esperar la liquidación
+    spoken_hook: ¿Otra semana esperando la liquidación de la plataforma?
+    carousel_title: Esperar el payout de la OTA no es tener el dinero
+    carousel_line: Stripe a tu cuenta. El check-in digital al Ministerio.
+    carousel_caption: >
+      Menos espera, más control. Delfín Check-in junta cobro directo y
+      parte. Mira delfincheckin.com
+    scene: Propietario mirando fecha de payout.
+    image_extra: host waiting for OTA payout date
+    scripts:
+      - >
+        La reserva ya acabó y el dinero aún no llega. Delfín Check-in:
+        pago directo con Stripe y envío al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: anuncio_y_parte
+    theme: dinero
+    money_angle: true
+    hook: Anuncio y parte a la vez
+    spoken_hook: Si el parte te come la mañana, el anuncio no se publica.
+    carousel_title: Automatizar el MIR te devuelve horas para vender noches
+    carousel_line: Check-in solo. Tú vuelves al precio y a Maps.
+    carousel_caption: >
+      Más tiempo en el anuncio es más margen potencial. Delfín Check-in.
+      Empieza gratis en delfincheckin.com
+    scene: Anuncio a medias y parte abierto.
+    image_extra: half finished listing and traveler form
+    scripts:
+      - >
+        Quieres subir el anuncio y estás con un DNI. Delfín Check-in
+        hace el check-in y el envío al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: guest_paga_ti
+    theme: dinero
+    money_angle: true
+    hook: Que te paguen a ti
+    spoken_hook: Que el huésped te pague a ti. No otra vez a la plataforma.
+    carousel_title: El pago directo cambia quién se queda la comisión
+    carousel_line: Enlace propio. Cobro en tu cuenta. Parte al MIR.
+    carousel_caption: >
+      Misma noche, distinto neto. Delfín Check-in. Empieza gratis en
+      delfincheckin.com
+    scene: Transferencia a cuenta del propietario.
+    image_extra: bank transfer to host account
+    scripts:
+      - >
+        Misma estancia, distinto destino del dinero otra vez. Delfín
+        Check-in: cobro directo y parte al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: menos_peaje_ota
+    theme: dinero
+    money_angle: true
+    hook: Menos peaje OTA
+    spoken_hook: Cada peaje de la OTA es margen que no llega a tu cuenta.
+    carousel_title: Reducir noches con comisión mejora el mes sin subir precio
+    carousel_line: Alguna directa. El check-in sigue al Ministerio.
+    carousel_caption: >
+      No hace falta abandonar Airbnb: hace falta otra puerta. Delfín
+      Check-in. delfincheckin.com
+    scene: Comparativa comisión vs directa.
+    image_extra: commission vs direct booking comparison
+    scripts:
+      - >
+        No subas solo el precio: baja el peaje. Delfín Check-in: directa
+        cuando puedas y envío al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: mensaje_antes_llegar
+    theme: tiempo
+    money_angle: false
+    hook: Mensaje antes de llegar
+    spoken_hook: Mándales el enlace antes. No cuando ya están abajo.
+    carousel_title: El check-in se adelanta con un mensaje, no en el portal
+    carousel_line: Enlace previo. Formulario hecho. Tú con la llave.
+    carousel_caption: >
+      Un mensaje a tiempo evita el caos. Delfín Check-in. Empieza
+      gratis en delfincheckin.com
+    scene: Mensaje con enlace horas antes.
+    image_extra: host sending check-in link message
+    scripts:
+      - >
+        Si esperas al rellano, ya vas tarde otra vez. Delfín Check-in:
+        enlace previo, formulario y parte al MIR. Empieza gratis en
+        delfincheckin.com
+
+  - id: sin_cola_en_portal
+    theme: tiempo
+    money_angle: false
+    hook: Sin cola en el portal
+    spoken_hook: En el portal no hay cola de papeleo. Solo la llave.
+    carousel_title: El rellano no es mostrador de recepción
+    carousel_line: Datos antes. Entrega rápida. MIR cubierto.
+    carousel_caption: >
+      Menos minutos en el portal, mejor experiencia. Delfín Check-in.
+      Una propiedad gratis en delfincheckin.com
+    scene: Portal limpio, solo entrega de llave.
+    image_extra: apartment entrance key handoff quick
+    scripts:
+      - >
+        Nadie quiere hacer cola con la maleta. Delfín Check-in: el
+        parte puede estar listo y tú abres. Empieza gratis en
+        delfincheckin.com
+
+  - id: datos_en_su_idioma
+    theme: tiempo
+    money_angle: false
+    hook: En su idioma
+    spoken_hook: Que lo rellenen en su idioma. Tú no haces de traductor.
+    carousel_title: El formulario en el idioma del viajero evita errores
+    carousel_line: Ellos escriben. Tú confirmas. El MIR recibe.
+    carousel_caption: >
+      Menos malentendidos en el check-in. Delfín Check-in. Empieza
+      gratis en delfincheckin.com
+    scene: Huésped rellenando en inglés/alemán.
+    image_extra: guest filling form in foreign language
+    scripts:
+      - >
+        Traducir el pasaporte en el portal es perder tiempo. Delfín
+        Check-in: formulario en su idioma y envío al MIR. Empieza
+        gratis en delfincheckin.com
+
+  - id: un_flujo_completo
+    theme: legal
+    money_angle: false
+    hook: Un flujo completo
+    spoken_hook: De la reserva al parte. Un flujo. Sin saltar de app.
+    carousel_title: Reservas y registro de viajeros pueden vivir en el mismo sitio
+    carousel_line: Panel único. Check-in digital. Envío al Ministerio.
+    carousel_caption: >
+      Menos herramientas, menos olvidos de plazo. Delfín Check-in.
+      Empieza gratis en delfincheckin.com
+    scene: Un solo panel en pantalla.
+    image_extra: single admin panel reservations check-in
+    scripts:
+      - >
+        Reserva en un sitio, parte en otro: se te escapa. Delfín
+        Check-in lo junta y el MIR puede recibir. Empieza gratis en
+        delfincheckin.com

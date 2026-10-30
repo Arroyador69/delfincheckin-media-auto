@@ -1,4 +1,4 @@
-last_pack: 49
+last_pack: 50
 pains:
 - domingo_dnis
 - dinero_comision
@@ -96,6 +96,8 @@ pains:
 - directa_fin_de_semana
 - aviso_plazo_corto
 - hueco_entre_reservas
+- wifi_portal_malo
+- guest_paga_ti
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -220,6 +222,8 @@ scripts:
 - directa_fin_de_semana:0
 - aviso_plazo_corto:0
 - hueco_entre_reservas:0
+- wifi_portal_malo:0
+- guest_paga_ti:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -443,3 +447,11 @@ rooms:
 - wm-144519098-prohibition-bar-foshay-tower-9th-street.jpg
 - wm-6232141-mount-zion-hotel-img-1612-jpg.jpg
 - wm-84992355-jw-marriott-hotel-new-orleans-march-2012.jpg
+- wm-42573187-disney-aulani-1-bedroom-villa-4-jpg.jpg
+- wm-144519031-foshay-tower-9th-street-and-marquette-av.jpg
+- wm-29324205-sk-korea-tour-best-western-premier-seoul.jpg
+- wm-138166098-canopy-bed-and-wardrobes-in-khan-pool-su.jpg
+- wm-69466428-puesta-de-sol-tok-alaska-estados-unidos.jpg
+- wm-173085455-interior-of-a-room-of-travelodge-bath-ci.jpg
+- wm-81599790-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-131869454-living-room-in-villa-cavrois-en2023-2-jp.jpg
