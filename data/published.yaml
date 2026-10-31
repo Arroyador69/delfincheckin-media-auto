@@ -1,4 +1,4 @@
-last_pack: 50
+last_pack: 51
 pains:
 - domingo_dnis
 - dinero_comision
@@ -98,6 +98,8 @@ pains:
 - hueco_entre_reservas
 - wifi_portal_malo
 - guest_paga_ti
+- menos_chat_mas_formulario
+- cobro_antes_llegada
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -224,6 +226,8 @@ scripts:
 - hueco_entre_reservas:0
 - wifi_portal_malo:0
 - guest_paga_ti:0
+- menos_chat_mas_formulario:0
+- cobro_antes_llegada:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -455,3 +459,11 @@ rooms:
 - wm-173085455-interior-of-a-room-of-travelodge-bath-ci.jpg
 - wm-81599790-tw-taiwan-taipei-city-zhongzheng-distric.jpg
 - wm-131869454-living-room-in-villa-cavrois-en2023-2-jp.jpg
+- wm-42573190-disney-aulani-1-bedroom-villa-5-jpg.jpg
+- wm-31660146-yanggakdo-hotel-12064853305-jpg.jpg
+- wm-50647405-keskuse-14-bedroom-is-ready-jpg.jpg
+- wm-37679440-waldorf-double-bedroom-jpg.jpg
+- dormitorio.jpg
+- wm-131869463-living-room-in-villa-cavrois-en2023-4-jp.jpg
+- wm-129877992-historical-marker-quisling-towers-apartm.jpg
+- wm-116201068-2007-10-23-room-far-east-plaza-hotel-tai.jpg
