@@ -1,4 +1,4 @@
-last_pack: 51
+last_pack: 52
 pains:
 - domingo_dnis
 - dinero_comision
@@ -100,6 +100,8 @@ pains:
 - guest_paga_ti
 - menos_chat_mas_formulario
 - cobro_antes_llegada
+- un_flujo_completo
+- anuncio_y_parte
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -228,6 +230,8 @@ scripts:
 - guest_paga_ti:0
 - menos_chat_mas_formulario:0
 - cobro_antes_llegada:0
+- un_flujo_completo:0
+- anuncio_y_parte:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -467,3 +471,11 @@ rooms:
 - wm-131869463-living-room-in-villa-cavrois-en2023-4-jp.jpg
 - wm-129877992-historical-marker-quisling-towers-apartm.jpg
 - wm-116201068-2007-10-23-room-far-east-plaza-hotel-tai.jpg
+- wm-144519035-lobby-foshay-tower-9th-street-and-marque.jpg
+- wm-143514703-bedroom-1-7248059530-jpg.jpg
+- wm-194440833-dz6-0473-a-curved-indoor-viewing-nook-wi.jpg
+- wm-45765646-earthrise-over-compton-crater-lro-full-r.jpg
+- wm-39754697-hotel-aitana-oaxaca-jpg.jpg
+- wm-57887968-hotel-mercure-santo-domingo-room-101-2-j.jpg
+- wm-131869461-living-room-in-villa-cavrois-en2023-6-jp.jpg
+- wm-43549215-150919-kamikochi-imperial-hotel-japan02s.jpg
