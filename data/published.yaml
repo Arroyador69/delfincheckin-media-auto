@@ -1,4 +1,4 @@
-last_pack: 52
+last_pack: 53
 pains:
 - domingo_dnis
 - dinero_comision
@@ -102,6 +102,8 @@ pains:
 - cobro_antes_llegada
 - un_flujo_completo
 - anuncio_y_parte
+- sin_cola_en_portal
+- calendar_sin_solapes
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -232,6 +234,8 @@ scripts:
 - cobro_antes_llegada:0
 - un_flujo_completo:0
 - anuncio_y_parte:0
+- sin_cola_en_portal:0
+- calendar_sin_solapes:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -479,3 +483,11 @@ rooms:
 - wm-57887968-hotel-mercure-santo-domingo-room-101-2-j.jpg
 - wm-131869461-living-room-in-villa-cavrois-en2023-6-jp.jpg
 - wm-43549215-150919-kamikochi-imperial-hotel-japan02s.jpg
+- wm-81214483-tw-taiwan-taipei-city-zhongzheng-distric.jpg
+- wm-36058710-bedroom-at-the-old-cataract-6800243572-j.jpg
+- wm-41513631-ceylan-building-taksim-15002110709-jpg.jpg
+- wm-198795876-zabytkowe-drzwi-z-witra-owym-nad-wietlem.jpg
+- wm-79823719-the-hotel-room-2342689366-jpg.jpg
+- wm-94679729-interior-of-rental-room-24-ikebukuro-tok.jpg
+- wm-48476943-haltern-am-see-westruper-heide-2015-8306.jpg
+- wm-110101495-villa-darville-marcel-leborgne-cuylits-0.jpg
