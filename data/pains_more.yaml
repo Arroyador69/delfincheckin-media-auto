@@ -2041,8 +2041,8 @@ pains:
     scripts:
       - >
         Una galería bonita sin cobro no llena la cuenta nunca. Delfín
-        Check-in: página propia, Stripe y parte al MIR. Empieza gratis
-        delfincheckin.com
+        Check-in: página propia, Stripe y parte al MIR. Empieza ya
+        gratis en delfincheckin.com
 
   - id: whatsapp_enlace_pago
     theme: dinero
