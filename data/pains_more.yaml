@@ -1843,8 +1843,8 @@ pains:
     scripts:
       - >
         Veinte preguntas por chat no son un check-in de verdad. Delfín
-        Check-in: un enlace, formulario y parte al MIR. Empieza gratis
-        en delfincheckin.com
+        Check-in: un solo enlace, formulario y parte al MIR. Empieza
+        gratis en delfincheckin.com
 
   - id: confirma_en_dos_toques
     theme: tiempo
@@ -2041,7 +2041,7 @@ pains:
     scripts:
       - >
         Una galería bonita sin cobro no llena la cuenta nunca. Delfín
-        Check-in: página, Stripe y parte al MIR. Empieza gratis en
+        Check-in: página propia, Stripe y parte al MIR. Empieza gratis
         delfincheckin.com
 
   - id: whatsapp_enlace_pago
@@ -2076,7 +2076,7 @@ pains:
     image_extra: host viewing net vs gross earnings
     scripts:
       - >
-        El bruto engaña otra vez; el neto manda. Delfín Check-in:
+        El bruto engaña otra vez; el neto manda de verdad. Delfín Check-in:
         directa cuando puedas y envío al MIR. Empieza gratis en
         delfincheckin.com
 
@@ -2095,7 +2095,7 @@ pains:
     scripts:
       - >
         El repetidor ya confía en ti de sobra. Delfín Check-in:
-        reserva directa, cobro y parte al MIR. Empieza gratis en
+        reserva directa, cobro tuyo y parte al MIR. Empieza gratis en
         delfincheckin.com
 
   - id: hueco_que_cobra
@@ -2113,7 +2113,7 @@ pains:
     scripts:
       - >
         Dos noches vacías también son dinero parado otra vez. Delfín
-        Check-in: anuncio, cobro y parte al MIR. Empieza gratis en
+        Check-in: anúncialo, cobro y parte al MIR. Empieza gratis en
         delfincheckin.com
 
   - id: dos_euros_vs_gestor
