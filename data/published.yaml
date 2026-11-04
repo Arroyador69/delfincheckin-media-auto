@@ -1,4 +1,4 @@
-last_pack: 53
+last_pack: 54
 pains:
 - domingo_dnis
 - dinero_comision
@@ -104,6 +104,8 @@ pains:
 - anuncio_y_parte
 - sin_cola_en_portal
 - calendar_sin_solapes
+- datos_en_su_idioma
+- menos_peaje_ota
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -236,6 +238,8 @@ scripts:
 - anuncio_y_parte:0
 - sin_cola_en_portal:0
 - calendar_sin_solapes:0
+- datos_en_su_idioma:0
+- menos_peaje_ota:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -491,3 +495,11 @@ rooms:
 - wm-94679729-interior-of-rental-room-24-ikebukuro-tok.jpg
 - wm-48476943-haltern-am-see-westruper-heide-2015-8306.jpg
 - wm-110101495-villa-darville-marcel-leborgne-cuylits-0.jpg
+- wm-54856639-hotel-hospes-palacio-de-los-patos-panora.jpg
+- terraza-vistas.jpg
+- wm-168960520-2024-04-19-interior-of-hotel-room-of-gos.jpg
+- wm-144519086-elevator-doors-foshay-tower-9th-street-a.jpg
+- wm-6230657-mount-zion-hotel-img-1526-jpg.jpg
+- wm-21683336-pushkinskaya-8-8-jpg.jpg
+- resort-piscina.jpg
+- wm-15189279-zen-room-kreutzwald-hotel-tallinn-jpg.jpg
