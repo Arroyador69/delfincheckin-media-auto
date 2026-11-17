@@ -1,4 +1,4 @@
-last_pack: 55
+last_pack: 56
 pains:
 - domingo_dnis
 - dinero_comision
@@ -108,6 +108,8 @@ pains:
 - menos_peaje_ota
 - sin_papel_en_mano
 - neto_visible_ya
+- mensaje_antes_llegar
+- directa_tu_cuenta
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -244,6 +246,8 @@ scripts:
 - menos_peaje_ota:0
 - sin_papel_en_mano:0
 - neto_visible_ya:0
+- mensaje_antes_llegar:0
+- directa_tu_cuenta:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -515,3 +519,11 @@ rooms:
 - wm-192597916-villa-cavrois-croix-la-salle-manger-jpg.jpg
 - wm-132587594-kruisherenhotel-hotel-room-1a-cropped-jp.jpg
 - wm-40595582-cirrus-front-over-austnesfjorden-austv-g.jpg
+- hotel-blanco.jpg
+- wm-125639185-palacio-pitti-florencia-italia-2022-09-1.jpg
+- wm-61926040-freistadt-pfarrkirche-chorgew-lbe-01-jpg.jpg
+- wm-74267114-bishkek-kyrgyzstan-42851643920-jpg.jpg
+- wm-43882827-grand-hyatt-taipei-bedroom-in-grand-prem.jpg
+- wm-31721038-laika-ac-koryo-hotel-12074919866-jpg.jpg
+- wm-130693967-the-ritz-carlton-hotel-de-la-paix-geneva.jpg
+- wm-15847577-executive-premier-room-novotel-century-h.jpg
