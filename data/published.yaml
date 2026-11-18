@@ -1,4 +1,4 @@
-last_pack: 56
+last_pack: 57
 pains:
 - domingo_dnis
 - dinero_comision
@@ -110,6 +110,8 @@ pains:
 - neto_visible_ya
 - mensaje_antes_llegar
 - directa_tu_cuenta
+- un_enlace_basta
+- margen_del_mes
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -248,6 +250,8 @@ scripts:
 - neto_visible_ya:0
 - mensaje_antes_llegar:0
 - directa_tu_cuenta:0
+- un_enlace_basta:0
+- margen_del_mes:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -527,3 +531,11 @@ rooms:
 - wm-31721038-laika-ac-koryo-hotel-12074919866-jpg.jpg
 - wm-130693967-the-ritz-carlton-hotel-de-la-paix-geneva.jpg
 - wm-15847577-executive-premier-room-novotel-century-h.jpg
+- wm-195294804-elfa-storage-system-behind-mirrored-door.jpg
+- wm-74267112-bishkek-kyrgyzstan-43752938755-jpg.jpg
+- wm-168960534-2024-04-19-interior-of-hotel-room-of-gos.jpg
+- wm-85053757-room-interior-in-the-park-hotel-tokyo-in.jpg
+- wm-129877938-quisling-towers-apartments-gilman-street.jpg
+- wm-29324207-sk-korea-tour-best-western-premier-seoul.jpg
+- wm-129877946-quisling-towers-apartments-gilman-street.jpg
+- wm-177230850-hyatt-place-new-york-chelsea-room-interi.jpg
