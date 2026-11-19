@@ -1,4 +1,4 @@
-last_pack: 57
+last_pack: 58
 pains:
 - domingo_dnis
 - dinero_comision
@@ -112,6 +112,8 @@ pains:
 - directa_tu_cuenta
 - un_enlace_basta
 - margen_del_mes
+- sin_app_hotelera
+- whatsapp_enlace_pago
 hooks:
 - mujer-estres-b.mp4
 - mujer-estres-c.mp4
@@ -252,6 +254,8 @@ scripts:
 - directa_tu_cuenta:0
 - un_enlace_basta:0
 - margen_del_mes:0
+- sin_app_hotelera:0
+- whatsapp_enlace_pago:0
 rooms:
 - wm-129455832-delaware-avenue-and-bryant-street-bryant.jpg
 - wm-129877929-quisling-towers-apartments-gilman-street.jpg
@@ -539,3 +543,11 @@ rooms:
 - wm-29324207-sk-korea-tour-best-western-premier-seoul.jpg
 - wm-129877946-quisling-towers-apartments-gilman-street.jpg
 - wm-177230850-hyatt-place-new-york-chelsea-room-interi.jpg
+- wm-49790250-villa-balbianello-3636-planar-4-jpg.jpg
+- wm-43742298-villa-maund-schlafzimmer-jpg.jpg
+- wm-41513683-ceylan-building-taksim-15188882015-jpg.jpg
+- wm-67064137-mayflower-hotel-bedroom-lccn2016861831-j.jpg
+- wm-168960514-2024-04-19-interior-of-hotel-room-of-gos.jpg
+- wm-41513680-ceylan-building-taksim-15002210300-jpg.jpg
+- wm-30325322-paekaare-24-bedroom-left-jpg.jpg
+- wm-144519060-lobby-foshay-tower-9th-street-and-marque.jpg
